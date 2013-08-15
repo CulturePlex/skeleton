@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" type = "text/css" rel="stylesheet"/>
+    <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
+    {% block extra_metas %}{% endblock %}
+    {% block extra_links %}{% endblock %}
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid western-navbar">
+        {% block navbar_links %}
+            <a class="brand" href="{% url 'index' %}" style="color:white;">Project Skeleton</a>
+                <ul class="nav" >
+                    {% if user.is_superuser %}
+                    <li>
+                        <a href="/admin/">admin</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="/logout/">logout</a>
+                        </li>
+                    {% else %}
+                    <li>
+                        <a href="/accounts/login">login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'new_user' %}">create</a>
+                    </li>
+                    {% endif %}
+                </ul>
+         {% endblock %}
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+{% endblock %}
+</body>
+</html>
