@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*- 
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import (
-    render_to_response, redirect, get_object_or_404, RequestContext
-)
+from django.shortcuts import render_to_response, redirect, RequestContext
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core.urlresolvers import reverse
-
-
 
 def new_user_view(request):
     if request.method == 'POST':
@@ -26,3 +19,7 @@ def new_user_view(request):
     return render_to_response('new_user.html', RequestContext(request,{
         'new_user_form': new_user_form
     }))
+
+
+def user_view(request, user_id, user_slug):
+	pass

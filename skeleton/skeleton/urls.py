@@ -18,8 +18,9 @@ urlpatterns = patterns('',
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 	(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
 	url(r'^new_user', 'skeleton.views.new_user_view', name='new_user'),
+	url(r'^user/(?P<user_id>\d+)/(?P<user_slug>\w+)', 'skeleton.views.user_view', 'user'),
 	url(r'^', include('projects.urls')),
-	#url(r'^profile', include('profile.urls')),
+	url(r'^profile', include('profiles.urls')),
 
 )
 urlpatterns += staticfiles_urlpatterns()
