@@ -22,4 +22,4 @@ def new_user_view(request):
 
 
 def user_view(request, user_id, user_slug):
-	pass
+    pass

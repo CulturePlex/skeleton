@@ -8,4 +8,4 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 
 def profile_view(request, profile_id, profile_slug):
-	pass
+    pass
