@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
-class UserProfile(models.Model):    
+class UserProfileModel(models.Model):    
     email = models.EmailField()
     affiliation = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField(max_length=100)
