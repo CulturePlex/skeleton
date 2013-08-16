@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 
 from models import User
-from forms import ProfileForm #TODO
+#from forms import ProfileForm #TODO
 
 def new_user_view(request):
     if request.method == 'POST':

@@ -2,7 +2,9 @@
 {% block content %}
 
 <form method="POST" action="">{% csrf_token %}
-    {{ new_user_form.as_p }}
+    {% for field in new_user_form %}
+    	{{ field.label_tag }} {{ field }}
+    {% endfor %}
 <input type="submit" class="btn btn-primary" value="Update" />
 </form>
 
