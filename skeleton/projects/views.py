@@ -8,10 +8,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 
 def index_view(request):
+	#import ipdb; ipdb.set_trace()
 	return render_to_response('index.html', RequestContext(request,{}))
 
 def research_view(request):
-	pass
+	return render_to_response('index.html', RequestContext(request,{}))
 
 def research_line_view(request):
 	pass

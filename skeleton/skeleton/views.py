@@ -23,7 +23,8 @@ def register_view(request):
         'new_user_form': new_user_form,     
     }))
 
-
+def login_redirect_view(request):
+    pass
 
 
 def create_profile_view(request, user_id):

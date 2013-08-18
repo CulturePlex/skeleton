@@ -21,24 +21,23 @@
                     <li>
                         <a href="/admin/">admin</a>
                     </li>
-                    {% endif %}
-                    {% if user.is_authenticated and not user.is_staff %}
+                    <li>
+                        <a href="/logout/?next=/accounts/login?next={% url 'index' %}">logout</a>
+                    </li>
+                    {% elif user.is_authenticated %}
                         <li>
                             <a href="{% url 'profile' user_id=user.id user_slug=user.get_profile.slug %}">profile</a>
                         </li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
                         <li>
-
-                            <a href="/logout/">logout</a>
+                            <a href="/logout/?next=/accounts/login?next={% url 'index' %}">logout</a>
                         </li>
                     {% else %}
-                    <li>
-                        <a href="/accounts/login">login</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'register' %}">create</a>
-                    </li>
+                        <li>
+                            <a href="/accounts/login?next={{ request.path }}">login</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register' %}">create</a>
+                        </li>
                     {% endif %}
                 </ul>
          {% endblock %}
