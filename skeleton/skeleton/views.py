@@ -31,7 +31,7 @@ def create_profile_view(request, user_id):
     if request.user != user:
         return redirect('index')
     if profile.clean_fields():
-        return redirect('profile', user_id)
+        return redirect('profile', user_id, user.slug)
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST, instance=profile)
         if profile_form.is_valid():
