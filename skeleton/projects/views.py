@@ -8,24 +8,24 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 
 def index_view(request):
-	#import ipdb; ipdb.set_trace()
-	return render_to_response('index.html', RequestContext(request,{}))
+    #import ipdb; ipdb.set_trace()
+    return render_to_response('index.html', RequestContext(request,{}))
 
 def research_view(request):
-	return render_to_response('index.html', RequestContext(request,{}))
+    return render_to_response('index.html', RequestContext(request,{}))
 
 def research_line_view(request):
-	pass
+    pass
 
 def image_gallery_view(request):
-	pass
+    pass
 
 def image_view(request):
-	pass
+    pass
 
 def team_view(request):
-	pass
+    pass
 
 def bibliography_view(request):
-	pass
+    pass
 
