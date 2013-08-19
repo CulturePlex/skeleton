@@ -4,6 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+import settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': False}),
     url(r'^register', 'skeleton.views.register', name='register'),
     url(r'^user/create_profile/(?P<user_id>\d+)', 'skeleton.views.create_profile', name='create_profile'),
     url(r'^user/profile/(?P<user_id>\d+)/(?P<user_slug>\w+)', 'skeleton.views.profile', name='profile'),
