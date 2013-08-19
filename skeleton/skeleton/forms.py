@@ -9,8 +9,7 @@ class UserProfileForm(forms.Form):
     last_name = forms.CharField(max_length=30)   
     affiliation = forms.CharField(max_length=250)
 
-    def save(self, user):
-    	profile = get_object_or_404(UserProfile, user=user)
+    def save(self, user, profile):
     	data = self.cleaned_data
     	profile.affiliation = data['affiliation']
     	profile.save()

@@ -34,7 +34,7 @@ def create_profile(request, user_id):
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST)
         if profile_form.is_valid():
-            profile_form.save(user=user)
+            profile_form.save(user=user, profile=profile)
             return redirect('index') # or profile?
     else:
         profile_form = UserProfileForm()
