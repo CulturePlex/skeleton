@@ -32,10 +32,11 @@ def create_profile_view(request, user_id):
         return redirect('index')
     if profile.clean_fields():
         return redirect('profile', user_id, user.slug)
+    #import ipdb; ipdb.set_trace()
     if request.method == 'POST':
-        profile_form = UserProfileForm(request.POST, instance=profile)
+        profile_form = UserProfileForm(request.POST)
         if profile_form.is_valid():
-            profile_form.save()
+            profile_form.save(user=user)
             return redirect('index') # or profile?
     else:
         profile_form = UserProfileForm()

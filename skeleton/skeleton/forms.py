@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*- 
 from django import forms
 from django.db import models
-from models import UserProfileModel
+from django.shortcuts import get_object_or_404
+from models import UserProfileModel, User
 
-class UserProfileForm(forms.ModelForm):
-    first_name = models.CharField(max_length=30, blank=True, null=True)
-    last_name = models.CharField(max_length=30, blank=True, null=True)   
-    class Meta:
-        model = UserProfileModel
-        fields = ('affiliation',)
+class UserProfileForm(forms.Form):
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)   
+    affiliation = forms.CharField(max_length=250)
+
+    def save(self, user):
+    	profile = get_object_or_404(UserProfileModel, user=user)
+    	data = self.cleaned_data
+    	profile.affiliation = data['affiliation']
+    	profile.save()
+    	user.first_name = data['first_name']
+    	user.last_name = data['last_name']
+    	user.save()
+    	return profile

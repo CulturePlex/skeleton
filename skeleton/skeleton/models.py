@@ -14,7 +14,8 @@ class UserProfileModel(models.Model):
     
     def save(self, *args, **kwargs):
         #import ipdb; ipdb.set_trace()
-        self.slug = slugify(self.user.username)
+        if not self.id:
+            self.slug = slugify(self.user.username)
         super(UserProfileModel, self).save(*args, **kwargs)
 
 
