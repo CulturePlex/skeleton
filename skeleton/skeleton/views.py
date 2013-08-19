@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, redirect, RequestContext, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-
+from decorators import authors_only
 from models import User, UserProfile
 from forms import UserProfileForm #TODO
 
@@ -23,12 +23,10 @@ def register(request):
         'new_user_form': new_user_form,     
     }))
 
-
+@authors_only
 def create_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
     profile = user.profile
-    if request.user != user:
-        return redirect('index') # decorator
     if profile.clean_fields():
         return redirect('profile', user_id, user.slug)
     if request.method == 'POST':
@@ -44,7 +42,6 @@ def create_profile(request, user_id):
 
 def profile(request, user_id, user_slug):
     return render_to_response('profile.html', RequestContext(request,{}))
-
 
 def edit_profile(request, user_id, user_slug):
     user = get_object_or_404(User, id=user_id)
