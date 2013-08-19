@@ -2,7 +2,7 @@
 from django import forms
 from django.db import models
 from django.shortcuts import get_object_or_404
-from models import UserProfileModel, User
+from models import UserProfile, User
 
 class UserProfileForm(forms.Form):
     first_name = forms.CharField(max_length=30)
@@ -10,7 +10,7 @@ class UserProfileForm(forms.Form):
     affiliation = forms.CharField(max_length=250)
 
     def save(self, user):
-    	profile = get_object_or_404(UserProfileModel, user=user)
+    	profile = get_object_or_404(UserProfile, user=user)
     	data = self.cleaned_data
     	profile.affiliation = data['affiliation']
     	profile.save()

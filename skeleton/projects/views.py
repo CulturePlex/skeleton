@@ -7,25 +7,25 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 
-def index_view(request):
+def index(request):
     #import ipdb; ipdb.set_trace()
     return render_to_response('index.html', RequestContext(request,{}))
 
-def research_view(request):
+def research(request):
     return render_to_response('index.html', RequestContext(request,{}))
 
-def research_line_view(request):
+def research_line(request):
     pass
 
-def image_gallery_view(request):
+def image_gallery(request):
     pass
 
-def image_view(request):
+def image(request):
     pass
 
-def team_view(request):
+def team(request):
     pass
 
-def bibliography_view(request):
+def bibliography(request):
     pass
 

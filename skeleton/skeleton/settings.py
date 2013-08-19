@@ -167,4 +167,4 @@ LOGGING = {
 }
 
 
-AUTH_PROFILE_MODULE = 'skeleton.UserProfileModel'
+AUTH_PROFILE_MODULE = 'skeleton.UserProfile'
