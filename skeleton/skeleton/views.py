@@ -9,6 +9,7 @@ from forms import UserProfileForm #TODO
 def register(request):
     if request.method == 'POST':
         new_user_form = UserCreationForm(request.POST)
+        import ipdb; ipdb.set_trace()
         if new_user_form.is_valid():
             new_user = new_user_form.save()
             authenticated_user = authenticate(
@@ -39,6 +40,8 @@ def create_profile(request, user_id):
     return render_to_response('new_profile.html', RequestContext(request, {
         'profile_form': profile_form,
         }))
+
+##### TODO profile and edit profile pages. Change password. Ask Javi about storing names etc.
 
 def profile(request, user_id, user_slug):
     return render_to_response('profile.html', RequestContext(request,{}))
