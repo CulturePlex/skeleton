@@ -4,7 +4,6 @@ from django.template.defaultfilters import slugify
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model): 
-
     affiliation = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField(editable=False)
     user = models.OneToOneField(User, related_name='profile')
