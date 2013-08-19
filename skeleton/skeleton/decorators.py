@@ -10,3 +10,6 @@ def authors_only(view):
         else:
             return redirect('/')
     return wraps(view)(wrapper)
+
+
+    
