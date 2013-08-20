@@ -37,7 +37,7 @@ class ResearchLineAdmin(admin.ModelAdmin):
     pass
 
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['image_img']
 
 class BookReferenceAdmin(admin.ModelAdmin):
     pass

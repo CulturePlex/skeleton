@@ -18,7 +18,7 @@ class ResearchLine(models.Model):
     slug = models.SlugField(editable=False)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
-    project = models.ForeignKey(Project, related_name='research_lines')
+    project = models.ForeignKey(Project, blank=True, null=True, related_name='research_lines')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -36,8 +36,8 @@ class Image(models.Model):
     caption = models.CharField(max_length=100, blank=True, null=True)
     descritption = models.TextField(blank=True, null=True)
     slug = models.SlugField(editable=False)
-    project = models.ForeignKey(Project, null=True, related_name='images')
-    research_line = models.ForeignKey(ResearchLine, null=True, related_name='images')
+    project = models.ForeignKey(Project, blank=True, null=True, related_name='images')
+    research_line = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='images')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -45,6 +45,14 @@ class Image(models.Model):
         if not self.id:
             self.slug = slugify(self.name)
         super(Image, self).save(*args, **kwargs)
+
+    def image_img(self):
+        if self.image:
+            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+        else:
+            return 'No Image'
+    image_img.short_description = 'Image'
+    image_img.allow_tags = True
 
     def __unicode__(self):
         return self.name
@@ -69,11 +77,11 @@ class BookReference(Reference):
     book_title = models.CharField(max_length=250)
     editors = models.CharField(max_length=250, blank=True, null=True)
     edition = models.CharField(max_length=25, blank=True, null=True)
-    project = models.ForeignKey(Project, null=True, related_name='book_reference')
+    project = models.ForeignKey(Project, blank=True, null=True, related_name='book_reference')
 
 class JournalReference(Reference):
     number = models.CharField(max_length=10, blank=True, null=True)
-    project = models.ForeignKey(Project, null=True, related_name='journal_reference')
+    project = models.ForeignKey(Project, blank=True, null=True, related_name='journal_reference')
 
 
 
