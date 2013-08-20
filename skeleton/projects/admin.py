@@ -29,8 +29,6 @@ class ProjectAdmin(admin.ModelAdmin):
 
     
 class ResearchLineAdmin(admin.ModelAdmin):
-    class Media:
-        js = ('/static/js/colapseTabularInlines.js',)
     #fieldsets = [
     #(None, {'fields':['name']}),
     #('Description', {'fields':['subtitle', 'text']}),
