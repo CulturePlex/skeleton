@@ -13,14 +13,12 @@ class Project(models.Model):
         return self.name
 
 
-    
-
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
     slug = models.SlugField(editable=False)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
-    project = models.ForeignKey(Project, blank=True, null=True, related_name='research_lines')
+    project = models.ForeignKey(Project, related_name='research_lines')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -38,8 +36,8 @@ class Image(models.Model):
     caption = models.CharField(max_length=100, blank=True, null=True)
     descritption = models.TextField(blank=True, null=True)
     slug = models.SlugField(editable=False)
-    project = models.ForeignKey(Project, blank=True, null=True, related_name='images')
-    research_line = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='images')
+    project = models.ForeignKey(Project, null=True, related_name='images')
+    research_line = models.ForeignKey(ResearchLine, null=True, related_name='images')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -71,13 +69,11 @@ class BookReference(Reference):
     book_title = models.CharField(max_length=250)
     editors = models.CharField(max_length=250, blank=True, null=True)
     edition = models.CharField(max_length=25, blank=True, null=True)
-
-    project = models.ForeignKey(Project, blank=True, null=True, related_name='book_reference')
+    project = models.ForeignKey(Project, null=True, related_name='book_reference')
 
 class JournalReference(Reference):
     number = models.CharField(max_length=10, blank=True, null=True)
-
-    project = models.ForeignKey(Project, blank=True, null=True, related_name='journal_reference')
+    project = models.ForeignKey(Project, null=True, related_name='journal_reference')
 
 
 
