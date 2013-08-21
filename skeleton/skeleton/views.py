@@ -35,7 +35,7 @@ def create_profile(request):
             return redirect('index') # or profile?
     else:
         profile_form = UserProfileForm(instance=profile)
-    return render_to_response('edit_profile.html', RequestContext(request, {
+    return render_to_response('new_profile.html', RequestContext(request, {
         'profile_form': profile_form,
         }))
 

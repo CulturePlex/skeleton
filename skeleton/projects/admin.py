@@ -28,9 +28,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'fields': ['description']
         })
     ]
-
     list_display = ['name','research', 'collaborators']
-
     inlines = [ResearchLineInline, ImageInline, AcademicProfileInline]
 
     def research(self, instance):
@@ -50,7 +48,6 @@ class ResearchLineAdmin(admin.ModelAdmin):
         }),
     ]
     list_display = ['name', 'subtitle', 'collaborators']
-
     inlines = [ImageInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
 
     def collaborators(self, instance):
@@ -83,7 +80,6 @@ class BookReferenceAdmin(admin.ModelAdmin):
         'fields': ['pages', 'url']
         })
     ]
-
     list_display = ['title', 'authors', 'book_title', 'publisher', 'place_of_pub', 'date']
     
 
@@ -102,7 +98,6 @@ class JournalReferenceAdmin(admin.ModelAdmin):
         'fields': ['pages', 'url']
         })
     ]
-
     list_display = ['title', 'authors', 'journal_title', 'publisher', 'place_of_pub', 'date']
 
 admin.site.register(Project, ProjectAdmin)
