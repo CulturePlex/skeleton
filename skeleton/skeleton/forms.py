@@ -4,16 +4,22 @@ from django.db import models
 from django.shortcuts import get_object_or_404
 from models import UserProfile, User
 
-class UserProfileForm(forms.Form):
+class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)   
-    affiliation = forms.CharField(max_length=250)
+    last_name = forms.CharField(max_length=30)
 
-    def save(self, user, profile):
+    class Meta:
+        model = UserProfile
+        fields = ['affiliation'] 
+
+    def save(self, user, commit=True, *args, **kwargs):
+        import ipdb; ipdb.set_trace()
+        profile = super(UserProfileForm, self).save(commit=False)
     	data = self.cleaned_data
     	profile.affiliation = data['affiliation']
-    	profile.save()
     	user.first_name = data['first_name']
     	user.last_name = data['last_name']
-    	user.save()
+        if commit:
+            profile.save()
+            user.save()
     	return profile

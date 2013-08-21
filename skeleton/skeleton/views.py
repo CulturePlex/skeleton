@@ -9,7 +9,6 @@ from forms import UserProfileForm #TODO
 def register(request):
     if request.method == 'POST':
         new_user_form = UserCreationForm(request.POST)
-        import ipdb; ipdb.set_trace()
         if new_user_form.is_valid():
             new_user = new_user_form.save()
             authenticated_user = authenticate(
@@ -17,38 +16,48 @@ def register(request):
                 password=request.POST['password1']
                 )
             login(request, authenticated_user)
-            return redirect('create_profile', new_user.id)
+            return redirect('create_profile')
     else:
         new_user_form = UserCreationForm()
     return render_to_response('new_user.html', RequestContext(request,{
         'new_user_form': new_user_form,     
     }))
 
-@authors_only
-def create_profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
+
+def create_profile(request):
+    user = request.user
     profile = user.profile
     if profile.clean_fields():
-        return redirect('profile', user_id, user.slug)
+        return redirect('profile', user.id, user.slug)
     if request.method == 'POST':
-        profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST, instance=profile)
         if profile_form.is_valid():
-            profile_form.save(user=user, profile=profile)
+            profile_form.save(user=user, instance=profile)
             return redirect('index') # or profile?
     else:
-        profile_form = UserProfileForm()
-    return render_to_response('new_profile.html', RequestContext(request, {
+        profile_form = UserProfileForm(instance=profile)
+    return render_to_response('edit_profile.html', RequestContext(request, {
         'profile_form': profile_form,
         }))
 
 ##### TODO profile and edit profile pages. Change password. Ask Javi about storing names etc.
 
 def profile(request, user_id, user_slug):
-    return render_to_response('profile.html', RequestContext(request,{}))
+    profile = get_object_or_404(Profile, id=user_id)
+    return render_to_response('profile.html', RequestContext(request, {
+        'profile': profile
+        }))
 
-def edit_profile(request, user_id, user_slug):
-    user = get_object_or_404(User, id=user_id)
-    profile = get_object_or_404(UserProfileModel)
-    if request.user != profile_user: #decorator
-        return redirect('index')
-    pass
+def edit_profile(request):
+    user = request.user
+    profile = get_object_or_404(UserProfile, user=user)
+    if request.method == 'POST':
+        profile_form = UserProfileForm(request.POST, instance=profile)
+        if profile_form.is_valid():
+            profile_form.save(user=user, instance=profile)
+            return redirect('profile', user.id, user.slug)
+    else:
+        profile_form = UserProfileForm(instance=profile)
+    return render_to_response('edit_profile.html', RequestContext(request, {
+        'profile_form': profile_form,
+        }))
