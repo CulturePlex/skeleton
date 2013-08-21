@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*- 
 from django import forms
 from django.db import models
+from forms import UserProfileForm
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.forms import UserCreationForm
 from models import UserProfile, User
 
 class UserProfileForm(forms.ModelForm):
@@ -23,3 +25,20 @@ class UserProfileForm(forms.ModelForm):
             profile.save()
             user.save()
     	return profile
+
+
+class UserCreateForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+    def save(self, commit=True, *args, **kwargs):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
+
+

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 # Django settings for skeleton project.
 from os import path
 DEBUG = True
