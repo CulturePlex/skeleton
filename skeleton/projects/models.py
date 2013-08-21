@@ -5,18 +5,29 @@ from django.template.defaultfilters import slugify
 
 class Project(models.Model):
     name = models.CharField(max_length=300)
+    cover_image = models.ImageField(upload_to='images', blank=True, null=True)
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def cover_img(self):
+        if self.image:
+            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+        else:
+            return 'No Cover Photo'
+
+    cover_img.short_description = 'Cover Image'
+    cover_img.allow_tags = True
 
     def __unicode__(self):
         return self.name
 
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
-    slug = models.SlugField(editable=False)
+    avatar = models.ImageField(upload_to='images', blank=True, null=True)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
+    slug = models.SlugField(editable=False)
     project = models.ForeignKey(Project, blank=True, null=True, related_name='research_lines')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -25,6 +36,15 @@ class ResearchLine(models.Model):
         if not self.id:
             self.slug = slugify(self.name)
         super(ResearchLine, self).save(*args, **kwargs)  
+
+    def avatar_img(self):
+        if self.image:
+            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+        else:
+            return 'No Avatar'
+
+    avatar_img.short_description = 'Avatar'
+    avatar_img.allow_tags = True
 
     def __unicode__(self):
         return self.name
@@ -46,10 +66,8 @@ class Image(models.Model):
         super(Image, self).save(*args, **kwargs)
 
     def image_img(self):
-        if self.image:
-            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
-        else:
-            return 'No Image'
+        return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+
     image_img.short_description = 'Image'
     image_img.allow_tags = True
 

@@ -26,9 +26,12 @@ class ProjectAdmin(admin.ModelAdmin):
         }),
     ('Description', {
         'fields': ['description']
+        }),
+    ('Cover Image', {
+        'fields': ['cover_image']
         })
     ]
-    list_display = ['name','research', 'collaborators']
+    list_display = ['name','research', 'collaborators', 'cover_img']
     inlines = [ResearchLineInline, ImageInline, AcademicProfileInline]
 
     def research(self, instance):
@@ -46,8 +49,11 @@ class ResearchLineAdmin(admin.ModelAdmin):
     ('Description', {
         'fields':['subtitle', 'text']
         }),
+    ('Avatar', {
+        'fields': ['avatar']
+        })
     ]
-    list_display = ['name', 'subtitle', 'collaborators']
+    list_display = ['avatar_img', 'name', 'subtitle', 'collaborators']
     inlines = [ImageInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
 
     def collaborators(self, instance):
