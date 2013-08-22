@@ -3,6 +3,8 @@
 from os import path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+PROJECT_NAME = 'Skeleton'
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

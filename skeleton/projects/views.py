@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*- 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse#, HttpResponseRedirect
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core.urlresolvers import reverse
+#from django.core.urlresolvers import reverse
 
 from models import *
 from profiles.models import AcademicProfile
@@ -41,7 +41,12 @@ def research_line(request, research_id, research_slug):
 		}))
 
 def line_collaborators(request, research_id, research_slug):
-	pass
+	research_line = get_object_or_404(ResearchLine, id=research_id)
+	collaborators = research_line.collaborators.all()
+	return render_to_response('line_collaborators.html', RequestContext(request, {
+		'research_line': research_line,
+		'collaborators': collaborators
+		}))
 
 def research_line_bibliography(request, research_id, research_slug):
 	research_line = get_object_or_404(ResearchLine, research_id)
@@ -65,9 +70,18 @@ def image(request, image_id, image_slug):
 		}))
 
 def team(request):
+	team = AcademicProfile.objects.all()
+	return render_to_response('team.html', RequestContext(request, {
+		'team': team
+		}))
 
     pass
 
 def bibliography(request):
-    pass
+	books = BookReference.objects.all()
+	journals = JournalReference.objects.all()
+	references = books + journals # sort by author
+	return render_to_response('bibliography.html', RequestContext(request, {
+		'references': references,
+		}))
 
