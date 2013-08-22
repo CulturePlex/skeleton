@@ -10,14 +10,14 @@ from django.core.urlresolvers import reverse
 from models import *
 
 def index(request):
-	project = get_object_or_404(Projects, id=1)
-	research_lines = ResearchLine.objects.all()
-	images = Image.objects.all()
-	image = None
-	if len(images) < 1:
+    project = get_object_or_404(Project, id=1) #write custom error that sends user to admin
+    research_lines = ResearchLine.objects.all()
+    images = Image.objects.all()
+    image = None
+    if len(images) < 1:
 		image = None
 		images = None
-	elif len(images) == 1:
+    elif len(images) == 1:
 		image = images[0]
 		images = None
     return render_to_response('index.html', RequestContext(request, {
@@ -28,7 +28,7 @@ def index(request):
     	}))
 
 def research(request):
-	research_lines = ResearchLine.objects.all()
+    research_lines = ResearchLine.objects.all()
     return render_to_response('research.html', RequestContext(request,{
     	'research_lines': research_lines
     	}))

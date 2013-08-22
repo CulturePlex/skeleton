@@ -11,8 +11,8 @@ class Project(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def cover_img(self):
-        if self.image:
-            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+        if self.cover_image:
+            return u'<img src={0} height="100" width="100"/>'.format(self.cover_image.url)
         else:
             return 'No Cover Photo'
 
@@ -38,8 +38,8 @@ class ResearchLine(models.Model):
         super(ResearchLine, self).save(*args, **kwargs)  
 
     def avatar_img(self):
-        if self.image:
-            return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+        if self.avatar:
+            return u'<img src={0} height="100" width="100"/>'.format(self.avatar.url)
         else:
             return 'No Avatar'
 
