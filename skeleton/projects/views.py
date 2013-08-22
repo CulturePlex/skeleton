@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 
 from models import *
+from profiles.models import AcademicProfile
 
 def index(request):
     project = get_object_or_404(Project, id=1) #write custom error that sends user to admin
@@ -34,18 +35,37 @@ def research(request):
     	}))
 
 def research_line(request, research_id, research_slug):
-    pass
+	research_line = get_object_or_404(ResearchLine, id=research_id)
+	return render_to_response('research_line.html', ReqeustContext(request, {
+		'research_line': research_line,
+		}))
 
-def research_line_bibliography(request, research_id, research_slug):
+def line_collaborators(request, research_id, research_slug):
 	pass
 
+def research_line_bibliography(request, research_id, research_slug):
+	research_line = get_object_or_404(ResearchLine, research_id)
+	books = research_line.book_reference.all()
+	journals = research_line.journal_reference.all()
+	references = books + journals # sort by author
+	return render_to_response('bibliography.html', RequestContext(request, {
+		'references': references,
+		}))
+
 def image_gallery(request):
-    pass
+	images = Image.objects.all()
+   	return render_to_response('image_gallery.html', RequestContext(request, {
+   		'images': images
+   		}))
 
 def image(request, image_id, image_slug):
-    pass
+	image = get_object_or_404(Image, id=image_id)
+	return render_to_response('image.html', RequestContext(request, {
+		'image': image
+		}))
 
 def team(request):
+
     pass
 
 def bibliography(request):
