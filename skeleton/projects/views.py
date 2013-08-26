@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*- 
 import collections
+from intertools import chain
 from django.http import HttpResponse#, HttpResponseRedirect
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
@@ -40,10 +41,12 @@ def research_line(request, research_id, research_slug):
 	collaborators = research_line.collaborators.all()
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
+	references = sorted(chain(books, jounals), key=attrgetter('author'))
 	return render_to_response('research_line.html', RequestContext(request, {
 		'research_line': research_line,
 		'sections': sections_dict,
 		'collaborators': collaborators,
+		'references': references,
 		}))
 
 def image_gallery(request):
