@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^user/edit_profile', 'skeleton.views.edit_profile', name='edit_profile'),
     url(r'^user/profile/(?P<user_id>\d+)/(?P<user_slug>\w+)', 'skeleton.views.profile', name='profile'),
     url(r'^search/$', 'skeleton.views.search', name='search'),
-    url(r'^$', include('projects.urls')),
+    url(r'^', include('projects.urls')),
     url(r'^profile', include('profiles.urls')),
 
 )

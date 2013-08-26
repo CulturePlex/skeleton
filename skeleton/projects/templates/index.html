@@ -24,7 +24,7 @@
 			<img src="{{ MEDIA_URL }}{{ line.avatar }}", height="100px", width="100px" />
 		</div>
 		<div class="span10">
-			<h3>{{ line.name }}</h3>
+			<a href="{% url 'research_line' research_id=line.id research_slug=line.slug %}"><h3>{{ line.name }}</h3></a>
 			{{ line.text }}
 		</div>
 
