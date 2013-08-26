@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*- 
+import collections
 from django.http import HttpResponse#, HttpResponseRedirect
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
@@ -33,11 +34,15 @@ def research(request):
 def research_line(request, research_id, research_slug):
 	research_line = get_object_or_404(ResearchLine, id=research_id)
 	sections = research_line.sections.all().order_by('order')
+	sections_dict = collections.OrderedDict()
+	for section in sections:
+		sections_dict.update({section: section.subsections.all().order_by('order')})
 	collaborators = research_line.collaborators.all()
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
 	return render_to_response('research_line.html', RequestContext(request, {
 		'research_line': research_line,
+		'sections': sections_dict,
 		'collaborators': collaborators,
 		}))
 
