@@ -41,7 +41,7 @@ def research_line(request, research_id, research_slug):
 	collaborators = research_line.collaborators.all()
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
-	references = sorted(chain(books, jounals), key=attrgetter('author'))
+	references = sorted(chain(books, journals), key=attrgetter('authors'))
 	return render_to_response('research_line.html', RequestContext(request, {
 		'research_line': research_line,
 		'sections': sections_dict,
@@ -70,7 +70,7 @@ def team(request):
 def bibliography(request):
 	books = BookReference.objects.all()
 	journals = JournalReference.objects.all()
-	references = books + journals # sort by author
+	references = sorted(chain(books, journals), key=attrgetter('authors'))
 	return render_to_response('bibliography.html', RequestContext(request, {
 		'references': references,
 		}))
