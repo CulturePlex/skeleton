@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 class Project(models.Model):
     name = models.CharField(max_length=300)
-    cover_image = models.ImageField(upload_to='images/project', blank=True, null=True)
+    cover_image = models.ImageField(upload_to='images/project', blank=True, null=True) #TODO control size here
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -24,7 +24,7 @@ class Project(models.Model):
 
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
-    avatar = models.ImageField(upload_to='images/research', blank=True, null=True)
+    avatar = models.ImageField(upload_to='images/research', blank=True, null=True) #TODO control size here
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
     slug = models.SlugField(editable=False)
