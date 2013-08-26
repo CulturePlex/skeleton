@@ -1,40 +1,65 @@
 {% extends "base.html" %}
+{% block title %}Home{% endblock %}
 {% block content %}
 
 <div class="row-fluid">
-	<div class="span8 offset2">
-		<div class="span8">
-			<h1>{{ project }}</h1>
-			{{ project.description }}
-		</div>
-		<div class="span4">
-			{% if cover_image %}
-				<img src="{{ MEDIA_URL }}{{ cover_image }}", height="200px", width="200px" />
-			{% elif images %}
-				<!-- Carousel -->
-			{% endif %}
-		</div>	
-	</div>
+    <div class="span8 offset2">
+        <div class="span8">
+            <h1>{{ project }}</h1>
+            {{ project.description|safe }}
+        </div>
+        <div class="span4">
+            {% if cover_image %}
+                <img src="{{ MEDIA_URL }}{{ cover_image }}", height="200px", width="200px" />
+            {% elif images %}
+            <div id="index-carousel" class="carousel slide"><!-- class of slide for animation -->
+                <div class="carousel-inner">
+                    {% for image in images %}
+                    <div class="item"><!-- class of active since it's the first item -->
+                        <img src="{{MEDIA_URL}}{{ image.image }}" alt="" />
+                        <div class="carousel-caption">
+                            <p>{{ image.caption }}</p>
+                         </div>
+                    </div>
+                    {% endfor %}
+                </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+                <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+            </div><!-- /.carousel -->
+            {% endif %}
+        </div>  
+    </div>
 </div>
 
 {% for line in research_lines %}
 <div class="row-fluid">
-	<div class="span8 offset2">
-		<div class="span2">
-			<img src="{{ MEDIA_URL }}{{ line.avatar }}", height="100px", width="100px" />
-		</div>
-		<div class="span10">
-			<a href="{% url 'research_line' research_id=line.id research_slug=line.slug %}"><h3>{{ line.name }}</h3></a>
-			{{ line.text }}
-		</div>
+    <div class="span8 offset2">
+        <div class="span2">
+            <img src="{{ MEDIA_URL }}{{ line.avatar }}", height="100px", width="100px" />
+        </div>
+        <div class="span10">
+            <a href="{% url 'research_line' research_id=line.id research_slug=line.slug %}"><h3>{{ line.name }}</h3></a>
+            {{ line.text|safe }}
+        </div>
 
 
 
 
-	</div>
+    </div>
 </div>
 <hr>
 {% endfor %}
 
 
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 {% endblock %}

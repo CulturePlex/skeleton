@@ -12,7 +12,7 @@ class ResearchLineInline(admin.TabularInline):
 
 class ImageInline(admin.TabularInline):
     model = Image
-    fields = ['name', 'caption', 'description'] 
+    fields = ['image', 'name', 'caption', 'description'] 
 
 class BookReferenceInline(admin.TabularInline):
     model = BookReference
@@ -89,7 +89,7 @@ class SubsectionAdmin(admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields': ['name']
+        'fields': ['name', 'image']
         }),
     ('Description', {
         'fields': ['caption', 'description']

@@ -139,7 +139,6 @@ INSTALLED_APPS = (
     'skeleton',
     'projects',
     'profiles',
-    'interactive',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*- 
 import collections
-from intertools import chain
+import operator
+from itertools import chain
 from django.http import HttpResponse#, HttpResponseRedirect
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
@@ -13,17 +14,23 @@ from models import *
 from profiles.models import AcademicProfile
 
 def index(request):
-    project = Project.objects.filter(id=1)[0]
-    if not project:
+    try:
+        project = Project.objects.filter(id=1)[0]
+    except IndexError:
     	return HttpResponse('Create your project at project_name/admin')
     research_lines = ResearchLine.objects.all()
     images = Image.objects.all()
+    if len(images) > 0:
+        active_image = images[0]
+        if len(images) > 1:
+            images = images[1:]
     cover_image = project.cover_image
     return render_to_response('index.html', RequestContext(request, {
     	'project': project,
     	'research_lines': research_lines,
-    	'images': images,
-    	'cover_image': cover_image
+    	'cover_image': cover_image,
+        'images': images,
+        'active_image': active_image
     	}))
 
 def research(request):
@@ -41,7 +48,7 @@ def research_line(request, research_id, research_slug):
 	collaborators = research_line.collaborators.all()
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
-	references = sorted(chain(books, journals), key=attrgetter('authors'))
+	references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
 	return render_to_response('research_line.html', RequestContext(request, {
 		'research_line': research_line,
 		'sections': sections_dict,
@@ -70,7 +77,7 @@ def team(request):
 def bibliography(request):
 	books = BookReference.objects.all()
 	journals = JournalReference.objects.all()
-	references = sorted(chain(books, journals), key=attrgetter('authors'))
+	references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
 	return render_to_response('bibliography.html', RequestContext(request, {
 		'references': references,
 		}))
