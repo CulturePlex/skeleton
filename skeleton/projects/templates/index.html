@@ -1,1 +1,40 @@
 {% extends "base.html" %}
+{% block content %}
+
+<div class="row-fluid">
+	<div class="span8 offset2">
+		<div class="span8">
+			<h1>{{ project }}</h1>
+			{{ project.description }}
+		</div>
+		<div class="span4">
+			{% if cover_image %}
+				<img src="{{ MEDIA_URL }}{{ cover_image }}", height="200px", width="200px" />
+			{% elif images %}
+				<!-- Carousel -->
+			{% endif %}
+		</div>	
+	</div>
+</div>
+
+{% for line in research_lines %}
+<div class="row-fluid">
+	<div class="span8 offset2">
+		<div class="span2">
+			<img src="{{ MEDIA_URL }}{{ line.avatar }}", height="100px", width="100px" />
+		</div>
+		<div class="span10">
+			<h3>{{ line.name }}</h3>
+			{{ line.text }}
+		</div>
+
+
+
+
+	</div>
+</div>
+<hr>
+{% endfor %}
+
+
+{% endblock %}

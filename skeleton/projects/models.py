@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 class Project(models.Model):
     name = models.CharField(max_length=300)
-    cover_image = models.ImageField(upload_to='images', blank=True, null=True)
+    cover_image = models.ImageField(upload_to='images/project', blank=True, null=True)
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -24,7 +24,7 @@ class Project(models.Model):
 
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
-    avatar = models.ImageField(upload_to='images', blank=True, null=True)
+    avatar = models.ImageField(upload_to='images/research', blank=True, null=True)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
     slug = models.SlugField(editable=False)
@@ -49,14 +49,32 @@ class ResearchLine(models.Model):
     def __unicode__(self):
         return self.name
 
+class Section(models.Model):
+    name = models.CharField(max_length=250)
+    text = models.TextField()
+    order = models.PositiveSmallIntegerField()
+    research_lines = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='sections')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+class Subsection(models.Model):
+    name = models.CharField(max_length=250)
+    text = models.TextField()
+    order = models.PositiveSmallIntegerField()
+    section = models.ForeignKey(Section, blank=True, null=True, related_name='subsections')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
 class Image(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/general')
     name = models.CharField(max_length=60)
     caption = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     slug = models.SlugField(editable=False)
     project = models.ForeignKey(Project, blank=True, null=True, related_name='images')
     research_line = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='images')
+    section = models.ForeignKey(Section, blank=True, null=True, related_name='images')
+    subsection = models.ForeignKey(Subsection, blank=True, null=True, related_name='images')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -100,7 +118,4 @@ class JournalReference(Reference):
     number = models.CharField(max_length=10, blank=True, null=True)
     project = models.ForeignKey(Project, blank=True, null=True, related_name='journal_reference')
     research_line = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='journal_reference')
-
-
-
 

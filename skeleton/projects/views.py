@@ -11,21 +11,17 @@ from models import *
 from profiles.models import AcademicProfile
 
 def index(request):
-    project = get_object_or_404(Project, id=1) #write custom error that sends user to admin
+    project = Project.objects.filter(id=1)[0]
+    if not project:
+    	return HttpResponse('Create your project at project_name/admin')
     research_lines = ResearchLine.objects.all()
     images = Image.objects.all()
-    image = None
-    if len(images) < 1:
-		image = None
-		images = None
-    elif len(images) == 1:
-		image = images[0]
-		images = None
+    cover_image = project.cover_image
     return render_to_response('index.html', RequestContext(request, {
     	'project': project,
     	'research_lines': research_lines,
-    	'image': image,
     	'images': images,
+    	'cover_image': cover_image
     	}))
 
 def research(request):
@@ -36,24 +32,14 @@ def research(request):
 
 def research_line(request, research_id, research_slug):
 	research_line = get_object_or_404(ResearchLine, id=research_id)
-	return render_to_response('research_line.html', ReqeustContext(request, {
-		'research_line': research_line,
-		}))
-
-def line_collaborators(request, research_id, research_slug):
-	research_line = get_object_or_404(ResearchLine, id=research_id)
+	sections = research_line.sections.all().order_by('order')
 	collaborators = research_line.collaborators.all()
-	return render_to_response('line_collaborators.html', RequestContext(request, {
-		'research_line': research_line,
-		'collaborators': collaborators
-		}))
-
-def research_line_bibliography(request, research_id, research_slug):
-	research_line = get_object_or_404(ResearchLine, research_id)
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
-	references = books + journals # sort by author
-	return render_to_response('bibliography.html', RequestContext(request, {
+	references = books + journals #
+	return render_to_response('research_line.html', ReqeustContext(request, {
+		'research_line': research_line,
+		'collaborators': collaborators,
 		'references': references,
 		}))
 
@@ -74,8 +60,6 @@ def team(request):
 	return render_to_response('team.html', RequestContext(request, {
 		'team': team
 		}))
-
-    pass
 
 def bibliography(request):
 	books = BookReference.objects.all()

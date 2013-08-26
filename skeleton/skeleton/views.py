@@ -62,3 +62,6 @@ def edit_profile(request):
     return render_to_response('edit_profile.html', RequestContext(request, {
         'profile_form': profile_form,
         }))
+
+def search(request):
+    pass

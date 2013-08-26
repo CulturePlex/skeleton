@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Project, ResearchLine, Image, BookReference, JournalReference
+from models import Project, ResearchLine, Image, BookReference, JournalReference, Section, Subsection
 from profiles.models import AcademicProfile
 
 #formfield_overrides = {
@@ -12,6 +12,7 @@ class ResearchLineInline(admin.TabularInline):
 
 class ImageInline(admin.TabularInline):
     model = Image
+    fields = ['name', 'caption', 'description'] 
 
 class BookReferenceInline(admin.TabularInline):
     model = BookReference
@@ -19,20 +20,24 @@ class BookReferenceInline(admin.TabularInline):
 class JournalReferenceInline(admin.TabularInline):
     model = JournalReference
 
+class SectionInline(admin.TabularInline):
+    model = Section
+
+
+class SubsectionInline(admin.TabularInline):
+    model = Subsection
+
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name']
+        'fields':['name', 'cover_image']
         }),
     ('Description', {
         'fields': ['description']
         }),
-    ('Cover Image', {
-        'fields': ['cover_image']
-        })
     ]
     list_display = ['name','research', 'collaborators', 'cover_img']
-    inlines = [ResearchLineInline, ImageInline, AcademicProfileInline]
+    inlines = [ResearchLineInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
 
     def research(self, instance):
         return u' ,'.join([line.name for line in instance.research_lines.all()])
@@ -44,20 +49,41 @@ class ProjectAdmin(admin.ModelAdmin):
 class ResearchLineAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name']
+        'fields':['name', 'avatar']
         }),
     ('Description', {
         'fields':['subtitle', 'text']
-        }),
-    ('Avatar', {
-        'fields': ['avatar']
         })
     ]
     list_display = ['avatar_img', 'name', 'subtitle', 'collaborators']
-    inlines = [ImageInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
+    inlines = [SectionInline, BookReferenceInline, JournalReferenceInline, AcademicProfileInline]
 
     def collaborators(self, instance):
         return u' ,'.join([collab.name for collab in instance.collaborators.all()])
+
+class SectionAdmin(admin.ModelAdmin):
+    fieldsets = [
+    (None, {
+        'fields':['name', 'order']
+        }),
+    ('Description', {
+        'fields':['text']
+        })
+    ]
+    list_display = ['order', 'name']
+    inlines = [ImageInline, SubsectionInline]
+
+class SubsectionAdmin(admin.ModelAdmin):
+    fieldsets = [
+    (None, {
+        'fields':['name', 'order']
+        }),
+    ('Description', {
+        'fields':['text']
+        })
+    ]
+    list_display = ['order', 'name']
+    inlines = [ImageInline]
 
 
 class ImageAdmin(admin.ModelAdmin):
@@ -108,6 +134,8 @@ class JournalReferenceAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ResearchLine, ResearchLineAdmin)
+admin.site.register(Section, SectionAdmin)
+admin.site.register(Subsection, SubsectionAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(BookReference, BookReferenceAdmin)
 admin.site.register(JournalReference, JournalReferenceAdmin)
