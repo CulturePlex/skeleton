@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load reference_instance %}
 {% block extra_links %}
     <link href="{% static 'css/projects_base.css' %}" type = "text/css" rel="stylesheet"/>
 {% endblock %}
@@ -37,8 +38,16 @@
 							<p class="image-name">{{ image.name }}</p>
 							<p class="image-caption">{{ image.caption }}</p>	
 					{% endfor %}
-
 					{% endfor %}
+				{% endfor %}
+			<h4>Bibliograph</h4>
+				{% for reference in references %}
+					{% with reference|book_instance as inst %}
+						{% if inst %}
+							{{ reference }}
+						{% else %}
+						{% endif %}
+					{% endwith %}
 				{% endfor %}
 			</div>
 		</div>

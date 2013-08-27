@@ -50,6 +50,8 @@ def research_line(request, research_id, research_slug):
 	books = research_line.book_reference.all()
 	journals = research_line.journal_reference.all()
 	references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
+	for reference in references:
+		print isinstance(reference, BookReference)
 	return render_to_response('research_line.html', RequestContext(request, {
 		'research_line': research_line,
 		'sections': sections_dict,

@@ -56,6 +56,7 @@ class Section(models.Model):
     research_lines = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='sections')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
     def __unicode__(self):
         return self.name
 
@@ -66,6 +67,7 @@ class Subsection(models.Model):
     section = models.ForeignKey(Section, blank=True, null=True, related_name='subsections')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
     def __unicode__(self):
         return self.name
 
@@ -109,6 +111,9 @@ class Reference(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def type(self):
+        return type(self)
     
 class BookReference(Reference):
     book_title = models.CharField(max_length=250)

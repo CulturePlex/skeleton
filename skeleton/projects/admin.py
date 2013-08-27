@@ -113,6 +113,9 @@ class BookReferenceAdmin(admin.ModelAdmin):
         }),
     ('Reference', {
         'fields': ['pages', 'url']
+        }),
+    ('Associated With', {
+        'fields': ['project','research_line']
         })
     ]
     list_display = ['title', 'authors', 'book_title', 'publisher', 'place_of_pub', 'date']
@@ -131,6 +134,9 @@ class JournalReferenceAdmin(admin.ModelAdmin):
         }),
     ('Reference', {
         'fields': ['pages', 'url']
+        }),
+    ('Associated With', {
+        'fields': ['project','research_line']
         })
     ]
     list_display = ['title', 'authors', 'journal_title', 'publisher', 'place_of_pub', 'date']
