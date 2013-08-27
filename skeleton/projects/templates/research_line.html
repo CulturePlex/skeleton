@@ -44,8 +44,9 @@
 				{% for reference in references %}
 					{% with reference|book_instance as inst %}
 						{% if inst %}
-							{{ reference }}
+							<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
 						{% else %}
+							<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
 						{% endif %}
 					{% endwith %}
 				{% endfor %}

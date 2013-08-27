@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load reference_instance %}
+
+<div class="row-fluid">
+	<div class="span8 offset2">		
+
+		<h3>Bibliography</h3>
+			{% for reference in references %}
+				{% with reference|book_instance as inst %}
+					{% if inst %}
+						<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
+					{% else %}
+						<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
+					{% endif %}
+				{% endwith %}
+			{% endfor %}
+
+	</div>	
+</div>
