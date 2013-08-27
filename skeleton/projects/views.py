@@ -24,6 +24,9 @@ def index(request):
         active_image = images[0]
         if len(images) > 1:
             images = images[1:]
+            print 'image', images
+    else:
+    	active_image = None
     cover_image = project.cover_image
     return render_to_response('index.html', RequestContext(request, {
     	'project': project,

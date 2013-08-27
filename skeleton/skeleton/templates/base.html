@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    {% block extra_metas %}{% endblock %}
     <title>{{ PROJECT_NAME }} | {% block title %}{% endblock %}</title>
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" type = "text/css" rel="stylesheet"/>
     <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
-    {% block extra_metas %}{% endblock %}
     {% block extra_links %}{% endblock %}
 </head>
 
@@ -39,12 +39,11 @@
                             <a href="{% url 'register' %}">create</a>
                         </li>
                     {% endif %}
-                    <li>
-                        <form name="search" action="{% url 'search' %}" method="get" class="form-inline">
-                            <input type="text" class="input-medium search-query" name="q" placeholder="search" />
-                        </form>
-                    </li>
+
                 </ul>
+                                        <form name="search" action="{% url 'search' %}" method="get" class="navbar-form pull-right">
+                            <input type="text" class="span2 offset10" name="q" placeholder="search" />
+                        </form>
          {% endblock %}
         </div>
     </div>

@@ -1,0 +1,24 @@
+.intro-content {
+    padding-bottom: 40px;
+}
+
+.car-image img {
+  width: auto;
+  height: 175px;
+  max-height: 175px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.car-image p {
+	text-align: center;
+	padding-top: 10px;
+	font-weight: 700;
+}
+
+.avatar {
+	height: auto;
+	width: auto;
+	margin-top: 15px;
+}
+

@@ -1,38 +1,46 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content %}
+{% load staticfiles %}
 
+{% block title %}Home{% endblock %}
+
+{% block extra_links %}
+    <link href="{% static 'css/index.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
 <div class="row-fluid">
-    <div class="span8 offset2">
-        <div class="span8">
-            <h1>{{ project }}</h1>
-            {{ project.description|safe }}
+    <div class="span10 offset1 intro-content">
+        <h2>{{ project }}</h2>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span10 offset1 intro-content">
+        <div class="span7">
+           <p>{{ project.description|safe }}</p>
         </div>
-        <div class="span4">
+        <div class="span5">
             {% if cover_image %}
-                <img src="{{ MEDIA_URL }}{{ cover_image }}", height="200px", width="200px" />
+                <img src="{{ MEDIA_URL }}{{ cover_image }}"/>
             {% elif active_image %}
-            <div id="index-carousel" class="carousel slide"><!-- class of slide for animation -->
+            <div id="index-carousel" class="carousel slide ">
                 <div class="carousel-inner">
-                    <div class="item active"><!-- class of active since it's the first item -->
-                        <img src="{{MEDIA_URL}}{{ active_image.image }}" alt="" />
-                        <div class="carousel-caption">
+                    <div class="item active car-image">
+                        <img src="{{MEDIA_URL}}{{ active_image.image }}"  alt="" />
+                        <div>
                             <p>{{ active_image.caption }}</p>
                          </div>
                     </div>
                     {% for image in images %}
-                    <div class="item"><!-- class of active since it's the first item -->
-                        <img src="{{MEDIA_URL}}{{ image.image }}" alt="" />
-                        <div class="carousel-caption">
+                    <div class="item car-image">
+                        <img src="{{MEDIA_URL}}{{ image.image }}" class="car-image" alt="" />
+                        <div>
                             <p>{{ image.caption }}</p>
                          </div>
                     </div>
                     {% endfor %}
                 </div><!-- /.carousel-inner -->
-  <!--  Next and Previous controls below
-        href values must reference the id for this carousel -->
-                <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+                <a class="carousel-control left" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right"  data-slide="next">&rsaquo;</a>
             </div><!-- /.carousel -->
             {% endif %}
         </div>  
@@ -41,31 +49,35 @@
 
 {% for line in research_lines %}
 <div class="row-fluid">
-    <div class="span8 offset2">
+    <div class="span10 offset1">
         <div class="span2">
-            <img src="{{ MEDIA_URL }}{{ line.avatar }}", height="100px", width="100px" />
+            <img src="{{ MEDIA_URL }}{{ line.avatar }}", class="avatar" />
         </div>
         <div class="span10">
-            <a href="{% url 'research_line' research_id=line.id research_slug=line.slug %}"><h3>{{ line.name }}</h3></a>
-            {{ line.text|safe }}
+            <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
+            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
         </div>
-
-
-
-
     </div>
 </div>
 <hr>
 {% endfor %}
-
-
 {% endblock %}
 
 {% block extra_scripts %}
-<script src="js/bootstrap.min.js"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"}></script>
 <script>
-  $(document).ready(function(){
-    $('.carousel').carousel();
-  });
+(function($){
+    $(document).ready(function(){
+        $('.carousel').carousel({
+            interval: 3 000
+        });
+    });
+    $('.carousel-control.left').click(function() {
+        $('#index-carousel').carousel('prev');
+    });
+    $('.carousel-control.right').click(function() {
+        $('#index-carousel').carousel('next');
+});
+})(jQuery);
 </script>
 {% endblock %}
