@@ -28,9 +28,12 @@ def index(request):
     else:
     	active_image = None
     cover_image = project.cover_image
+    team = AcademicProfile.objects.all()
+    print team
     return render_to_response('index.html', RequestContext(request, {
     	'project': project,
     	'research_lines': research_lines,
+    	'team': team,
     	'cover_image': cover_image,
         'images': images,
         'active_image': active_image
