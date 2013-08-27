@@ -94,6 +94,9 @@ class ImageAdmin(admin.ModelAdmin):
     ('Description', {
         'fields': ['caption', 'description']
         }),
+    ('Associated With', {
+        'fields': ['research_line', 'section', 'subsection']
+        })
     ]
     list_display = ['name', 'caption', 'image_img']
 

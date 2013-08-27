@@ -47,14 +47,22 @@
          {% endblock %}
         </div>
     </div>
-</div>
+</div> 
+
 <div class="container-fluid">
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
+</div>
+
+<div id="footer" class="ftr">
+    <div class="container-fluid">
+        <p class="muted credit">CulturePlex Lab: Skeleton - David Michael Brown</p>
+    </div>
 </div>
 
 {% block scripts %}
     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     {% block extra_scripts %}{% endblock %}
 {% endblock %}
+
 </body>
 </html>

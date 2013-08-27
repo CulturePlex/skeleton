@@ -24,7 +24,6 @@ def index(request):
         active_image = images[0]
         if len(images) > 1:
             images = images[1:]
-            print 'image', images
     else:
     	active_image = None
     cover_image = project.cover_image
@@ -39,13 +38,9 @@ def index(request):
         'active_image': active_image
     	}))
 
-def research(request):
-    research_lines = ResearchLine.objects.all()
-    return render_to_response('research.html', RequestContext(request,{
-    	'research_lines': research_lines
-    	}))
 
 def research_line(request, research_id, research_slug):
+	#import ipdb; ipdb.set_trace()
 	research_line = get_object_or_404(ResearchLine, id=research_id)
 	sections = research_line.sections.all().order_by('order')
 	sections_dict = collections.OrderedDict()
