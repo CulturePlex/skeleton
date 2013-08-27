@@ -4,4 +4,7 @@
 local_settings.py
 *~
 *.db
-*.sqlite    
+*.sqlite   
+*.png
+*.jpeg
+*.svg 
