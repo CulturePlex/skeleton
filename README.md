@@ -23,7 +23,7 @@ mkvirturalevn myproject
 pip install django
 ```
 
-Copy the skeleton project template into the new directory, notice that you are starting a django project using the command --template. After the zip url from git hub, be sure to change "myprojectname" with the name of your project:
+Copy the skeleton project template into the new directory, notice that you are starting a django project using the command --template. After the zip url from git hub, be sure to change "myprojectname" to the name of your project:
 
 ```
 django-admin.py startproject --template https://github.com/cultureplex/skeleton/zipball/master --extension py myprojectname
