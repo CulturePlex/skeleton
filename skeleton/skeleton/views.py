@@ -63,4 +63,6 @@ def edit_profile(request):
         }))
 
 def search(request):
+    if request.GET == 'q':
+        pass
     pass

@@ -43,7 +43,6 @@ def index(request):
 
 
 def research_line(request, research_id, research_slug):
-	#import ipdb; ipdb.set_trace()
 	research_line = get_object_or_404(ResearchLine, id=research_id)
 	sections = research_line.sections.all().order_by('order')
 	sections_dict = collections.OrderedDict()
@@ -85,4 +84,5 @@ def bibliography(request):
 	return render_to_response('bibliography.html', RequestContext(request, {
 		'references': references,
 		}))
+
 
