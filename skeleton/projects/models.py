@@ -4,15 +4,14 @@ from django.template.defaultfilters import slugify
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=300)
-    cover_image = models.ImageField(upload_to='images/project', blank=True, null=True) #TODO control size here
+    name = models.CharField(max_length=300) #TODO control size here
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def cover_img(self):
         if self.cover_image:
-            return u'<img src={0} height="100" width="100"/>'.format(self.cover_image.url)
+            return u'<img src={0} height="100" width="100"/>'.format(self.cover_image.image.url)
         else:
             return 'No Cover Photo'
 
@@ -24,7 +23,6 @@ class Project(models.Model):
 
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
-    avatar = models.ImageField(upload_to='images/research', blank=True, null=True) #TODO control size here
     subtitle = models.CharField(max_length=150, blank=True, null=True)
     text = models.TextField()
     slug = models.SlugField(editable=False)
@@ -39,7 +37,7 @@ class ResearchLine(models.Model):
 
     def avatar_img(self):
         if self.avatar:
-            return u'<img src={0} height="100" width="100"/>'.format(self.avatar.url)
+            return u'<img src={0} height="100" width="100"/>'.format(self.avatar.image.url)
         else:
             return 'No Avatar'
 
@@ -77,10 +75,10 @@ class Image(models.Model):
     caption = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     slug = models.SlugField(editable=False)
-    project = models.ForeignKey(Project, blank=True, null=True, related_name='images')
-    research_line = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='images')
-    section = models.ForeignKey(Section, blank=True, null=True, related_name='images')
-    subsection = models.ForeignKey(Subsection, blank=True, null=True, related_name='images')
+    project = models.OneToOneField(Project, blank=True, null=True, related_name='cover_image')
+    research_line = models.OneToOneField(ResearchLine, blank=True, null=True, related_name='avatar')
+    section = models.OneToOneField(Section, blank=True, null=True, related_name='image')
+    subsection = models.OneToOneField(Subsection, blank=True, null=True, related_name='image')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

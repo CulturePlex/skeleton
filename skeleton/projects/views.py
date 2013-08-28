@@ -26,7 +26,10 @@ def index(request):
             images = images[1:]
     else:
     	active_image = None
-    cover_image = project.cover_image
+    try:
+    	cover_image = project.cover_image
+    except:
+    	cover_image = None
     team = AcademicProfile.objects.all()
     print team
     return render_to_response('index.html', RequestContext(request, {

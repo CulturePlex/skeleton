@@ -30,14 +30,14 @@ class SubsectionInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'cover_image']
+        'fields':['name']
         }),
     ('Description', {
         'fields': ['description']
         }),
     ]
     list_display = ['name','research', 'collaborators', 'cover_img']
-    inlines = [ResearchLineInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
+    inlines = [ImageInline, ResearchLineInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
 
     def research(self, instance):
         return u' ,'.join([line.name for line in instance.research_lines.all()])
@@ -49,14 +49,14 @@ class ProjectAdmin(admin.ModelAdmin):
 class ResearchLineAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'avatar']
+        'fields':['name']
         }),
     ('Description', {
         'fields':['subtitle', 'text']
         })
     ]
     list_display = ['avatar_img', 'name', 'subtitle', 'collaborators']
-    inlines = [SectionInline, BookReferenceInline, JournalReferenceInline, AcademicProfileInline]
+    inlines = [ImageInline, SectionInline, BookReferenceInline, JournalReferenceInline, AcademicProfileInline]
 
     def collaborators(self, instance):
         return u' ,'.join([collab.name for collab in instance.collaborators.all()])
