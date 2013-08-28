@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="row-fluid">
+	<div class="span8 offset2">
+		<img src="{{ MEDIA_URL }}{{ image.image }}" />
+		<p>{{ image.name }}</p>
+		<p>{{ image.caption }}</p>
+		<p>{{ image.description }}</p>
+
+	</div>
+</div>
+
+{% endblock %}

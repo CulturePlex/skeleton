@@ -5,7 +5,6 @@
 {% block content %}
 <div class="row-fluid">
 	<div class="span8 offset2">		
-
 		<h3>Bibliography</h3>
 			{% for reference in references %}
 				{% with reference|book_instance as inst %}
@@ -16,7 +15,6 @@
 					{% endif %}
 				{% endwith %}
 			{% endfor %}
-
 	</div>	
 </div>
 

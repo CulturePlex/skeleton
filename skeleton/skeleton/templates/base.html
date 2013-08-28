@@ -39,11 +39,10 @@
                             <a href="{% url 'register' %}">create</a>
                         </li>
                     {% endif %}
-
                 </ul>
-                                        <form name="search" action="{% url 'search' %}" method="get" class="navbar-form pull-right">
-                            <input type="text" class="span2 offset10" name="q" placeholder="search" />
-                        </form>
+                <form name="search" action="{% url 'search' %}" method="get" class="navbar-form pull-right">
+                    <input type="text" class="span2 offset10" name="q" placeholder="search" />
+                </form>
          {% endblock %}
         </div>
     </div>
@@ -51,37 +50,21 @@
 
 <div class="container-fluid" >
     {% block content %}{% endblock %}
-<div id="footer" class="ftr">
-    <div class="container-fluid">
-        <p class="muted credit">CulturePlex Lab: Skeleton - David Michael Brown</p>
+
+    <div id="footer" class="ftr">
+        <div class="container-fluid">
+            <p class="muted credit">CulturePlex Lab: {{ FOOTER_INFO }}</p>
+        </div>
     </div>
-</div>
 </div>
 
 
 
 {% block scripts %}
     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-   <script>
-    (function($) {
-        $(document).ready(function() {
-            var body_height = $('body').height();
-            console.log(body_height);
-            var window_height = $(window).innerHeight();
-            console.log(window_height)
-            var page_height = $('#page-cont').innerHeight();
-            console.log(page_height);
-
-            if (window_height > body_height) 
-                {
-                    $('.ftr').css('margin-top', window_height +'px');
-                }
-
-        });
-    })(jQuery);
-    </script>
  
     {% block extra_scripts %}{% endblock %}
+    
 {% endblock %}
 
 </body>

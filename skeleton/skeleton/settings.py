@@ -5,6 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'Skeleton'
+FOOTER_INFO = 'Skeleton - David Michael Brown'
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -122,6 +123,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     'skeleton.context_processors.project_name',
+    'skeleton.context_processors.footer_info'
 )
 
 INSTALLED_APPS = (

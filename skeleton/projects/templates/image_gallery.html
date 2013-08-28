@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span10 offset1">
+		{% for image in images %}
+			<a href="{% url 'image' image.id image.slug %}"><img src="{{ MEDIA_URL }}{{ image.image }}" /></a>
+			<p>{{ image.name }}</p>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
