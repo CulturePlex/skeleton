@@ -4,4 +4,6 @@ body {
 
 .ftr {
 	padding-top: 30px;
+	position: absolute;
+	bottom: 0px;
 }

@@ -9,7 +9,7 @@
     {% block extra_links %}{% endblock %}
 </head>
 
-<body>
+<body id="page-cont">
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -49,7 +49,7 @@
     </div>
 </div> 
 
-<div class="container-fluid" id="page-cont">
+<div class="container-fluid" >
     {% block content %}{% endblock %}
 <div id="footer" class="ftr">
     <div class="container-fluid">
@@ -65,12 +65,16 @@
    <script>
     (function($) {
         $(document).ready(function() {
-            var body_height = $('body').height() ;
-            var window_height = $(window).height() - 250;
+            var body_height = $('body').height();
+            console.log(body_height);
+            var window_height = $(window).innerHeight();
+            console.log(window_height)
+            var page_height = $('#page-cont').innerHeight();
+            console.log(page_height);
+
             if (window_height > body_height) 
                 {
                     $('.ftr').css('margin-top', window_height +'px');
-                                console.log(window_height);
                 }
 
         });
