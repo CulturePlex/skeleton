@@ -52,7 +52,7 @@
     <div class="span10 offset1">
         {% if line.avatar %}
             <div class="span2">
-                <img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" />
+                <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" /></a>
             </div>
         {% else %}
             <div class="span2"></div>
