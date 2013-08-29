@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Login with your social media accounts</h4>
+
+<ul>
+	<li>
+		<a href="{% url 'socialauth_begin' 'facebook' %}">Facebook</a>
+	</li>
+</ul>
+{% endblock %}

@@ -21,22 +21,9 @@
                     <li>
                         <a href="/admin/">admin</a>
                     </li>
-                    <li>
-                        <a href="/logout/?next=/accounts/login?next={% url 'index' %}">logout</a>
-                    </li>
-                    {% elif user.is_authenticated %}
+                    {% elif not user.is_authenticated %}
                         <li>
-                            <a href="{% url 'profile' user_id=user.id user_slug=user.get_profile.slug %}">profile</a>
-                        </li>
-                        <li>
-                            <a href="/logout/?next=/accounts/login?next={% url 'index' %}">logout</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="/accounts/login?next={{ request.path }}">login</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'register' %}">create</a>
+                            <a href="/login?next={{ request.path|urlencode }}">login</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -62,6 +49,21 @@
 
 {% block scripts %}
     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script>
+     (function($) {
+         $(document).ready(function() {
+            var body_height = $(document).height();
+            var window_height = $(window).height();
+            console.log(body_height);
+            console.log(window_height)
+            if (window_height >= body_height) 
+                {
+                   $('.ftr').css('position', 'absolute');
+                   $('.ftr').css('bottom', 0 +'px');
+                }
+         });
+     })(jQuery);
+     </script>
  
     {% block extra_scripts %}{% endblock %}
 

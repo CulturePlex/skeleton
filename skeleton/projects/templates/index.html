@@ -20,7 +20,7 @@
         </div>
         <div class="span5">
             {% if cover_image.image %}
-                <img src="{{ MEDIA_URL }}{{ cover_image }}"/>
+                <img src="{{ MEDIA_URL }}{{ cover_image.image }}"/>
             {% elif active_image %}
             <div id="index-carousel" class="carousel slide ">
                 <div class="carousel-inner">

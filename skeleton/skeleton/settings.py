@@ -121,9 +121,16 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
+    # suit process
     "django.core.context_processors.request",
+    # skeleton process
     'skeleton.context_processors.project_name',
-    'skeleton.context_processors.footer_info'
+    'skeleton.context_processors.footer_info',
+    # social auth process
+    #'social_auth.context_processors.social_auth_by_name_backends',
+    #'social_auth.context_processors.social_auth_backends',
+    #'social_auth.context_processors.social_auth_by_type_backends',
+    #'social_auth.context_processors.social_auth_login_redirect',
 )
 
 INSTALLED_APPS = (
@@ -136,6 +143,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'suit',
     'django.contrib.admin',
+    'social_auth',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'skeleton',
@@ -173,4 +181,47 @@ LOGGING = {
 }
 
 
-AUTH_PROFILE_MODULE = 'skeleton.UserProfile'
+
+
+
+# django-social-auth settings
+AUTHENTICATION_BACKENDS = (
+    #'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    #'social_auth.backends.contrib.linkedin.LinkedinBackend', 
+    #'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
+
+    )
+
+TWITTER_CONSUMER_KEY         = ''
+TWITTER_CONSUMER_SECRET      = ''
+FACEBOOK_APP_ID              = '512028745545345'
+FACEBOOK_API_SECRET          = '6977cd723c04c3f9dddcb6eadd1a02bf'
+LINKEDIN_CONSUMER_KEY        = ''
+LINKEDIN_CONSUMER_SECRET     = ''
+
+####base###
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+#LOGIN_ERROR_URL
+#SOCIAL_AUTH_USERNAME_FIXER
+#####
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
+SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email',]
+
+######### TEMPLATE STUFF
+#{% url "socialauth_begin" "backend-name" %}
+#{% url "socialauth_disconnect" "backend-name" %}
+#{% url "socialauth_disconnect_individual" "backend-name" backend-id %}
+######
+
+#LOGIN_URL          = '/login-form/'
+#SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/another-login-url/'
+#SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
+#SOCIAL_AUTH_BACKEND_ERROR_URL = '/new-error-url/'
+
+#SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+#SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
