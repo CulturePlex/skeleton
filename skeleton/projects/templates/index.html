@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-
+{% load disqus_tags %}
 {% block title %}Home{% endblock %}
 
 {% block extra_links %}
@@ -66,19 +66,14 @@
 <hr>
 {% endfor %}
 
-
 <div class="row-fluid">
-	<div class="span10 offset1">
-		<h5>Research Team</h5>
-		{% for member in team %}
-			<div class="span2">
-				<img src="{{ MEDIA_URL }}{{ member.picture }}" class="prf-pic"/>
-				{{ member.name }}
-			</div>
-		{% endfor %}
-	</div>	
+    <div class="span10 offset1">    
+        {% disqus_show_comments %}
+    </div>
 </div>
+
 {% endblock %}
+
 
 {% block extra_scripts %}
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"}></script>
