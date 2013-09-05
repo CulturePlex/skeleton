@@ -2,16 +2,18 @@
 import collections
 import operator
 from itertools import chain
-from django.http import HttpResponse#, HttpResponseRedirect
+
+from django.http import HttpResponse
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
 )
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-#from django.core.urlresolvers import reverse
 
 from models import *
 from profiles.models import AcademicProfile
+from utils import multi_model_search
 
 def index(request):
     try:
@@ -84,5 +86,49 @@ def bibliography(request):
 	return render_to_response('bibliography.html', RequestContext(request, {
 		'references': references,
 		}))
+
+def search(request):
+	my_models = [
+		Project, ResearchLine, Section, Subsection, 
+		Image, Reference, BookReference, JournalReference
+		]
+	query_string = request.GET.get('q', None)
+	page = request.GET.get('page', None)
+	if query_string is not None and page is None:
+		query_results = multi_model_search(my_models, query_string)
+        paginator = Paginator(query_results, 25)
+        results = paginator.page(1)
+    elif query_string and page:
+    	query_results = multi_model_search(my_models, query_string)
+        paginator = Paginator(query, 25)
+    	try:
+            results = paginator.page(page)
+    	except PageNotAnInteger:
+        	# If page is not an integer, deliver first page.
+        	results = paginator.page(1)
+    	except EmptyPage:
+        	# If page is out of range (e.g. 9999), deliver last page of results.
+        	results = paginator.page(paginator.num_pages)
+    else:
+    	results = None
+    return render_to_response('search.html', RequestContext(request, {
+    	'results': results
+    	}))
+
+
+
+"""
+	model_dict = {
+		'project': Project, 
+		'research_line': ResearchLine, 
+		'section': Section, 
+		'subsection': Subsection, 
+		'image': Image, 
+		'reference': Reference, 
+		'book_reference': BookReference, 
+		'journal_reference': JournalReference
+		}
+"""
+
 
 
