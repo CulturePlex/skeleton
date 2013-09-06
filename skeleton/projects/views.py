@@ -88,19 +88,19 @@ def bibliography(request):
 		}))
 
 def search(request):
-	my_models = [
+	model_list = [
 		Project, ResearchLine, Section, Subsection, 
 		Image, Reference, BookReference, JournalReference
 		]
 	query_string = request.GET.get('q', '')
-	page = request.GET.get('page', ''None'')
-	if query_string and  not page:
-		query_results = multi_model_search(my_models, query_string)
+	page = request.GET.get('page', '')
+	if query_string and not page:
+		query_results = multi_model_search(model_list, query_string)
         paginator = Paginator(query_results, 25)
         results = paginator.page(1)
     elif query_string and page:
-    	query_results = multi_model_search(my_models, query_string)
-        paginator = Paginator(query, 25)
+    	query_results = multi_model_search(model_list, query_string)
+        paginator = Paginator(query_results, 25)
     	try:
             results = paginator.page(page)
     	except PageNotAnInteger:
@@ -110,7 +110,7 @@ def search(request):
         	# If page is out of range (e.g. 9999), deliver last page of results.
         	results = paginator.page(paginator.num_pages)
     else:
-    	results = None
+    	results = ''
     return render_to_response('search.html', RequestContext(request, {
     	'results': results
     	}))
