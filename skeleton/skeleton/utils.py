@@ -19,7 +19,7 @@ def normalize_query(query_string,
 
 #table.objects.filter(qs)
 
-def get_query(query_string, model, search_fields):
+def get_query(query_string, search_fields):
     query = None
     terms = normalize_query(query_string)
     for term in terms:
@@ -40,7 +40,7 @@ def model_search(model, query_string):
 	model_string = model.str()
 	# change this to Model.objects.filter
 	search_fields = [field for field in model._meta.get_all_field_names()]
-	query_results = get_query(query_string, model search_fields)
+	query_results = get_query(query_string, search_fields)
 	return model.filter(query_results)
 
 def multi_model_search(model_list, query_string):
