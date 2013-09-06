@@ -94,6 +94,7 @@ def search(request):
         ]
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
+    #import ipdb; ipdb.set_trace()
     if query_string and not page:
         query_results = multi_model_search(model_list, query_string)
         paginator = Paginator(query_results, 25)
