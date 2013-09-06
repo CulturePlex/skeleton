@@ -117,18 +117,4 @@ def search(request):
 
 
 
-"""
-	model_dict = {
-		'project': Project, 
-		'research_line': ResearchLine, 
-		'section': Section, 
-		'subsection': Subsection, 
-		'image': Image, 
-		'reference': Reference, 
-		'book_reference': BookReference, 
-		'journal_reference': JournalReference
-		}
-"""
-
-
 
