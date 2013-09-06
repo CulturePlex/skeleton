@@ -114,4 +114,3 @@ def search(request):
     return render_to_response('search.html', RequestContext(request, {
     	'results': results
     	}))
-
