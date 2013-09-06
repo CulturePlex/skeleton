@@ -115,6 +115,3 @@ def search(request):
     	'results': results
     	}))
 
-
-
-
