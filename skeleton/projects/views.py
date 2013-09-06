@@ -105,10 +105,10 @@ def search(request):
             results = paginator.page(page)
     	except PageNotAnInteger:
         	# If page is not an integer, deliver first page.
-        	results = paginator.page(1)
+            results = paginator.page(1)
     	except EmptyPage:
         	# If page is out of range (e.g. 9999), deliver last page of results.
-        	results = paginator.page(paginator.num_pages)
+            results = paginator.page(paginator.num_pages)
     else:
     	results = ''
     return render_to_response('search.html', RequestContext(request, {
