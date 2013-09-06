@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*- 
 import re
 
+from itertools import chain
+
 from django.db.models import Q
 
 def normalize_query(query_string,
@@ -20,12 +22,12 @@ def normalize_query(query_string,
 #table.objects.filter(qs)
 
 def get_query(query_string, search_fields):
-    query = None
+    qs = None
     terms = normalize_query(query_string)
     for term in terms:
         or_query = None
         for field_name in search_fields:
-            q = Q(**{(u'{}__icontains'.format(field): term})
+            q = Q(**{(u'{0}__icontains'.format(field): term})
             if or_query is None:
                 or_query = q
             else:
@@ -33,18 +35,19 @@ def get_query(query_string, search_fields):
         if query is None:
             query = or_query
         else:
-            query = query & or_query
-    return query
+            qs = qs & or_query
+    return qs
 
 def model_search(model, query_string):
 	model_string = model.str()
 	# change this to Model.objects.filter
 	search_fields = [field for field in model._meta.get_all_field_names()]
-	query_results = get_query(query_string, search_fields)
-	return model.filter(query_results)
+	qs = get_query(query_string, search_fields)
+	return model.objects.filter(qs)
 
 def multi_model_search(model_list, query_string):
 	results = []
 	for model in model_list:
 		results += model_search(model, query_string)
+	results = chain.from_iterable(results)
 	return results

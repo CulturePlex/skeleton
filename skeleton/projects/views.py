@@ -92,9 +92,9 @@ def search(request):
 		Project, ResearchLine, Section, Subsection, 
 		Image, Reference, BookReference, JournalReference
 		]
-	query_string = request.GET.get('q', None)
-	page = request.GET.get('page', None)
-	if query_string is not None and page is None:
+	query_string = request.GET.get('q', '')
+	page = request.GET.get('page', ''None'')
+	if query_string and  not page:
 		query_results = multi_model_search(my_models, query_string)
         paginator = Paginator(query_results, 25)
         results = paginator.page(1)
