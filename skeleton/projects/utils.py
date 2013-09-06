@@ -6,7 +6,7 @@ from itertools import chain
 from django.db.models import Q, CharField, TextField
 
 #####################################################################
-# From Julian Phalip 
+# Modified from Julian Phalip 
 # http://julienphalip.com/post/2825034077/adding-search-to-a-django-site-in-a-snap
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
