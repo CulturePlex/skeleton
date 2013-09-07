@@ -5,7 +5,7 @@ from models import User, UserProfile
 from forms import UserCreateForm, UserProfileForm
 
 
-def login(request):
+def login_view(request):
     return render_to_response('login.html', RequestContext(request, {}))
 
 

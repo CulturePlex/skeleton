@@ -15,7 +15,7 @@ from models import *
 from profiles.models import AcademicProfile
 from utils import multi_model_search
 
-def index(request):
+def index_view(request):
     try:
         project = Project.objects.filter(id=1)[0]
     except IndexError:
@@ -41,10 +41,10 @@ def index(request):
         'cover_image': cover_image,
         'images': images,
         'active_image': active_image
-        }))
+    }))
 
 
-def research_line(request, research_id, research_slug):
+def research_line_view(request, research_id, research_slug):
     research_line = get_object_or_404(ResearchLine, id=research_id)
     sections = research_line.sections.all().order_by('order')
     sections_dict = collections.OrderedDict()
@@ -59,39 +59,39 @@ def research_line(request, research_id, research_slug):
         'sections': sections_dict,
         'collaborators': collaborators,
         'references': references,
-        }))
+    }))
 
-def image_gallery(request):
+def image_gallery_view(request):
     images = Image.objects.all()
     return render_to_response('image_gallery.html', RequestContext(request, {
         'images': images
-        }))
+    }))
 
-def image(request, image_id, image_slug):
+def image_view(request, image_id, image_slug):
     image = get_object_or_404(Image, id=image_id)
     return render_to_response('image.html', RequestContext(request, {
         'image': image
-        }))
+    }))
 
-def team(request):
+def team_view(request):
     team = AcademicProfile.objects.all()
     return render_to_response('team.html', RequestContext(request, {
         'team': team
-        }))
+    }))
 
-def bibliography(request):
+def bibliography_view(request):
     books = BookReference.objects.all()
     journals = JournalReference.objects.all()
     references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
     return render_to_response('bibliography.html', RequestContext(request, {
         'references': references,
-        }))
+    }))
 
-def search(request):
+def search_view(request):
     model_list = [
         Project, ResearchLine, Section, Subsection, 
         Image, Reference, BookReference, JournalReference
-        ]
+    ]
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
     #import ipdb; ipdb.set_trace()
@@ -114,4 +114,7 @@ def search(request):
         results = ''
     return render_to_response('search.html', RequestContext(request, {
         'results': results
-        }))
+    }))
+
+def profile_view(request, profile_id, profile_slug):
+    pass

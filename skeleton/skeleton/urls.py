@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('social_auth.urls')),
-    (r'^login/$', 'skeleton.views.login'),
+    (r'^login/$', 'skeleton.views.login_view'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': False}),
     url(r'^', include('projects.urls')),
     url(r'^profile', include('profiles.urls')),
