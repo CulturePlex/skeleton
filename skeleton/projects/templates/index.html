@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load disqus_tags %}
+{% load disqus_tags %}
+{% set_disqus_identifier 'project' %}
+{% set_disqus_url project.get_absolute_url %}
 {% block title %}Home{% endblock %}
 
 {% block extra_links %}

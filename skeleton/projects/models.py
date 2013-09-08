@@ -21,6 +21,9 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('projects.views.index_view')
+
 class ResearchLine(models.Model):
     name = models.CharField(max_length=250)
     subtitle = models.CharField(max_length=150, blank=True, null=True)
@@ -46,6 +49,12 @@ class ResearchLine(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('projects.views.research_line_view', kwargs={
+            'research_slug': self.slug,
+            'research_id': self.id
+        })
 
 class Section(models.Model):
     name = models.CharField(max_length=250)
@@ -89,6 +98,12 @@ class Image(models.Model):
 
     def image_img(self):
         return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
+
+    def get_absolute_url(self):
+        return reverse('projects.views.image_view', kwargs={
+            'image_slug': self.slug,
+            'image_id': self.id
+        })
 
     image_img.short_description = 'Image'
     image_img.allow_tags = True

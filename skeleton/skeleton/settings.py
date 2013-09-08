@@ -149,7 +149,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'skeleton',
     'projects',
-    'profiles',
 )
 
 # A sample logging configuration. The only tangible logging

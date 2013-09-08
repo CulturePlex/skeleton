@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load reference_instance %}
+{% load disqus_tags %}
+{% set_disqus_identifier 'research_' research_line.id %}
+{% set_disqus_url research_line.get_absolute_url %}
 
 
 {% block content %}
@@ -14,7 +17,12 @@
 				<p>{{ research_line.text }}
 			</div>
 			<div class="span4">
-				<a href="{% url 'image' research_line.avatar.id research_line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" /></a>
+				{% if research_line.avatar %}
+					<a href="{% url 'image' research_line.avatar.id research_line.avatar.slug %}">
+						<img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" />
+					</a>
+				{% endif %}
+				
 			</div>
 		</div>
 		{% for key, value in sections.items %}
@@ -79,4 +87,11 @@
 		</div>
 	</div> <!-- general offset -->
 </div> <!--first fluid row -->
+
+<div class="row-fluid">
+    <div class="span10 offset1">    
+        {% disqus_show_comments %}
+    </div>
+</div>
+
 {% endblock %}

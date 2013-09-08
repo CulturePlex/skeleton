@@ -1,6 +1,6 @@
 from django.contrib import admin
-from models import Project, ResearchLine, Image, BookReference, JournalReference, Section, Subsection
-from profiles.models import AcademicProfile
+from models import *
+
 
 #formfield_overrides = {
     #ImageWithThumbnailField : {'widget' : AdminImageWithThumbnailWidget},

@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from models import *
-from profiles.models import AcademicProfile
 from utils import multi_model_search
 
 def index_view(request):
