@@ -64,7 +64,7 @@ class ResearchLineAdmin(admin.ModelAdmin):
 class SectionAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'order']
+        'fields':['name', 'order', 'research_lines']
         }),
     ('Description', {
         'fields':['text']
@@ -76,7 +76,7 @@ class SectionAdmin(admin.ModelAdmin):
 class SubsectionAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'order']
+        'fields':['name', 'order', 'section']
         }),
     ('Description', {
         'fields':['text']

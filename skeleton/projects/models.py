@@ -59,9 +59,9 @@ class ResearchLine(models.Model):
 
 class Section(models.Model):
     name = models.CharField(max_length=250)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
     order = models.PositiveSmallIntegerField()
-    research_lines = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='sections')
+    research_lines = models.ForeignKey(ResearchLine, related_name='sections')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -76,9 +76,9 @@ class Section(models.Model):
 
 class Subsection(models.Model):
     name = models.CharField(max_length=250)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
     order = models.PositiveSmallIntegerField()
-    section = models.ForeignKey(Section, blank=True, null=True, related_name='subsections')
+    section = models.ForeignKey(Section, related_name='subsections')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

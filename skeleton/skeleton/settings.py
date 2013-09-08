@@ -143,7 +143,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'suit',
     'django.contrib.admin',
-    'social_auth',
     'disqus',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -184,50 +183,3 @@ LOGGING = {
 
 
 
-# django-social-auth settings
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    'social_auth.backends.facebook.FacebookBackend',
-    'social_auth.backends.contrib.disqus.DisqusBackend',
-    #'social_auth.backends.contrib.linkedin.LinkedinBackend', 
-    #'social_auth.backends.contrib.github.GithubBackend',
-    'django.contrib.auth.backends.ModelBackend',
-
-    )
-
-TWITTER_CONSUMER_KEY         = 'S2kVYYW3ihDtPgOZg5Q'
-TWITTER_CONSUMER_SECRET      = 'ERKZS7zBKQk36GjdNVpe9oMBCpRn0quho5K7tA0'
-FACEBOOK_APP_ID              = '512028745545345'
-FACEBOOK_API_SECRET          = '6977cd723c04c3f9dddcb6eadd1a02bf'
-DISQUS_CLIENT_ID = 'dT2zAW0OIbyQC2OAs4CTEilrmA4O2pkSr7gO7kwVmonkpJSLgP1EPton3GE7vJDs'
-DISQUS_CLIENT_SECRET = 'h2vZCFQO8A3277aN5xMEUHKpzxRStbj892rAZMQUpEcBgOl2X4dPWh0lgSsevGLS'
-
-####base###
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT = '/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
-#LOGIN_ERROR_URL
-#SOCIAL_AUTH_USERNAME_FIXER
-#####
-SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
-SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
-SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email',]
-
-#disqus settings
-
-DISQUS_API_KEY = 'h2vZCFQO8A3277aN5xMEUHKpzxRStbj892rAZMQUpEcBgOl2X4dPWh0lgSsevGLS'
-DISQUS_WEBSITE_SHORTNAME = 'djangoskeleton'
-
-######### TEMPLATE STUFF
-#{% url "socialauth_begin" "backend-name" %}
-#{% url "socialauth_disconnect" "backend-name" %}
-#{% url "socialauth_disconnect_individual" "backend-name" backend-id %}
-######
-
-#LOGIN_URL          = '/login-form/'
-#SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/another-login-url/'
-#SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
-#SOCIAL_AUTH_BACKEND_ERROR_URL = '/new-error-url/'
-
-#SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
-#SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
