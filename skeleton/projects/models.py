@@ -74,6 +74,15 @@ class Section(models.Model):
             'research_slug': self.research_lines.slug
         })
 
+    def avatar_img(self):
+        if self.avatar:
+            return u'<img src={0} height="100" width="100"/>'.format(self.avatar.image.url)
+        else:
+            return 'No Avatar'
+
+    avatar_img.short_description = 'Avatar'
+    avatar_img.allow_tags = True
+
 class Subsection(models.Model):
     name = models.CharField(max_length=250)
     text = models.TextField(blank=True, null=True)
@@ -91,6 +100,14 @@ class Subsection(models.Model):
             'research_slug': self.section.research_lines.slug
         })
 
+    def avatar_img(self):
+        if self.avatar:
+            return u'<img src={0} height="100" width="100"/>'.format(self.avatar.image.url)
+        else:
+            return 'No Avatar'
+
+    avatar_img.short_description = 'Avatar'
+    avatar_img.allow_tags = True
 
 class Image(models.Model):
     image = models.ImageField(upload_to='images/general')
@@ -100,8 +117,8 @@ class Image(models.Model):
     slug = models.SlugField(editable=False)
     project = models.OneToOneField(Project, blank=True, null=True, related_name='cover_image')
     research_line = models.OneToOneField(ResearchLine, blank=True, null=True, related_name='avatar')
-    section = models.OneToOneField(Section, blank=True, null=True, related_name='image')
-    subsection = models.OneToOneField(Subsection, blank=True, null=True, related_name='image')
+    section = models.OneToOneField(Section, blank=True, null=True, related_name='avatar')
+    subsection = models.OneToOneField(Subsection, blank=True, null=True, related_name='avatar')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -110,14 +127,14 @@ class Image(models.Model):
             self.slug = slugify(self.name)
         super(Image, self).save(*args, **kwargs)
 
-    def image_img(self):
-        return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
-
     def get_absolute_url(self):
         return reverse('projects.views.image_view', kwargs={
             'image_slug': self.slug,
             'image_id': self.id
         })
+
+    def image_img(self):
+        return u'<img src={0} height="100" width="100"/>'.format(self.image.url)
 
     image_img.short_description = 'Image'
     image_img.allow_tags = True
@@ -130,7 +147,7 @@ class Reference(models.Model):
     authors = models.CharField(max_length=250)
     date = models.DateField(blank=True, null=True)
     place_of_pub = models.CharField(max_length=100, blank=True, null=True)
-    publisher = models.CharField(max_length=50, blank=True, null=True)
+    publisher = models.CharField(max_length=100, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     pages = models.CharField(max_length=20, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)

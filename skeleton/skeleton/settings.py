@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'suit',
     'django.contrib.admin',
     'disqus',
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'skeleton',
@@ -178,6 +179,11 @@ LOGGING = {
         },
     }
 }
+
+#DISQUS SETTINGS 
+
+DISQUS_API_KEY = 'h2vZCFQO8A3277aN5xMEUHKpzxRStbj892rAZMQUpEcBgOl2X4dPWh0lgSsevGLS'
+DISQUS_WEBSITE_SHORTNAME = 'djangoskeleton'
 
 
 

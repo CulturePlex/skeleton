@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import (
     render_to_response, redirect, get_object_or_404, RequestContext
 )
+from django.db.models import get_app, get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -89,11 +90,9 @@ def bibliography_view(request):
 def reference_view(request, reference_id):
     pass
 
+app = get_app('projects') ### maybe this should be inside the function
+model_list = get_models(app)
 def search_view(request):
-    model_list = [
-        Project, ResearchLine, Section, Subsection, 
-        Image, Reference, BookReference, JournalReference
-    ]
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
     #import ipdb; ipdb.set_trace()

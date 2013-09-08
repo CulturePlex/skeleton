@@ -70,7 +70,7 @@ class SectionAdmin(admin.ModelAdmin):
         'fields':['text']
         })
     ]
-    list_display = ['order', 'name']
+    list_display = ['order', 'name', 'avatar_img']
     inlines = [ImageInline, SubsectionInline]
 
 class SubsectionAdmin(admin.ModelAdmin):
@@ -82,7 +82,7 @@ class SubsectionAdmin(admin.ModelAdmin):
         'fields':['text']
         })
     ]
-    list_display = ['order', 'name']
+    list_display = ['order', 'name', 'avatar_img']
     inlines = [ImageInline]
 
 
