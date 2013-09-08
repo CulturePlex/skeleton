@@ -86,6 +86,9 @@ def bibliography_view(request):
         'references': references,
     }))
 
+def reference_view(request, reference_id):
+    pass
+
 def search_view(request):
     model_list = [
         Project, ResearchLine, Section, Subsection, 

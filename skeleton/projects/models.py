@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*- 
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
 
@@ -67,6 +68,12 @@ class Section(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('research_line', kwargs={
+            'research_id': self.research_lines.id, 
+            'research_slug': self.research_lines.slug
+        })
+
 class Subsection(models.Model):
     name = models.CharField(max_length=250)
     text = models.TextField()
@@ -77,6 +84,13 @@ class Subsection(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('research_line', kwargs={
+            'research_id': self.section.research_lines.id, 
+            'research_slug': self.section.research_lines.slug
+        })
+
 
 class Image(models.Model):
     image = models.ImageField(upload_to='images/general')
@@ -125,8 +139,8 @@ class Reference(models.Model):
     def __unicode__(self):
         return self.title
 
-    def type(self):
-        return type(self)
+    def get_absolute_url(self):
+        return reverse('reference', kwargs={'reference_id': self.id})
     
 class BookReference(Reference):
     book_title = models.CharField(max_length=250)
@@ -147,8 +161,19 @@ class AcademicProfile(models.Model):
     picture = models.ImageField(upload_to='images/profile', blank=True, null=True)
     institution = models.CharField(max_length=250, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
+    slug = models.SlugField(editable=False)
     project =  models.ForeignKey(Project, blank=True, null=True, related_name='profiles') # change to profiles
     research = models.ForeignKey(ResearchLine, blank=True, null=True, related_name='collaborators')
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name)
+        super(Image, self).save(*args, **kwargs)
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('profile', kwargs={
+            'profile_id': self.id,
+            'profile_slug': self.slug
+        })
