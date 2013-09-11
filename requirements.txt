@@ -1,8 +1,11 @@
+Django==1.5.3
 PIL==1.1.7
+South==0.8.2
 argparse==1.2.1
-distribute==0.6.24
-django-disqus==0.4.1
-django-suit==0.2.4
+disqus==0.0.4
+docutils==0.11
 ipdb==0.7
 ipython==1.0.0
+suit==2.0.2
 wsgiref==0.1.2
+
