@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from models import *
-from utils import multi_model_search
+from search import multi_model_search
 
 def index_view(request):
     try:

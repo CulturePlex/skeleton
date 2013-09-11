@@ -144,7 +144,7 @@ INSTALLED_APPS = (
     'suit',
     'django.contrib.admin',
     'disqus',
-    'south',
+    #'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'skeleton',
