@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 # Django settings for skeleton project.
 from os import path
 DEBUG = True
@@ -15,12 +15,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': path.join(PROJECT_PATH, '..', 'sqlite3.db'),                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': path.join(PROJECT_PATH, '..', 'sqlite3.db'),
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -83,7 +83,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #  django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -126,11 +126,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # skeleton process
     'skeleton.context_processors.project_name',
     'skeleton.context_processors.footer_info',
-    # social auth process
-    #'social_auth.context_processors.social_auth_by_name_backends',
-    #'social_auth.context_processors.social_auth_backends',
-    #'social_auth.context_processors.social_auth_by_type_backends',
-    #'social_auth.context_processors.social_auth_login_redirect',
 )
 
 INSTALLED_APPS = (
