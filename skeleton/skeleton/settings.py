@@ -21,7 +21,7 @@ DATABASES = {
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
-        'PORT': '',                      # Set to empty string for default.
+        'PORT': '',
     }
 }
 
@@ -83,7 +83,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #  django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #  'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -93,7 +93,7 @@ SECRET_KEY = '!5i(w&of0r+02#fa%@kk&3j%v6r7nv(9(!tefa1j01o05n)d&8'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #  'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -126,6 +126,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # skeleton process
     'skeleton.context_processors.project_name',
     'skeleton.context_processors.footer_info',
+    # social auth process
+    #'social_auth.context_processors.social_auth_by_name_backends',
+    #'social_auth.context_processors.social_auth_backends',
+    #'social_auth.context_processors.social_auth_by_type_backends',
+    #'social_auth.context_processors.social_auth_login_redirect',
 )
 
 INSTALLED_APPS = (
@@ -175,12 +180,7 @@ LOGGING = {
     }
 }
 
-#DISQUS SETTINGS 
+#DISQUS SETTINGS
 
 DISQUS_API_KEY = 'h2vZCFQO8A3277aN5xMEUHKpzxRStbj892rAZMQUpEcBgOl2X4dPWh0lgSsevGLS'
 DISQUS_WEBSITE_SHORTNAME = 'djangoskeleton'
-
-
-
-
-

@@ -1,19 +1,19 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 import collections
 import operator
 from itertools import chain
 
 from django.http import HttpResponse
 from django.shortcuts import (
-    render_to_response, redirect, get_object_or_404, RequestContext
+    render_to_response, get_object_or_404, RequestContext
 )
 from django.db.models import get_app, get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+
 
 from models import *
 from search import multi_model_search
+
 
 def index_view(request):
     try:
@@ -49,11 +49,16 @@ def research_line_view(request, research_id, research_slug):
     sections = research_line.sections.all().order_by('order')
     sections_dict = collections.OrderedDict()
     for section in sections:
-        sections_dict.update({section: section.subsections.all().order_by('order')})
+        sections_dict.update({
+            section: section.subsections.all().order_by('order')
+            }
+        )
     collaborators = research_line.collaborators.all()
     books = research_line.book_reference.all()
     journals = research_line.journal_reference.all()
-    references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
+    references = sorted(
+        chain(books, journals), key=operator.attrgetter('authors')
+    )
     return render_to_response('research_line.html', RequestContext(request, {
         'research_line': research_line,
         'sections': sections_dict,
@@ -61,11 +66,13 @@ def research_line_view(request, research_id, research_slug):
         'references': references,
     }))
 
+
 def image_gallery_view(request):
     images = Image.objects.all()
     return render_to_response('image_gallery.html', RequestContext(request, {
         'images': images
     }))
+
 
 def image_view(request, image_id, image_slug):
     image = get_object_or_404(Image, id=image_id)
@@ -73,25 +80,33 @@ def image_view(request, image_id, image_slug):
         'image': image
     }))
 
+
 def team_view(request):
     team = AcademicProfile.objects.all()
     return render_to_response('team.html', RequestContext(request, {
         'team': team
     }))
 
+
 def bibliography_view(request):
     books = BookReference.objects.all()
     journals = JournalReference.objects.all()
-    references = sorted(chain(books, journals), key=operator.attrgetter('authors'))
+    references = sorted(
+        chain(books, journals), key=operator.attrgetter('authors')
+    )
     return render_to_response('bibliography.html', RequestContext(request, {
         'references': references,
     }))
 
+
 def reference_view(request, reference_id):
     pass
 
-app = get_app('projects') ### maybe this should be inside the function
+
+app = get_app('projects')
 model_list = get_models(app)
+
+
 def search_view(request):
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
@@ -106,16 +121,15 @@ def search_view(request):
         try:
             results = paginator.page(page)
         except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
             results = paginator.page(1)
         except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
             results = paginator.page(paginator.num_pages)
     else:
         results = ''
     return render_to_response('search.html', RequestContext(request, {
         'results': results
     }))
+
 
 def profile_view(request, profile_id, profile_slug):
     pass
