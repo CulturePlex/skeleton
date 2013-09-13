@@ -7,18 +7,23 @@ from models import *
 class AcademicProfileInline(admin.TabularInline):
     model = AcademicProfile
 
+
 class ResearchLineInline(admin.TabularInline):
     model = ResearchLine
 
+
 class ImageInline(admin.TabularInline):
     model = Image
-    fields = ['image', 'name', 'caption', 'description'] 
+    fields = ['image', 'name', 'caption', 'description']
+
 
 class BookReferenceInline(admin.TabularInline):
     model = BookReference
 
+
 class JournalReferenceInline(admin.TabularInline):
     model = JournalReference
+
 
 class SectionInline(admin.TabularInline):
     model = Section
@@ -27,59 +32,81 @@ class SectionInline(admin.TabularInline):
 class SubsectionInline(admin.TabularInline):
     model = Subsection
 
+
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name']
+        'fields': ['name']
         }),
     ('Description', {
         'fields': ['description']
         }),
     ]
-    list_display = ['name','research', 'collaborators', 'cover_img']
-    inlines = [ImageInline, ResearchLineInline, AcademicProfileInline, BookReferenceInline, JournalReferenceInline]
+
+    list_display = ['name', 'research', 'collaborators', 'cover_img']
+    inlines = [
+        ImageInline,
+        ResearchLineInline,
+        AcademicProfileInline,
+        BookReferenceInline,
+        JournalReferenceInline
+    ]
 
     def research(self, instance):
-        return u' ,'.join([line.name for line in instance.research_lines.all()])
+        return u' ,'.join([
+            line.name for line in instance.research_lines.all()
+        ])
 
     def collaborators(self, instance):
-        return u' ,'.join([profile.name for profile in instance.profiles.all()])
+        return u' ,'.join([
+            profile.name for profile in instance.profiles.all()
+        ])
 
-    
+
 class ResearchLineAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name']
+        'fields': ['name']
         }),
     ('Description', {
-        'fields':['subtitle', 'text']
+        'fields': ['subtitle', 'text']
         })
     ]
     list_display = ['avatar_img', 'name', 'subtitle', 'collaborators']
-    inlines = [ImageInline, SectionInline, BookReferenceInline, JournalReferenceInline, AcademicProfileInline]
+    inlines = [
+        ImageInline,
+        SectionInline,
+        BookReferenceInline,
+        JournalReferenceInline,
+        AcademicProfileInline
+    ]
 
     def collaborators(self, instance):
-        return u' ,'.join([collab.name for collab in instance.collaborators.all()])
+        return u' ,'.join([
+            collab.name for collab in instance.collaborators.all()
+        ])
+
 
 class SectionAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'order', 'research_lines']
+        'fields': ['name', 'order', 'research_lines']
         }),
     ('Description', {
-        'fields':['text']
+        'fields': ['text']
         })
     ]
     list_display = ['order', 'name', 'avatar_img']
     inlines = [ImageInline, SubsectionInline]
 
+
 class SubsectionAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
-        'fields':['name', 'order', 'section']
+        'fields': ['name', 'order', 'section']
         }),
     ('Description', {
-        'fields':['text']
+        'fields': ['text']
         })
     ]
     list_display = ['order', 'name', 'avatar_img']
@@ -100,6 +127,7 @@ class ImageAdmin(admin.ModelAdmin):
     ]
     list_display = ['name', 'caption', 'image_img']
 
+
 class BookReferenceAdmin(admin.ModelAdmin):
     fieldsets = [
     (None, {
@@ -108,18 +136,20 @@ class BookReferenceAdmin(admin.ModelAdmin):
     ('Authors/Editors', {
         'fields': ['authors', 'editors']
         }),
-    ('Publication',{
+    ('Publication', {
         'fields': ['place_of_pub', 'publisher', 'date', 'edition']
         }),
     ('Reference', {
         'fields': ['pages', 'url']
         }),
     ('Associated With', {
-        'fields': ['project','research_line']
+        'fields': ['project', 'research_line']
         })
     ]
-    list_display = ['title', 'authors', 'book_title', 'publisher', 'place_of_pub', 'date']
-    
+    list_display = [
+        'title', 'authors', 'book_title', 'publisher', 'place_of_pub', 'date'
+    ]
+
 
 class JournalReferenceAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -129,17 +159,24 @@ class JournalReferenceAdmin(admin.ModelAdmin):
     ('Authors/Editors', {
         'fields': ['authors']
         }),
-    ('Publication',{
+    ('Publication', {
         'fields': ['place_of_pub', 'publisher', 'date', 'number']
         }),
     ('Reference', {
         'fields': ['pages', 'url']
         }),
     ('Associated With', {
-        'fields': ['project','research_line']
+        'fields': ['project', 'research_line']
         })
     ]
-    list_display = ['title', 'authors', 'journal_title', 'publisher', 'place_of_pub', 'date']
+    list_display = [
+        'title',
+        'authors',
+        'journal_title',
+        'publisher',
+        'place_of_pub',
+        'date'
+    ]
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ResearchLine, ResearchLineAdmin)
