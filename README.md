@@ -19,7 +19,7 @@ cd myproject
 Make a virtualenv and intsall django:
 
 ```
-mkvirturalevn myproject
+mkvirturalenv myproject
 pip install django
 ```
 
