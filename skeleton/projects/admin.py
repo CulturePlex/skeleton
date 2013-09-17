@@ -35,12 +35,12 @@ class SubsectionInline(admin.TabularInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['name']
-        }),
-    ('Description', {
-        'fields': ['description']
-        }),
+        (None, {
+            'fields': ['name']
+            }),
+        ('Description', {
+            'fields': ['description']
+            }),
     ]
 
     list_display = ['name', 'research', 'collaborators', 'cover_img']
@@ -65,12 +65,12 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class ResearchLineAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['name']
-        }),
-    ('Description', {
-        'fields': ['subtitle', 'text']
-        })
+        (None, {
+            'fields': ['name']
+            }),
+        ('Description', {
+            'fields': ['subtitle', 'text']
+            })
     ]
     list_display = ['avatar_img', 'name', 'subtitle', 'collaborators']
     inlines = [
@@ -89,12 +89,12 @@ class ResearchLineAdmin(admin.ModelAdmin):
 
 class SectionAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['name', 'order', 'research_lines']
-        }),
-    ('Description', {
-        'fields': ['text']
-        })
+        (None, {
+            'fields': ['name', 'order', 'research_lines']
+            }),
+        ('Description', {
+            'fields': ['text']
+            })
     ]
     list_display = ['order', 'name', 'avatar_img']
     inlines = [ImageInline, SubsectionInline]
@@ -102,12 +102,12 @@ class SectionAdmin(admin.ModelAdmin):
 
 class SubsectionAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['name', 'order', 'section']
-        }),
-    ('Description', {
-        'fields': ['text']
-        })
+        (None, {
+            'fields': ['name', 'order', 'section']
+            }),
+        ('Description', {
+            'fields': ['text']
+            })
     ]
     list_display = ['order', 'name', 'avatar_img']
     inlines = [ImageInline]
@@ -115,36 +115,36 @@ class SubsectionAdmin(admin.ModelAdmin):
 
 class ImageAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['name', 'image']
-        }),
-    ('Description', {
-        'fields': ['caption', 'description']
-        }),
-    ('Associated With', {
-        'fields': ['research_line', 'section', 'subsection']
-        })
+        (None, {
+            'fields': ['name', 'image']
+            }),
+        ('Description', {
+            'fields': ['caption', 'description']
+            }),
+        ('Associated With', {
+            'fields': ['research_line', 'section', 'subsection']
+            })
     ]
     list_display = ['name', 'caption', 'image_img']
 
 
 class BookReferenceAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['title', 'book_title']
-        }),
-    ('Authors/Editors', {
-        'fields': ['authors', 'editors']
-        }),
-    ('Publication', {
-        'fields': ['place_of_pub', 'publisher', 'date', 'edition']
-        }),
-    ('Reference', {
-        'fields': ['pages', 'url']
-        }),
-    ('Associated With', {
-        'fields': ['project', 'research_line']
-        })
+        (None, {
+            'fields': ['title', 'book_title']
+            }),
+        ('Authors/Editors', {
+            'fields': ['authors', 'editors']
+            }),
+        ('Publication', {
+            'fields': ['place_of_pub', 'publisher', 'date', 'edition']
+            }),
+        ('Reference', {
+            'fields': ['pages', 'url']
+            }),
+        ('Associated With', {
+            'fields': ['project', 'research_line']
+            })
     ]
     list_display = [
         'title', 'authors', 'book_title', 'publisher', 'place_of_pub', 'date'
@@ -153,21 +153,21 @@ class BookReferenceAdmin(admin.ModelAdmin):
 
 class JournalReferenceAdmin(admin.ModelAdmin):
     fieldsets = [
-    (None, {
-        'fields': ['title', 'journal_title']
-        }),
-    ('Authors/Editors', {
-        'fields': ['authors']
-        }),
-    ('Publication', {
-        'fields': ['place_of_pub', 'publisher', 'date', 'number']
-        }),
-    ('Reference', {
-        'fields': ['pages', 'url']
-        }),
-    ('Associated With', {
-        'fields': ['project', 'research_line']
-        })
+        (None, {
+            'fields': ['title', 'journal_title']
+            }),
+        ('Authors/Editors', {
+            'fields': ['authors']
+            }),
+        ('Publication', {
+            'fields': ['place_of_pub', 'publisher', 'date', 'number']
+            }),
+        ('Reference', {
+            'fields': ['pages', 'url']
+            }),
+        ('Associated With', {
+            'fields': ['project', 'research_line']
+            })
     ]
     list_display = [
         'title',
