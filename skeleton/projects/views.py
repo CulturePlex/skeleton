@@ -11,7 +11,10 @@ from django.db.models import get_app, get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-from models import *
+from models import (
+    Project, ResearchLine, Image, BookReference,
+    JournalReference, AcademicProfile
+)
 from search import multi_model_search
 
 
@@ -22,18 +25,20 @@ def index_view(request):
         return HttpResponse('Create your project at project_name/admin')
     research_lines = ResearchLine.objects.all()
     images = Image.objects.all()
-    if len(images) > 0:
-        active_image = images[0]
-        if len(images) > 1:
-            images = images[1:]
-    else:
-        active_image = None
+    # Find cover image or active image for carousel.
+    # Fix based on html.
     try:
         cover_image = project.cover_image
+        active_image = None
     except:
         cover_image = None
+        if len(images) > 0:
+            active_image = images[0]
+            if len(images) > 1:
+                images = images[1:]
+        else:
+            active_image = None
     team = AcademicProfile.objects.all()
-    print team
     return render_to_response('index.html', RequestContext(request, {
         'project': project,
         'research_lines': research_lines,
@@ -47,15 +52,17 @@ def index_view(request):
 def research_line_view(request, research_id, research_slug):
     research_line = get_object_or_404(ResearchLine, id=research_id)
     sections = research_line.sections.all().order_by('order')
+    # Group sections with their subsections.
     sections_dict = collections.OrderedDict()
     for section in sections:
         sections_dict.update({
             section: section.subsections.all().order_by('order')
-            }
-        )
+        })
     collaborators = research_line.collaborators.all()
     books = research_line.book_reference.all()
     journals = research_line.journal_reference.all()
+    # Combine and sort reference.
+    # Template rendering controlled by templatetages/reference instance.
     references = sorted(
         chain(books, journals), key=operator.attrgetter('authors')
     )
@@ -91,6 +98,8 @@ def team_view(request):
 def bibliography_view(request):
     books = BookReference.objects.all()
     journals = JournalReference.objects.all()
+    # Combine and sort reference, template rendering
+    # controlled by templatetages/reference instance.
     references = sorted(
         chain(books, journals), key=operator.attrgetter('authors')
     )
@@ -99,18 +108,25 @@ def bibliography_view(request):
     }))
 
 
-def reference_view(request, reference_id):
+# Need to decide on how to handle reference search.
+def book_reference_view(request):
     pass
 
 
-app = get_app('projects')
-model_list = get_models(app)
+def journal_reference_view(request):
+    pass
 
 
 def search_view(request):
+    """
+    Call search utils to search entire db.
+    Paginate results.
+    """
+    # Get the models from the app.
+    app = get_app('projects')
+    model_list = get_models(app)
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
-    #import ipdb; ipdb.set_trace()
     if query_string and not page:
         query_results = multi_model_search(model_list, query_string)
         paginator = Paginator(query_results, 25)
@@ -132,4 +148,5 @@ def search_view(request):
 
 
 def profile_view(request, profile_id, profile_slug):
+    # Need to decide on what kind of profiles we want.
     pass

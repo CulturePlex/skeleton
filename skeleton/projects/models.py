@@ -196,9 +196,6 @@ class Reference(models.Model):
     def __unicode__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('reference', kwargs={'reference_id': self.id})
-
 
 class BookReference(Reference):
     book_title = models.CharField(max_length=250)
@@ -217,6 +214,9 @@ class BookReference(Reference):
         related_name='book_reference'
     )
 
+    def get_absolute_url(self):
+        return reverse('book_reference', kwargs={'reference_id': self.id})
+
 
 class JournalReference(Reference):
     journal_title = models.CharField(max_length=250)
@@ -233,6 +233,9 @@ class JournalReference(Reference):
         null=True,
         related_name='journal_reference'
     )
+
+    def get_absolute_url(self):
+        return reverse('journal_yreference', kwargs={'reference_id': self.id})
 
 
 class AcademicProfile(models.Model):

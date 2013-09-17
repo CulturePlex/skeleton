@@ -26,12 +26,12 @@
 			</div>
 		</div>
 		{% for key, value in sections.items %}
-			{% if key.image %}
+			{% if key.avatar %}
 				<div class="row-fluid">
 					<div class="span4">
-						<a href="{% url 'image' key.image.id key.image.slug %}"><img src="{{ MEDIA_URL }}{{ key.image.image }}" /></a>
-						<p class="image-name">{{ key.image.name }}</p>
-						<p class="image-caption">{{ key.image.caption }}</p>	
+						<a href="{% url 'image' key.avatar.id key.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ key.avatar.image }}" /></a>
+						<p class="image-name">{{ key.avatar.name }}</p>
+						<p class="image-caption">{{ key.avatar.caption }}</p>	
 					</div>
 					<div class="span8">
 						<h4>{{ key.name }}</h4>
@@ -48,16 +48,16 @@
 			{% endif %}
 			{% if value %}
 				{% for val in value %}
-					{% if val.image %}
+					{% if value.avatar %}
 						<div class="row-fluid">
 							<div class="span8">
 								<h5>{{ val.name }}</h5>
 								<p>{{ val.text }}</p>
 							</div>
 							<div class="span4">
-								<a href="{% url 'image' val.image.id val.image.slug %}"><img src="{{ MEDIA_URL }}{{ val.image.image }}" /></a>
-								<p class="image-name">{{ val.image.name }}</p>
-								<p class="image-caption">{{ val.image.caption }}</p>
+								<a href="{% url 'image' value.avatar.id value.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ value.avatar.image }}" /></a>
+								<p class="image-name">{{ value.avatar.name }}</p>
+								<p class="image-caption">{{ value.avatar.caption }}</p>
 							</div>
 						</div>
 					{% else %}
