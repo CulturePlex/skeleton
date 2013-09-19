@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
+{% load reference_instance %}
 {% block content %}
 
 {% if results %}
     <ul>  
         {% for result in results %}
-            <li>
-                <a href="{{ result.get_absolute_url }}">{{ result }}</a>
-            </li>
+            {% if result|book_instance %}
+                <li>
+                    <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
+                </li>
+            {% elif result|journal_instance %}
+                <li>
+                    <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endif %}

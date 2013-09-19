@@ -193,6 +193,9 @@ class Reference(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
     def __unicode__(self):
         return self.title
 
@@ -215,7 +218,7 @@ class BookReference(Reference):
     )
 
     def get_absolute_url(self):
-        return reverse('book_reference', kwargs={'reference_id': self.id})
+        return reverse('bibliography')
 
 
 class JournalReference(Reference):
@@ -235,7 +238,7 @@ class JournalReference(Reference):
     )
 
     def get_absolute_url(self):
-        return reverse('journal_yreference', kwargs={'reference_id': self.id})
+        return reverse('bibliography')
 
 
 class AcademicProfile(models.Model):
@@ -247,7 +250,7 @@ class AcademicProfile(models.Model):
     )
     institution = models.CharField(max_length=250, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
+    #website = models.URLField(blank=True, null=True)
     slug = models.SlugField(editable=False)
     project = models.ForeignKey(
         Project,

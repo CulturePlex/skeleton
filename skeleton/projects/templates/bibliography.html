@@ -9,13 +9,31 @@
 			{% for reference in references %}
 				{% with reference|book_instance as inst %}
 					{% if inst %}
-						<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
+						<p id="b_{{ reference.id }}">{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
 					{% else %}
-						<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
+						<p id="j_{{ reference.id }}">{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
 					{% endif %}
 				{% endwith %}
 			{% endfor %}
 	</div>	
 </div>
+
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+{% if anchor %}
+	<script>
+	(function($) {
+		$(document).ready(function(){
+			var anc = "#" + "{{ anchor }}";
+			$(anc).css('font-weight', 'bold')
+			console.log(anc);
+			$('html, body').animate({
+				scrollTop: $(anc).offset().top - 45
+				}, 'fast'
+			);
+		});
+	})(jQuery);
+	</script>
+{% endif %}
 
 {% endblock %}

@@ -7,12 +7,12 @@ from django.http import HttpResponse
 from django.shortcuts import (
     render_to_response, get_object_or_404, RequestContext
 )
-from django.db.models import get_app, get_models
+#from django.db.models import get_app, get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 from models import (
-    Project, ResearchLine, Image, BookReference,
+    Project, ResearchLine, Section, Subsection, Image, BookReference,
     JournalReference, AcademicProfile
 )
 from search import multi_model_search
@@ -26,7 +26,6 @@ def index_view(request):
     research_lines = ResearchLine.objects.all()
     images = Image.objects.all()
     # Find cover image or active image for carousel.
-    # Fix based on html.
     if hasattr(project, 'cover_image'):
         cover_image = project.cover_image
         active_image = None
@@ -62,7 +61,7 @@ def research_line_view(request, research_id, research_slug):
     books = research_line.book_reference.all()
     journals = research_line.journal_reference.all()
     # Combine and sort reference.
-    # Template rendering controlled by templatetages/reference instance.
+    # Template rendering controlled by templatetags/reference instance.
     references = sorted(
         chain(books, journals), key=operator.attrgetter('authors')
     )
@@ -96,6 +95,7 @@ def team_view(request):
 
 
 def bibliography_view(request):
+    anchor = request.GET.get('ref_id', '')
     books = BookReference.objects.all()
     journals = JournalReference.objects.all()
     # Combine and sort reference, template rendering
@@ -104,6 +104,7 @@ def bibliography_view(request):
         chain(books, journals), key=operator.attrgetter('authors')
     )
     return render_to_response('bibliography.html', RequestContext(request, {
+        'anchor': anchor,
         'references': references,
     }))
 
@@ -123,8 +124,12 @@ def search_view(request):
     Paginate results.
     """
     # Get the models from the app.
-    app = get_app('projects')
-    model_list = get_models(app)
+    model_list = [
+        Project, ResearchLine, Section, Subsection,
+        Image, BookReference, JournalReference, AcademicProfile
+    ]
+    #app = get_app('projects')
+    #model_list = get_models(app)
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
     if query_string and not page:
@@ -148,5 +153,7 @@ def search_view(request):
 
 
 def profile_view(request, profile_id, profile_slug):
-    # Need to decide on what kind of profiles we want.
-    pass
+    profile = get_object_or_404(AcademicProfile, id=profile_id)
+    render_to_response('profile.html', RequestContext(request, {
+        'profile': profile
+    }))

@@ -74,15 +74,13 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<h4>Bibliography</h4>
-					{% for reference in references %}
-						{% with reference|book_instance as inst %}
-							{% if inst %}
-								<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
-							{% else %}
-								<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
-							{% endif %}
-						{% endwith %}
-					{% endfor %}
+				{% for reference in references %}
+					{% if reference|book_instance %}
+						<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
+					{% else %}
+						<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
+					{% endif %}
+				{% endfor %}
 			</div>
 		</div>
 	</div> <!-- general offset -->
