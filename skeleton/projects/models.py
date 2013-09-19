@@ -247,6 +247,7 @@ class AcademicProfile(models.Model):
     )
     institution = models.CharField(max_length=250, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
     slug = models.SlugField(editable=False)
     project = models.ForeignKey(
         Project,

@@ -27,10 +27,10 @@ def index_view(request):
     images = Image.objects.all()
     # Find cover image or active image for carousel.
     # Fix based on html.
-    try:
+    if hasattr(project, 'cover_image'):
         cover_image = project.cover_image
         active_image = None
-    except:
+    else:
         cover_image = None
         if len(images) > 0:
             active_image = images[0]
