@@ -11,17 +11,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="row-fluid">
-    <div class="span10 offset1 intro-content">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 intro-content">
         <h2>{{ project }}</h2>
     </div>
 </div>
-<div class="row-fluid">
-    <div class="span10 offset1 intro-content">
-        <div class="span7">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 intro-content">
+        <div class="col-md-7">
            <p>{{ project.description|safe }}</p>
         </div>
-        <div class="span5">
+        <div class="col-md-5">
             {% if cover_image.image %}
                 <img src="{{ MEDIA_URL }}{{ cover_image.image }}"/>
             {% elif active_image %}
@@ -51,16 +51,16 @@
 </div>
 
 {% for line in research_lines %}
-<div class="row-fluid">
-    <div class="span10 offset1">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
         {% if line.avatar %}
-            <div class="span2">
+            <div class="col-md-2">
                 <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" /></a>
             </div>
         {% else %}
-            <div class="span2"></div>
+            <div class="col-md-2"></div>
         {% endif %}
-        <div class="span10">
+        <div class="col-md-10">
             <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
             <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
         </div>
@@ -69,8 +69,8 @@
 <hr>
 {% endfor %}
 
-<div class="row-fluid">
-    <div class="span6 offset3">    
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
         {% disqus_show_comments %}
     </div>
 </div>
