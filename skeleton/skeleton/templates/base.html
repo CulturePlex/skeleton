@@ -13,11 +13,11 @@
 <body id="page-cont">
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid western-navbar">
+    <div class="container">
+        <div class="navbar-header">
         {% block navbar_links %}
-            <a class="brand" href="{% url 'index' %}" style="color:white;">Project Skeleton</a>
-                <ul class="nav" >
+            <a class="navbar-brand" href="{% url 'index' %}" style="color:white;">Project Skeleton</a>
+                <ul class="nav navbar-nav" >
                     {% if user.is_staff %}
                     <li>
                         <a href="/admin/">admin</a>
@@ -29,8 +29,8 @@
                         </li>
                     {% endif %}
                 </ul>
-                <form name="search" action="{% url 'search' %}" method="get" class="navbar-form pull-right">
-                    <input type="text" class="span2 offset10" name="q" placeholder="search" />
+                <form name="search" action="{% url 'search' %}" method="get" class="navbar-form navbar-right">
+                    <input type="text" class="form-control" name="q" placeholder="search" />
                 </form>
          {% endblock %}
         </div>
@@ -40,7 +40,7 @@
 
 
 
-<div class="container-fluid", id="main_container" >
+<div class="container", id="main_container" >
     {% block content %}{% endblock %}
     <div id="footer" class="ftr">
         <div class="container-fluid">
