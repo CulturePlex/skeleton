@@ -7,13 +7,19 @@
 {% block title %}Home{% endblock %}
 
 {% block extra_links %}
-    <link href="{% static 'css/index.css' %}" type = "text/css" rel="stylesheet"/>
+    <!-- <link href="{% static 'css/index.css' %}" type = "text/css" rel="stylesheet"/> -->
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-10 col-md-offset-1 intro-content">
         <h2>{{ project }}</h2>
+    </div> -->
+    <div class="jumbotron">
+        <div class="container">
+            <h2>{{ project }}</h2>
+            <p>{{ project.description|safe }}</p>
+        </div>
     </div>
 </div>
 <div class="row">
