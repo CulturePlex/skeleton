@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-5">
             {% if cover_image.image %}
-                <img src="{{ MEDIA_URL }}{{ cover_image.image }}"/>
+                <img src="{{ MEDIA_URL }}{{ cover_image.image }}" class="img-thumbnail"/>
             {% elif active_image %}
             <div id="index-carousel" class="carousel slide ">
                 <div class="carousel-inner">
@@ -41,7 +41,7 @@
                     </div>
                     {% for image in images %}
                     <div class="item car-image">
-                        <a href="{% url 'image' image.id image.slug %}"><img src="{{MEDIA_URL}}{{ image.image }}" alt="" /></a>
+                        <a href="{% url 'image' image.id image.slug %}"><img src="{{MEDIA_URL}}{{ image.image }}" alt="" class="img-thumbnail"/></a>
                         <div>
                             <p>{{ image.caption }}</p>
                          </div>
