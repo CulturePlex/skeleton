@@ -193,6 +193,9 @@ class Reference(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
     def __unicode__(self):
         return self.title
 
