@@ -29,8 +29,10 @@
                         </li>
                     {% endif %}
                 </ul>
-                <form name="search" action="{% url 'search' %}" method="get" class="navbar-form navbar-right">
-                    <input type="text" class="form-control" name="q" placeholder="search" />
+                <form class="navbar-form navbar-right" name="search" action="{% url 'search' %}" method="get" >
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="q" placeholder="search" />
+                    </div>
                 </form>
          {% endblock %}
         </div>
