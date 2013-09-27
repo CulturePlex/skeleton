@@ -57,18 +57,20 @@
 </div>
 
 {% for line in research_lines %}
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        {% if line.avatar %}
-            <div class="col-md-2">
-                <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" /></a>
+<div class="container">    
+    <div class="row">
+        <div class="col-lg-4">
+            {% if line.avatar %}
+                <div class="col-md-2">
+                    <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" /></a>
+                </div>
+            {% else %}
+                <div class="col-md-2"></div>
+            {% endif %}
+            <div class="col-md-10">
+                <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
+                <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
             </div>
-        {% else %}
-            <div class="col-md-2"></div>
-        {% endif %}
-        <div class="col-md-10">
-            <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
-            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
         </div>
     </div>
 </div>
