@@ -8,18 +8,18 @@
 
 {% block content %}
 
-<div class="row-fluid">
-	<div class="span8 offset2">
-		<div class="row-fluid">
-			<div class="span8">
+<div class="row">
+	<div class="col-med-8 col-med-offset-2">
+		<div class="row">
+			<div class="col-med-8">
 				<h2>{{ research_line.name }}</h2>
 				<h3>{{ research_line.subtitle }}</h3>
 				<p>{{ research_line.text }}
 			</div>
-			<div class="span4">
+			<div class="col-med-4">
 				{% if research_line.avatar %}
 					<a href="{% url 'image' research_line.avatar.id research_line.avatar.slug %}">
-						<img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" />
+						<img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" class="img-thumbnail"/>
 					</a>
 				{% endif %}
 				
@@ -27,20 +27,20 @@
 		</div>
 		{% for key, value in sections.items %}
 			{% if key.avatar %}
-				<div class="row-fluid">
-					<div class="span4">
+				<div class="row">
+					<div class="col-med-4">
 						<a href="{% url 'image' key.avatar.id key.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ key.avatar.image }}" /></a>
 						<p class="image-name">{{ key.avatar.name }}</p>
 						<p class="image-caption">{{ key.avatar.caption }}</p>	
 					</div>
-					<div class="span8">
+					<div class="col-med-8">
 						<h4>{{ key.name }}</h4>
 						<p>{{ key.text }}</p>
 					</div>
 				</div>
 			{% else %}
-				<div class="row-fluid">
-					<div class="span12">
+				<div class="row">
+					<div class="col-med-12">
 						<h4>{{ key.name }}</h4>
 						<p>{{ key.text }}</p>
 					</div>
@@ -49,20 +49,20 @@
 			{% if value %}
 				{% for val in value %}
 					{% if value.avatar %}
-						<div class="row-fluid">
-							<div class="span8">
+						<div class="row">
+							<div class="col-med-8">
 								<h5>{{ val.name }}</h5>
 								<p>{{ val.text }}</p>
 							</div>
-							<div class="span4">
+							<div class="col-med-4">
 								<a href="{% url 'image' value.avatar.id value.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ value.avatar.image }}" /></a>
 								<p class="image-name">{{ value.avatar.name }}</p>
 								<p class="image-caption">{{ value.avatar.caption }}</p>
 							</div>
 						</div>
 					{% else %}
-						<div class="row-fluid">
-							<div class="span12">
+						<div class="row">
+							<div class="col-med-12">
 								<h5>{{ val.name }}</h5>
 								<p>{{ val.text }}</p>
 							</div>
@@ -71,8 +71,8 @@
 				{% endfor %}
 			{% endif %}
 		{% endfor %}
-		<div class="row-fluid">
-			<div class="span12">
+		<div class="row">
+			<div class="col-med-12">
 				<h4>Bibliography</h4>
 				{% for reference in references %}
 					{% if reference|book_instance %}
@@ -86,8 +86,8 @@
 	</div> <!-- general offset -->
 </div> <!--first fluid row -->
 
-<div class="row-fluid">
-    <div class="span10 offset1">    
+<div class="row">
+    <div class="col-med-10 col-md-offset-1">    
         {% disqus_show_comments %}
     </div>
 </div>

@@ -3,8 +3,8 @@
 {% load reference_instance %}
 
 {% block content %}
-<div class="row-fluid">
-	<div class="span8 offset2">		
+<div class="row">
+	<div class="col-med-8 col-med-offset-2">		
 		<h3>Bibliography</h3>
 			{% for reference in references %}
 				{% with reference|book_instance as inst %}
