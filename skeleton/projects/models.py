@@ -126,6 +126,48 @@ class Subsection(models.Model):
     avatar_img.allow_tags = True
 
 
+class AcademicProfile(models.Model):
+    name = models.CharField(max_length=60)
+    institution = models.CharField(max_length=250, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    slug = models.SlugField(editable=False)
+    project = models.ForeignKey(
+        Project,
+        blank=True,
+        null=True,
+        related_name='profiles'
+    )
+    research = models.ForeignKey(
+        ResearchLine,
+        blank=True,
+        null=True,
+        related_name='collaborators'
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name)
+        super(AcademicProfile, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('profile', kwargs={
+            'profile_id': self.id,
+            'profile_slug': self.slug
+        })
+
+    def profile_img(self):
+        return u'<img src={0} height="100" width="100"/>'.format(
+            self.profile_pic.image.url
+        )
+
+    profile_img.short_description = 'Image'
+    profile_img.allow_tags = True
+
+
 class Image(models.Model):
     image = models.ImageField(upload_to='images/general')
     name = models.CharField(max_length=60)
@@ -155,6 +197,12 @@ class Image(models.Model):
         blank=True,
         null=True,
         related_name='avatar'
+    )
+    academic_profile = models.OneToOneField(
+        AcademicProfile,
+        blank=True,
+        null=True,
+        related_name='profile_pic'
     )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -239,42 +287,3 @@ class JournalReference(Reference):
 
     def get_absolute_url(self):
         return reverse('bibliography')
-
-
-class AcademicProfile(models.Model):
-    name = models.CharField(max_length=60)
-    picture = models.ImageField(
-        upload_to='images/profile',
-        blank=True,
-        null=True
-    )
-    institution = models.CharField(max_length=250, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
-    #website = models.URLField(blank=True, null=True)
-    slug = models.SlugField(editable=False)
-    project = models.ForeignKey(
-        Project,
-        blank=True,
-        null=True,
-        related_name='profiles'
-    )
-    research = models.ForeignKey(
-        ResearchLine,
-        blank=True,
-        null=True,
-        related_name='collaborators'
-    )
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.name)
-        super(AcademicProfile, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('profile', kwargs={
-            'profile_id': self.id,
-            'profile_slug': self.slug
-        })

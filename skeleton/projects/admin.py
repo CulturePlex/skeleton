@@ -1,9 +1,10 @@
 from django.contrib import admin
-from models import *
+from models import (
+    Project, ResearchLine, Section, Subsection, Image, BookReference,
+    JournalReference, AcademicProfile
+)
 
 
-#formfield_overrides = {
-    #ImageWithThumbnailField : {'widget' : AdminImageWithThumbnailWidget},
 class AcademicProfileInline(admin.TabularInline):
     model = AcademicProfile
 
@@ -178,6 +179,20 @@ class JournalReferenceAdmin(admin.ModelAdmin):
         'date'
     ]
 
+
+class AcademicProfileAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {
+            'fields': ['name', 'institution', 'website']
+            }),
+        ('About', {
+            'fields': ['bio']
+            })
+    ]
+    list_display = ['name', 'institution', 'profile_img']
+
+    inlines = [ImageInline]
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ResearchLine, ResearchLineAdmin)
 admin.site.register(Section, SectionAdmin)
@@ -185,3 +200,4 @@ admin.site.register(Subsection, SubsectionAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(BookReference, BookReferenceAdmin)
 admin.site.register(JournalReference, JournalReferenceAdmin)
+admin.site.register(AcademicProfile, AcademicProfileAdmin)
