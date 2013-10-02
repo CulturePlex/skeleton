@@ -268,7 +268,7 @@ class AcademicProfile(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.name)
-        super(Image, self).save(*args, **kwargs)
+        super(AcademicProfile, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.name
