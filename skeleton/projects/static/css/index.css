@@ -10,6 +10,11 @@
   margin-right: auto;
 }
 
+img.profile_img {
+    max-width: 10px;
+    max-height: 10px;
+}
+
 .car-image p {
 	text-align: center;
 	padding-top: 10px;
@@ -23,8 +28,3 @@
 	margin-top: 15px;
 }
 
-.prf-pic {
-	height: 50px;
-	max-height: 50px;
-	width: auto;
-}
