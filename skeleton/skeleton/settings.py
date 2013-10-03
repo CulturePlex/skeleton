@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'Skeleton'
-FOOTER_INFO = 'Skeleton - David Michael Brown'
+FOOTER_INFO = ' '
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

@@ -49,7 +49,7 @@ class ResearchLine(models.Model):
 
     def avatar_img(self):
         if self.avatar:
-            return u'<img src={0} height="100" width="100"/>'.format(
+            return u'<img src={0} />'.format(
                 self.avatar.image.url
             )
         else:
