@@ -17,6 +17,7 @@
         <div class="navbar-header">
         {% block navbar_links %}
             <a class="navbar-brand" href="{% url 'index' %}" style="color:white;">Project Skeleton</a>
+        </div>
                 <ul class="nav navbar-nav" >
                     {% if user.is_staff %}
                     <li>
@@ -24,9 +25,9 @@
                     </li>
                     <!-- include admin logout -->
                     {% elif not user.is_authenticated %}
-                        <li>
-                            <a href="/login?next={{ request.path|urlencode }}">login</a>
-                        </li>
+                    <li>
+                        <a href="/login?next={{ request.path|urlencode }}">login</a>
+                    </li>
                     {% endif %}
                 </ul>
                 <form class="navbar-form navbar-right" name="search" action="{% url 'search' %}" method="get" >
@@ -35,7 +36,6 @@
                     </div>
                 </form>
          {% endblock %}
-        </div>
     </div>
 </div> 
 
@@ -46,7 +46,7 @@
     {% block content %}{% endblock %}
     <div id="footer" class="ftr">
         <div class="container-fluid">
-            <p class="muted credit">CulturePlex Lab: {{ FOOTER_INFO }}</p>
+            <p class="muted credit">&copy;CulturePlex Lab {{ FOOTER_INFO }}</p>
         </div>
     </div>
 </div>
