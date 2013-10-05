@@ -11,18 +11,21 @@
 {% endblock %}
 
 {% block content %}
+<div class="container title_section">
 
-    <div class="jumbotron">
-            <h1>{{ project }}</h1>
-            <img src="http://placehold.it/350x150">
-            <p>{{ project.description|safe }}</p>
-            <!-- {% if cover_image.image %} -->
-                <!-- <img class="profile_image" src="{{ MEDIA_URL }}{{ cover_image.image }}" /> -->
-<!--             {% elif active_image %}
+    <div class="col-md-6">
+        <h1>{{ project }}</h1>
+        <p>{{ project.description|safe }}</p>
+    </div>
+
+    <div class="col-md-6">
+            {% if cover_image.image %}
+                <img class="profile_image media-object" src="{{ MEDIA_URL }}{{ cover_image.image }}" />
+            {% elif active_image %}
                 <div id="index-carousel" class="carousel slide ">
                     <div class="carousel-inner">
                         <div class="item active car-image">
-                            <a href="{% url 'image' active_image.id active_image.slug %}"><img src="{{MEDIA_URL}}{{ active_image.image }}"alt="" /></a>
+                            <a href="{% url 'image' active_image.id active_image.slug %}"><img src="{{MEDIA_URL}}{{ active_image.image }}" alt="" /></a>
                             <div>
                                 <p>{{ active_image.caption }}</p>
                              </div>
@@ -35,38 +38,37 @@
                              </div>
                         </div>
                         {% endfor %}
-                    </div><! /.carousel-inner -->
-<!--                     <a class="carousel-control left" data-slide="prev">&lsaquo;</a>
-                    <a class="carousel-control right"  data-slide="next">&rsaquo;</a> -->
-                </div><!-- /.carousel -->
-            <!-- {% endif %} --> 
+                    </div>
+                    <a class="carousel-control left" data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right"  data-slide="next">&rsaquo;</a>
+            {% endif %} 
+                </div>
     </div>
-
+</div>
 
 <!-- Research Lines -->
 
 {% for line in research_lines %}
-<div class="container">    
-    <div class="row">
-        <div class="col-lg-4">
-            {% if line.avatar %}
-                <div class="col-md-2">
-                    <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}", class="avatar" /></a>
-                </div>
-            {% else %}
-                <div class="col-md-2"></div>
-            {% endif %}
-            <div class="col-md-10">
-                <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
-                <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
-            </div>
-        </div>
+<div class="container research_lines">
+    <div class="col-md-6">
+        <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
+        <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
     </div>
-</div>
-<hr>
+    {% if line.avatar %}
+        <div class="col-md-6">
+            <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
+        </div>
+    {% else %}
+        <div class="col-md-6"></div>
+    {% endif %}
+        </div>
+<hr>   
+</div>  
 {% endfor %}
 
-<div class="row">
+
+
+<div class="row disqus_class">
     <div class="col-md-6 col-md-offset-3">
         {% disqus_show_comments %}
     </div>
