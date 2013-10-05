@@ -2,6 +2,10 @@
     padding-bottom: 40px;
 }
 
+.title_section {
+  padding-bottom: 40px;
+}
+
 .car-image img {
   width: auto;
   height: 175px;
@@ -21,10 +25,42 @@ img.profile_img {
 	font-weight: 700;
 }
 
-.avatar {
-	height: 100px;
-	max-height: 100px;
-	width: auto;
-	margin-top: 15px;
+.profile_image {
+	 display: block;
+   max-width: 100%;
+   height: auto;
+   vertical-align: middle;
+   position: relative;
+   padding-top: 30px;
+   margin: 0 auto;
 }
 
+.avatar {
+  display: block;
+  max-width: 50%;
+  height: auto;
+  vertical-align: middle;
+  position: relative;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.research_img {
+   display: block;
+   max-width: 200px;
+   height: auto;
+   vertical-align: middle;
+   position: relative;
+   padding-top: 30px;
+   margin: 0 auto;
+}
+
+.research_lines{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
