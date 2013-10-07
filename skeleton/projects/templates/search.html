@@ -1,25 +1,45 @@
 {% extends 'base.html' %}
 {% load reference_instance %}
+{% block title %}Search Results{% endblock %}
+
 {% block content %}
 
+
 {% if results %}
-    <ul>  
+<div class="row">
+    <div class="col-md-8">
+    <h3>Search Results</h3>
+    <dl>
         {% for result in results %}
             {% if result|book_instance %}
-                <li>
+                <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                <dt>
                     <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
-                </li>
+                </dt>
+                </div>
+                </div>
             {% elif result|journal_instance %}
-                <li>
+                <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                <dt>
                     <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
-                </li>
+                </dt>
+                </div>
+                </div>
             {% else %}
-                <li>
+                <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                <dt>
                     <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
-                </li>
+                </dt>
+                </div>
+                </div>
             {% endif %}
         {% endfor %}
-    </ul>
+    </dl>
+    </div>
+</div>
 {% endif %}
 
 
