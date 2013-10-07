@@ -157,3 +157,4 @@ def profile_view(request, profile_id, profile_slug):
     render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
+
