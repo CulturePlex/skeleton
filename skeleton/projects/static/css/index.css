@@ -1,9 +1,49 @@
+/* Carousel base class */
+.carousel {
+  margin-bottom: 60px;
+
+  /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+  margin-top: -90px;
+  margin-left: -400px;
+  margin-right: -400px;
+}
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+}
+
+/*Title section*/
+
 .intro-content {
     padding-bottom: 40px;
 }
 
 .title_section {
   padding-bottom: 40px;
+}
+
+.profile_image {
+   display: block;
+   max-width: 100%;
+   height: auto;
+   vertical-align: middle;
+   position: relative;
+   padding-top: 30px;
+   margin: 0 auto;
 }
 
 .car-image img {
@@ -25,16 +65,6 @@ img.profile_img {
 	font-weight: 700;
 }
 
-.profile_image {
-	 display: block;
-   max-width: 100%;
-   height: auto;
-   vertical-align: middle;
-   position: relative;
-   padding-top: 30px;
-   margin: 0 auto;
-}
-
 .avatar {
   display: block;
   max-width: 50%;
@@ -42,12 +72,6 @@ img.profile_img {
   vertical-align: middle;
   position: relative;
   margin: 0 auto;
-}
-
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
 }
 
 .research_img {

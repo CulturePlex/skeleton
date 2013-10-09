@@ -3,7 +3,13 @@ body {
     top: 100px;
 }
 
-
 .ftr {
     padding-top: 30px;
+}
+
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
