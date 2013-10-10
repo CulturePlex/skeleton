@@ -3,14 +3,15 @@
   margin-bottom: 60px;
 
   /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-  margin-top: -90px;
-  margin-left: -400px;
-  margin-right: -400px;
+/*  margin-top: -90px;
+*//*  margin-left: -400px;
+  margin-right: -400px;*/
 }
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
-  z-index: 10;
+  /*z-index with higher number always in front of something with lower number*/
+  z-index: 10; 
 }
 
 /* Declare heights because of positioning of img element */
@@ -38,12 +39,15 @@
 
 .profile_image {
    display: block;
-   max-width: 100%;
+   max-width: 40%;
    height: auto;
    vertical-align: middle;
    position: relative;
-   padding-top: 30px;
+   padding-top: 130px;
    margin: 0 auto;
+   bottom: 30px;
+   top: 5px;
+   left: 300px;
 }
 
 .car-image img {

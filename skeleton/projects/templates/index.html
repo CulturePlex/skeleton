@@ -31,7 +31,7 @@
                     <h1>{{ project }}</h1>
                     <p>{{ project.description|safe }}</p>
                 </div>
-                <div class="profile_image col-md-offset-8">
+                <div class="profile_image col-md-offset-4">
                     <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
                 </div>
             </div>
@@ -41,60 +41,36 @@
                 <p>{{ project.description|safe }}</p>
             </div>
             {% endif %}
-        </div>
-            
+        </div>     
     </div>      
 
     <div class="item">
-            <img class="media-object" src="{{ MEDIA_URL }}{{ cover_image.image }}" />
+        <div class="container">
+            <div class="col-md-6">
+            {% if team.id %}
+                WORDS
+            {% endif %}
+            </div>
+       </div>
     </div>
-  </div>
-
+    <div class="item">
+        <div class="container">
+            {% if team in team %}
+                SOMETHING
+            {% endif %}
+        </div>
+            }
+      
+    </div>
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="icon-next"></span>
-  </a>
-</div>
-
-</div>
-<!-- 
-<div class="container title_section">
-
-    <div class="col-md-6">
-        <h1>{{ project }}</h1>
-        <p>{{ project.description|safe }}</p>
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="icon-next"></span>
+      </a>
     </div>
-
-    <div class="col-md-6">
-            {% if cover_image.image %}
-                <img class="profile_image media-object" src="{{ MEDIA_URL }}{{ cover_image.image }}" />
-            {% elif active_image %}
-                <div id="index-carousel" class="carousel slide ">
-                    <div class="carousel-inner">
-                        <div class="item active car-image">
-                            <a href="{% url 'image' active_image.id active_image.slug %}"><img src="{{MEDIA_URL}}{{ active_image.image }}" alt="" /></a>
-                            <div>
-                                <p>{{ active_image.caption }}</p>
-                             </div>
-                        </div>
-                        {% for image in images %}
-                        <div class="item car-image">
-                            <a href="{% url 'image' image.id image.slug %}"><img src="{{MEDIA_URL}}{{ image.image }}" alt="" class="img-thumbnail"/></a>
-                            <div>
-                                <p>{{ image.caption }}</p>
-                             </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <a class="carousel-control left" data-slide="prev">&lsaquo;</a>
-                    <a class="carousel-control right"  data-slide="next">&rsaquo;</a>
-            {% endif %} 
-                </div>
-    </div> -->
-<!-- </div> -->
+</div>
 
 <!-- Research Lines -->
 
@@ -129,7 +105,7 @@
 
 {% block extra_scripts %}
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"}></script>
-<script>
+<script type="text/javascript">
 (function($){
     $(document).ready(function(){
         $('.carousel').carousel({
