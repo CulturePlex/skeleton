@@ -128,8 +128,6 @@ def search_view(request):
         Project, ResearchLine, Section, Subsection,
         Image, BookReference, JournalReference, AcademicProfile
     ]
-    #app = get_app('projects')
-    #model_list = get_models(app)
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', '')
     if query_string and not page:
@@ -157,4 +155,3 @@ def profile_view(request, profile_id, profile_slug):
     render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
-
