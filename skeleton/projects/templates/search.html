@@ -4,40 +4,35 @@
 
 {% block content %}
 
-
 {% if results %}
-<div class="row">
+    <h2>Search Results</h2>
+    <div class="row">
     <div class="col-md-8">
-    <h3>Search Results</h3>
-    <dl>
+            <table class="table">
+            <tbody>
         {% for result in results %}
             {% if result|book_instance %}
-                <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-                <dt>
+                <tr>
+                    <td class="table-cell">
                     <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
-                </dt>
-                </div>
-                </div>
+                    </td>
+                </tr>
             {% elif result|journal_instance %}
-                <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-                <dt>
+                <tr>
+                    <td class="table-cell">
                     <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
-                </dt>
-                </div>
-                </div>
+                    </td>
+                </tr>
             {% else %}
-                <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-                <dt>
+                <tr>
+                    <td class="table-cell">
                     <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
-                </dt>
-                </div>
-                </div>
+                    </td>
+                </tr>
             {% endif %}
         {% endfor %}
-    </dl>
+        </tbody>
+        </table>
     </div>
 </div>
 {% endif %}
@@ -48,14 +43,13 @@
         {% if results.has_previous %}
             <a href="?page={{ results.previous_page_number }}">previous</a>
         {% endif %}
-
         <span class="current">
             Page {{ results.number }} of {{ results.paginator.num_pages }}.
         </span>
-
         {% if results.has_next %}
             <a href="?page={{ results.next_page_number }}">next</a>
         {% endif %}
     </span>
 </div>
 {% endblock %}
+
