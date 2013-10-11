@@ -22,7 +22,7 @@ def normalize_query(query_string,
 def get_query(query_string, search_fields):
     q_set = None
     search_terms = normalize_query(query_string)
-    import ipdb; ipdb.set_trace()
+    #Simport ipdb; ipdb.set_trace()
     for term in search_terms:
         or_query = None
         for field_name in search_fields:
