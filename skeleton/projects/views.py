@@ -133,11 +133,13 @@ def search_view(request):
     page = request.GET.get('page', '')
     if query_string and not page:
         query_results = multi_model_search(model_list, query_string)
-        paginator = Paginator(query_results, 25)
+        controlled_results = _handle_query_results(query_results)
+        paginator = Paginator(controlled_results, 25)
         results = paginator.page(1)
     elif query_string and page:
         query_results = multi_model_search(model_list, query_string)
-        paginator = Paginator(query_results, 25)
+        controlled_results = _handle_query_results(query_results)
+        paginator = Paginator(controlled_results, 25)
         try:
             results = paginator.page(page)
         except PageNotAnInteger:
@@ -156,3 +158,21 @@ def profile_view(request, profile_id, profile_slug):
     return render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
+
+
+def _handle_query_results(results):
+    output = []
+    for result in results:
+        if result.values()[0]:
+            field = result.keys()[0]
+            for value in result.values():
+                obj = value[0]
+                obj_name = obj.__class__.__name__
+                result_dict = {
+                    'result': obj,
+                    'name': obj.name,
+                    'type': obj_name,
+                    'field': getattr(obj, field)
+                }
+                output.append(result_dict)
+    return output
