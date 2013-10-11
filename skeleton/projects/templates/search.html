@@ -14,19 +14,28 @@
             {% if result|book_instance %}
                 <tr>
                     <td class="table-cell">
-                    <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
+                    <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
+                    {{ result.type }} {{ result.name }}<br/>
+                    {{ result.field }}
+                    </a>
                     </td>
                 </tr>
             {% elif result|journal_instance %}
                 <tr>
                     <td class="table-cell">
-                    <a href="{{ result.get_absolute_url }}?ref_id=b_{{ result.id }}">{{ result }}</a>
+                    <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
+                    {{ result.type }} {{ result.name }}<br/>
+                    {{ result.field }}
+                    </a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
                     <td class="table-cell">
-                    <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
+                    <a href="{{ result.result.get_absolute_url }}">
+                    {{ result.type }} {{ result.name }}<br/>
+                    {{ result.field }}
+                    </a>
                     </td>
                 </tr>
             {% endif %}

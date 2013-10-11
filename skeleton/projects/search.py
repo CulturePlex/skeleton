@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-
 from itertools import chain
-
 from django.db.models import Q, CharField, TextField
 
 #####################################################################
@@ -20,9 +18,8 @@ def normalize_query(query_string,
 
 
 def get_query(query_string, search_fields):
-    q_set = None
+    q_set = {}
     search_terms = normalize_query(query_string)
-    #Simport ipdb; ipdb.set_trace()
     for term in search_terms:
         or_query = None
         for field_name in search_fields:
@@ -31,23 +28,27 @@ def get_query(query_string, search_fields):
                 or_query = q
             else:
                 or_query = or_query | q
-        if q_set is None:
-            q_set = or_query
-        else:
-            q_set = q_set | or_query
+            q_set[field_name] = or_query
     return q_set
 
 #####################################################################
 
 
 def model_search(model, query_string):
+    results_dict = []
     search_fields = [
         field for field in model._meta.fields if
         isinstance(field, CharField) or isinstance(field, TextField)
     ]
-    search_fields = [field.name for field in search_fields]
+    search_fields = [
+        field.name for field in search_fields if field.name != 'slug'
+    ]
     q_set = get_query(query_string, search_fields)
-    return model.objects.filter(q_set)
+
+    for field, value in q_set.items():
+        results = model.objects.filter(value)
+        results_dict.append({field: results})
+    return results_dict
 
 
 def multi_model_search(model_list, query_string):
