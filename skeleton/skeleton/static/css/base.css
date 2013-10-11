@@ -20,6 +20,8 @@ img {
     line-height: 40px;
 }
 
-/*.step-links{*/
-/*    */
-/*}*/
+p {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 15px;
+}
