@@ -1,36 +1,41 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block title %}Team{% endblock %}
 
-<!--{% load disqus_tags %}-->
-<!--{% set_disqus_identifier 'team_' team.id %}-->
-<!--{% set_disqus_url team.get_absolute_url %}-->
+{% load disqus_tags %}
+{% set_disqus_identifier 'team_' team.id %}
+{% set_disqus_url team.get_absolute_url %}
 
 {% block content %}
 
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+    <h2> Project Team </h2>
+<!--	<div class="col-md-8 col-md-offset-2">-->
 		<div class="row">
-			<div class="col-md-8">
-				<h2> Collaborators </h2>
-				{% for name in team %}
-				<li>
-				<a href="{{ profile.get_absolute_url }}">{{ name }}</a>
-				</li>
+				<table class="table">
+				<tbody>
+				{% for profile in team %}
+				<tr>
+                    <td class="table-cell">
+				    <h4><a href="{% url 'profile' profile.id profile.slug %}">{{ profile }}</a><h4>
+				    <p>{{profile.bio|slice:"0:100"}}...<a href="{% url 'profile' profile.id profile.slug %}">more</a></p>
+				    </td>
+				    <td class="table-cell">
+				    <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
+				    </td>
+				</tr>
 				{% endfor %}
-<!--				<h3>{{ profile.name }}</h3>-->
-<!--				<p>{{ profile.bio }}</p>-->
-			</div>
+                </tbody>
+			</table>
 		</div>
 	</div>
 </div>
 
 
 
-<!--<div class="row">-->
-<!--    <div class="col-med-10 col-md-offset-1">    -->
-<!--        {% disqus_show_comments %}-->
-<!--    </div>-->
-<!--</div>-->
+<div class="row">
+    <div class="col-med-10 col-md-offset-1">
+        {% disqus_show_comments %}
+    </div>
+</div>
 {% endblock %}
-
-<!--line 17				<a href="{% url 'profiles' profile.id profile.slug %}">{{ name }}</a>-->

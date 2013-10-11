@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-<!--{% load disqus_tags %}-->
-<!--{% set_disqus_identifier 'profile_' profile.id %}-->
-<!--{% set_disqus_url profile.get_absolute_url %}-->
+{% load disqus_tags %}
+{% set_disqus_identifier 'profile_' profile.id %}
+{% set_disqus_url profile.get_absolute_url %}
 
 {% block content %}
 
@@ -14,6 +14,9 @@
 				<h2> Collaborators </h2>
 				<h3>{{ profile.name }}</h3>
 				<p>{{ profile.bio }}</p>
+				<div class="col-md-8 col-md-offset-6">
+				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -23,9 +26,9 @@
 
 
 
-<!--<div class="row">-->
-<!--    <div class="col-med-10 col-md-offset-1">    -->
-<!--        {% disqus_show_comments %}-->
-<!--    </div>-->
-<!--</div>-->
+<div class="row">
+    <div class="col-med-10 col-md-offset-1">
+        {% disqus_show_comments %}
+    </div>
+</div>
 {% endblock %}
