@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<!--{% load disqus_tags %}-->
+<!--{% set_disqus_identifier 'team_' team.id %}-->
+<!--{% set_disqus_url team.get_absolute_url %}-->
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="row">
+			<div class="col-md-8">
+				<h2> Collaborators </h2>
+				{% for name in team %}
+				<li>
+				<a href="{{ profile.get_absolute_url }}">{{ name }}</a>
+				</li>
+				{% endfor %}
+<!--				<h3>{{ profile.name }}</h3>-->
+<!--				<p>{{ profile.bio }}</p>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--<div class="row">-->
+<!--    <div class="col-med-10 col-md-offset-1">    -->
+<!--        {% disqus_show_comments %}-->
+<!--    </div>-->
+<!--</div>-->
+{% endblock %}
+
+<!--line 17				<a href="{% url 'profiles' profile.id profile.slug %}">{{ name }}</a>-->
