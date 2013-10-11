@@ -1,12 +1,14 @@
+.gitignore
 *.log
 *.pot
 *.pyc
 local_settings.py
 *~
 *.db
-*.sqlite   
+*.sqlite
 *.png
 *.jpg
 *.svg 
 ez_setup.py
 setuptools-1.1.4.tar.gz
+media/
