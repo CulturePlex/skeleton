@@ -7,3 +7,7 @@ def project_name(request):
 
 def footer_info(request):
     return {'FOOTER_INFO': getattr(settings, 'FOOTER_INFO', None)}
+
+
+def theme(request):
+    return {'THEME': getattr(settings, 'THEME', None)}

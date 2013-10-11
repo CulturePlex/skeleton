@@ -6,6 +6,7 @@ TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'Skeleton'
 FOOTER_INFO = ' '
+THEME = 'dark'
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -126,6 +127,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # skeleton process
     'skeleton.context_processors.project_name',
     'skeleton.context_processors.footer_info',
+    'skeleton.context_processors.theme',
     # social auth process
     #'social_auth.context_processors.social_auth_by_name_backends',
     #'social_auth.context_processors.social_auth_backends',

@@ -6,7 +6,11 @@
     {% block extra_metas %}{% endblock %}
     <title>{{ PROJECT_NAME }} | {% block title %}{% endblock %}</title>
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" type = "text/css" rel="stylesheet"/>
-    <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
+    {% if theme == dark %}
+        <link href="{% static 'css/base.dark.css' %}" type ="text/css" rel="stylesheet"/>
+        {% else %}
+        <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
+    {% endif %}
     {% block extra_links %}{% endblock %}
 </head>
 
