@@ -18,6 +18,7 @@ from models import (
 from search import multi_model_search
 
 
+# Add academic profiles
 def index_view(request):
     try:
         project = Project.objects.filter(id=1)[0]
@@ -152,6 +153,6 @@ def search_view(request):
 
 def profile_view(request, profile_id, profile_slug):
     profile = get_object_or_404(AcademicProfile, id=profile_id)
-    render_to_response('profile.html', RequestContext(request, {
+    return render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
