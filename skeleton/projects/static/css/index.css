@@ -1,18 +1,14 @@
 /* Carousel base class */
 .carousel {
-  margin-top: -10px;
+  margin-top: 40px;
 }
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
-  /*z-index with higher number always in front of something with lower number*/
   z-index: 10; 
-  max-width: 550px;
-  padding: 0 20px;
-  margin:0 left;
-  margin-top: 200px;
   text-align:center;
 }
+
 
 .carousel-inner {
     overflow: hidden;

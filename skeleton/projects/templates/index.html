@@ -28,7 +28,7 @@
                 {% if cover_image.image %}
                 <div class="row">
                     <div class="carousel-caption col-md-6">
-                        <h1>{{ project }}</h1>
+                        <h1 class="carouse_descrip">{{ project }}</h1>
                         <p>{{ project.description|safe }}</p>
                     </div>
                     <div class="profile_image col-md-offset-6">
@@ -48,8 +48,10 @@
             <div class="container">
                 <div class="col-md-6">
                 {% if team %}
-                    {% for name in team %}
-                        {{ name }}
+                    {% for profile in team %}
+                        <p><h1>{{ profile }}</h1></p> 
+                        <p>{{profile.bio|slice:"0:100"}}</p>
+                        <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
                     {% endfor %}
                 {% endif %}
                 </div>
