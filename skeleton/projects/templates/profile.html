@@ -5,6 +5,10 @@
 {% set_disqus_identifier 'profile_' profile.id %}
 {% set_disqus_url profile.get_absolute_url %}
 
+{% block extra_links %}
+    <link href="{% static 'css/profile.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
@@ -15,7 +19,7 @@
 				<h3>{{ profile.name }}</h3>
 				<p>{{ profile.bio }}</p>
 				<div class="col-md-8 col-md-offset-6">
-				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
+				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
 				</div>
 			</div>
 		</div>
