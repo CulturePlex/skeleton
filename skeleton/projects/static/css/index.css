@@ -24,7 +24,12 @@
 .carousel-inner > .item > img {
   position: absolute;
   height: 300px;
-`}
+}
+
+.carslide_image {
+  position: absolute;
+  height: 100px;
+}
 
 /*Title section*/
 
@@ -49,24 +54,11 @@
    left: 300px;
 }
 
-.car-image img {
-  width: auto;
-  height: 175px;
-  max-height: 175px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 img.profile_img {
     max-width: 10px;
     max-height: 10px;
 }
 
-.car-image p {
-	text-align: center;
-	padding-top: 10px;
-	font-weight: 700;
-}
 
 .avatar {
   display: block;

@@ -26,45 +26,65 @@
         <div class="item active">
             <div class="container">
                 {% if cover_image.image %}
-                <div class="row">
-                    <div class="carousel-caption col-md-6">
-                        <h1 class="carouse_descrip">{{ project }}</h1>
-                        <p>{{ project.description|safe }}</p>
-                    </div>
-                    <div class="profile_image col-md-offset-6">
-                        <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
-                    </div>
-                </div>
-                {% else %}
-                <div class="carousel-caption">
-                    <h1>{{ project }}</h1>
-                    <p>{{ project.description|safe }}</p>
-                </div>
-                {% endif %}
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="table-cell">
+                                <h1>{{ project }}</h1>
+                                <p>{{ project.description|safe }}</p>
+                            </td>
+                            <td class="table-cell">
+                                <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
+                            </td>
+                        {% else %}
+                            <td class="table cell">
+                                <h1>{{ project }}</h1>
+                                <p>{{ project.description|safe }}</p>
+                            </td>
+                        {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
             </div>     
         </div>      
 
+        {% if team %}
         <div class="item">
             <div class="container">
-                <div class="col-md-6">
-                {% if team %}
+                <table class="table">
+                    <tbody>
+                        <tr>
                     {% for profile in team %}
+                            <td class="table-cell"> 
                         <p><h1>{{ profile }}</h1></p> 
                         <p>{{profile.bio|slice:"0:100"}}</p>
+                            </td>
+                            <td class="table-cell">
                         <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
+                            </td>
                     {% endfor %}
-                {% endif %}
-                </div>
+                        </tr>
+                    </tbody>
+                </table>
            </div>
         </div>
+        {% endif %} 
+
         <div class="item">
             <div class="container">
-                {% if images %}
-                    {% for image in images%}
-                        <img src="{{ MEDIA_URL }}{{ image.image }}">
-                        <p>{{ image.name }}</p>
-                    {% endfor %}
-                {% endif %}
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="table-cell">
+                                <img src="{{ MEDIA_URL }}{{ image.image }}" class="carslide_image">
+                            </td>
+                            <td class="table-cell">
+                                <h2>Image Gallery</h2>
+                            <a href="{% url 'gallery' %}">view more</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -81,30 +101,29 @@
 <!-- Research Lines -->
 
 {% for line in research_lines %}
-<div class="container research_lines">
-    <div class="col-md-6">
-        <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
-        <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
-    </div>
+
+<div class="container marketing">
+    <div class="row marketing">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
+            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
+        </div>
     {% if line.avatar %}
-        <div class="col-md-6">
-            <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
-        </div>
+            <div class="col-lg-6">
+                <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
+            </div>
     {% else %}
-        <div class="col-md-6"></div>
+        <div class="col-lg-6"></div>
     {% endif %}
-        </div>
+    </div>
+    </div>
 <hr>   
 </div>  
+
 {% endfor %}
 
-
-
-<div class="row disqus_class">
-    <div class="col-md-6 col-md-offset-3">
-        {% disqus_show_comments %}
-    </div>
-</div>
 
 {% endblock %}
 
