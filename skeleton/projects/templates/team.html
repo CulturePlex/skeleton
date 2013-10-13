@@ -15,6 +15,7 @@
 <div class="container research_lines">
     <h2> Project Team </h2>
 <!--	<div class="col-md-8 col-md-offset-2">-->
+<<<<<<< HEAD
 		{% for profile in team %}
         <div class="col-md-6">
 				<h4><a href="{% url 'profile' profile.id profile.slug %}">{{ profile }}</a><h4>
@@ -23,6 +24,24 @@
         {% if profile.profile_pic %}
         <div class="col-md-6">
 				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
+=======
+		<div class="row">
+				<table class="table">
+				<tbody>
+				{% for profile in team %}
+				<tr>
+                    <td class="table-cell">
+				    <h4><a href="{% url 'profile	' profile.id profile.slug %}">{{ profile }}</a><h4>
+				    <p>{{profile.bio|slice:"0:100"}}...<a href="{% url 'profile' profile.id profile.slug %}">more</a></p>
+				    </td>
+				    <td class="table-cell">
+				    <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
+				    </td>
+				</tr>
+				{% endfor %}
+                </tbody>
+			</table>
+>>>>>>> 74840964a37233f6cc7d1fa98be26b95f8c1fb2c
 		</div>
         {% else %}
                 <div class="col-md-6"></div>

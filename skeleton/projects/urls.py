@@ -13,7 +13,7 @@ urlpatterns = patterns('projects.views',
     ),
     url(r'^team/$', 'team_view', name='team'),
     url(r'^search/$', 'search_view', name='search'),
-    url(r'^profiles/(?P<profile_id>\d+)/(?P<profile_slug>\w+)/$',
+    url(r'^profiles/(?P<profile_id>\d+)/(?P<profile_slug>(\w|-)+)/$',
         'profile_view', name='profile'
     ),
 )

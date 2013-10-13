@@ -1,18 +1,14 @@
 /* Carousel base class */
 .carousel {
-  margin-top: -10px;
+  margin-top: 40px;
 }
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
-  /*z-index with higher number always in front of something with lower number*/
   z-index: 10; 
-  max-width: 550px;
-  padding: 0 20px;
-  margin:0 left;
-  margin-top: 200px;
   text-align:center;
 }
+
 
 .carousel-inner {
     overflow: hidden;
@@ -28,7 +24,12 @@
 .carousel-inner > .item > img {
   position: absolute;
   height: 300px;
-`}
+}
+
+.carslide_image {
+  position: absolute;
+  height: 100px;
+}
 
 /*Title section*/
 
@@ -53,24 +54,11 @@
    left: 300px;
 }
 
-.car-image img {
-  width: auto;
-  height: 175px;
-  max-height: 175px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 img.profile_img {
     max-width: 10px;
     max-height: 10px;
 }
 
-.car-image p {
-	text-align: center;
-	padding-top: 10px;
-	font-weight: 700;
-}
 
 .avatar {
   display: block;
