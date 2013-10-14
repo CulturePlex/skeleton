@@ -19,7 +19,7 @@ from search import multi_model_search
 
 
 # Add academic profiles
-    def index_view(request):
+def index_view(request):
     try:
         project = Project.objects.filter(id=1)[0]
     except IndexError:
