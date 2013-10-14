@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block title %}Collaborators{% endblock %}
 {% load disqus_tags %}
 {% set_disqus_identifier 'profile_' profile.id %}
 {% set_disqus_url profile.get_absolute_url %}
@@ -13,21 +14,22 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<div class="row">
-			<div class="col-md-8">
-				<h2> Collaborators </h2>
+		<h2> Collaborators </h2>
+		<table class="table">
+		<tbody>
+			<tr>
+			<td class="table-cell">
 				<h3>{{ profile.name }}</h3>
-				<p>{{ profile.bio }}</p>
-				<div class="col-md-8 col-md-offset-6">
 				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
-				</div>
-			</div>
-		</div>
+            </td>
+            <td class="bio-table-cell">
+				<p>{{ profile.bio }}</p>
+			</td>
+            </tr>
+        </tbody>
+        </table>
 	</div>
 </div>
-
-
-
 
 
 <div class="row">
