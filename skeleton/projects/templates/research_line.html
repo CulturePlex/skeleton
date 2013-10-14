@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-med-4">
 				{% if research_line.avatar %}
-					<a href="{% url 'image' research_line.avatar.id research_line.avatar.slug %}">
+					<a href="{% url 'image' research_line.avatar.slug %}">
 						<img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" class="img-thumbnail"/>
 					</a>
 				{% endif %}
@@ -29,7 +29,7 @@
 			{% if key.avatar %}
 				<div class="row">
 					<div class="col-med-4">
-						<a href="{% url 'image' key.avatar.id key.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ key.avatar.image }}" /></a>
+						<a href="{% url 'image' key.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ key.avatar.image }}" /></a>
 						<p class="image-name">{{ key.avatar.name }}</p>
 						<p class="image-caption">{{ key.avatar.caption }}</p>	
 					</div>
@@ -55,7 +55,7 @@
 								<p>{{ val.text }}</p>
 							</div>
 							<div class="col-med-4">
-								<a href="{% url 'image' value.avatar.id value.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ value.avatar.image }}" /></a>
+								<a href="{% url 'image' value.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ value.avatar.image }}" /></a>
 								<p class="image-name">{{ value.avatar.name }}</p>
 								<p class="image-caption">{{ value.avatar.caption }}</p>
 							</div>

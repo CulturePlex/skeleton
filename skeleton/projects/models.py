@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.core.urlresolvers import reverse
-from django.template.defaultfilters import slugify
+from skeleton.snippets import unique_slugify
 
 
 class Project(models.Model):
@@ -44,12 +44,13 @@ class ResearchLine(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            slug_str = u'{0}'.format(self.name)
+            unique_slugify(self, slug_str)
         super(ResearchLine, self).save(*args, **kwargs)
 
     def avatar_img(self):
         if self.avatar:
-            return u'<img src={0} />'.format(
+            return u'<img src={0} height="100" width="100" />'.format(
                 self.avatar.image.url
             )
         else:
@@ -147,7 +148,8 @@ class AcademicProfile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            slug_str = u'{0}'.format(self.name)
+            unique_slugify(self, slug_str)
         super(AcademicProfile, self).save(*args, **kwargs)
 
     def __unicode__(self):
@@ -209,7 +211,8 @@ class Image(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            slug_str = u'{0}'.format(self.name)
+            unique_slugify(self, slug_str)
         super(Image, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

@@ -59,9 +59,13 @@
                         <p><h1>{{ profile }}</h1></p> 
                         <p>{{profile.bio|slice:"0:100"}}</p>
                             </td>
-                            <td class="table-cell">
-                        <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" /></a>
-                            </td>
+                            {% if profile.profile_pic %}
+                                <td class="table-cell">
+                                    <a href="{% url 'image' profile.profile_pic.slug %}">
+                                    <img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" />
+                                    </a>
+                                </td>
+                            {% endif %}
                     {% endfor %}
                         </tr>
                     </tbody>
@@ -107,12 +111,12 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <a href="{% url 'research_line' line.id line.slug %}"><h3>{{ line.name }}</h3></a>
-            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.id line.slug %}">read more</a></p>
+            <a href="{% url 'research_line' line.slug %}"><h3>{{ line.name }}</h3></a>
+            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.slug %}">read more</a></p>
         </div>
     {% if line.avatar %}
             <div class="col-lg-6">
-                <a href="{% url 'image' line.avatar.id line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
+                <a href="{% url 'image' line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
             </div>
     {% else %}
         <div class="col-lg-6"></div>

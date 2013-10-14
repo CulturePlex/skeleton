@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		{% for image in images %}
-			<a href="{% url 'image' image.id image.slug %}"><img src="{{ MEDIA_URL }}{{ image.image }}" /></a>
+			<a href="{% url 'image' image.slug %}"><img src="{{ MEDIA_URL }}{{ image.image }}" /></a>
 			<p>{{ image.name }}</p>
 		{% endfor %}
 	</div>

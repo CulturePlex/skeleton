@@ -20,7 +20,7 @@
 			<tr>
 			<td class="table-cell">
 				<h3>{{ profile.name }}</h3>
-				<a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
+				<a href="{% url 'image' profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
             </td>
             <td class="bio-table-cell">
 				<p>{{ profile.bio }}</p>

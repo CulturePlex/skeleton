@@ -49,8 +49,8 @@ def index_view(request):
     }))
 
 
-def research_line_view(request, research_id, research_slug):
-    research_line = get_object_or_404(ResearchLine, id=research_id)
+def research_line_view(request, research_slug):
+    research_line = get_object_or_404(ResearchLine, slug=research_slug)
     sections = research_line.sections.all().order_by('order')
     # Group sections with their subsections.
     sections_dict = collections.OrderedDict()
@@ -81,8 +81,8 @@ def image_gallery_view(request):
     }))
 
 
-def image_view(request, image_id, image_slug):
-    image = get_object_or_404(Image, id=image_id)
+def image_view(request, image_slug):
+    image = get_object_or_404(Image, slug=image_slug)
     return render_to_response('image.html', RequestContext(request, {
         'image': image
     }))
@@ -153,8 +153,8 @@ def search_view(request):
     }))
 
 
-def profile_view(request, profile_id, profile_slug):
-    profile = get_object_or_404(AcademicProfile, id=profile_id)
+def profile_view(request, profile_slug):
+    profile = get_object_or_404(AcademicProfile, slug=profile_slug)
     return render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))

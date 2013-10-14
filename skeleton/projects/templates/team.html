@@ -20,12 +20,12 @@
                 {% for profile in team %}
                     <tr>
                         <td class="table-cell">
-                            <h4><a href="{% url 'profile' profile.id profile.slug %}">{{ profile }}</a><h4>
-                            <p>{{profile.bio|slice:"0:100"}}...<a href="{% url 'profile' profile.id profile.slug %}">more</a></p>
+                            <h4><a href="{% url 'profile' profile.slug %}">{{ profile }}</a><h4>
+                            <p>{{profile.bio|slice:"0:100"}}...<a href="{% url 'profile' profile.slug %}">more</a></p>
                         </td>
                         <td class="table-cell">
                         {% if profile.profile_pic %}
-                            <a href="{% url 'image' profile.profile_pic.id profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
+                            <a href="{% url 'image' profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a>
                         {% else %}
                             <img src="http://placehold.it/200x200">
                         {% endif %}
