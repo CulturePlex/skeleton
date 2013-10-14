@@ -1,4 +1,24 @@
-.academic_profile_img{
+.academic_profile_img {
     max-width: 200px;
     max-height: 200px;
 }
+
+container.profile_list {
+    margin-top: -500px;
+}
+
+.table-cell {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+/*.bio-table-cell {*/
+/*    padding-right: 300px;*/
+/*}*/
