@@ -169,11 +169,20 @@ def _handle_query_results(results):
             for value in result.values():
                 obj = value[0]
                 obj_name = obj.__class__.__name__
-                result_dict = {
-                    'result': obj,
-                    'name': obj.name,
-                    'type': obj_name,
-                    'field': getattr(obj, field)
-                }
+                if isinstance(obj, BookReference) or \
+                        isinstance(obj, JournalReference):
+                    result_dict = {
+                        'result': obj,
+                        'name': obj.title,
+                        'type': obj_name,
+                        'field': getattr(obj, field)
+                    }
+                else:
+                    result_dict = {
+                        'result': obj,
+                        'name': obj.name,
+                        'type': obj_name,
+                        'field': getattr(obj, field)
+                    }
                 output.append(result_dict)
     return output
