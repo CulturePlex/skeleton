@@ -14,8 +14,12 @@
 <body>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2> Collaborators </h2>
         <table class="table">
+        <thead>
+        <tr>
+            <h2> Collaborators </h2>
+        </tr>
+        </thead>
         <tbody>
             <tr>
             <td class="table-cell">
@@ -25,7 +29,8 @@
             <td class="bio-table-cell">
                 <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                <p>{{ profile.bio }}</p>
+                <p>{{ profile.bio|safe }}</p>
+<!--user adds html tags in django admin-->
                 </div>
                 </div>
             </td>
@@ -36,7 +41,7 @@
 </div>
 
 
-<div class="row">
+<div class="row-discus">
     <div class="col-med-10 col-md-offset-1">
         {% disqus_show_comments %}
     </div>
