@@ -18,7 +18,6 @@ from models import (
 from search import multi_model_search
 
 
-# Add academic profiles
 def index_view(request):
     try:
         project = Project.objects.filter(id=1)[0]
@@ -39,10 +38,12 @@ def index_view(request):
         else:
             active_image = None
     team = AcademicProfile.objects.all()
+    if team:
+        profile = team[0]
     return render_to_response('index.html', RequestContext(request, {
         'project': project,
         'research_lines': research_lines,
-        'team': team,
+        'profile': profile,
         'cover_image': cover_image,
         'images': images,
         'active_image': active_image
