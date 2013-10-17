@@ -9,10 +9,10 @@
   text-align:center;
 }
 
-
 .carousel-inner {
     overflow: hidden;
     position: relative;
+    margin-top: 40px;
 }
 
 .carousel .item {
@@ -21,25 +21,28 @@
   text-align: center;
 }
 
-.carousel-inner > .item > img {
+.descrip_only {
+  text-align: center; 
+  vertical-align: center;
   position: absolute;
-  height: 300px;
 }
 
-.carslide_image {
+/*.carousel-inner > .item > img {
   position: absolute;
-  height: 100px;
+  height: 30px;
+}*/
+
+.car-img {
+  position: absolute;
+  height: 10px;
+  vertical-align: center;
+  margin: 0 auto;
 }
+
+
 
 /*Title section*/
 
-.intro-content {
-    padding-bottom: 40px;
-}
-
-.title_section {
-  padding-bottom: 40px;
-}
 
 .profile_image {
    display: block;
@@ -55,10 +58,8 @@
 }
 
 img.profile_img {
-    max-width: 10px;
-    max-height: 10px;
-}
 
+}
 
 .avatar {
   display: block;

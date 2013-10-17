@@ -28,21 +28,19 @@
                 {% if cover_image.image %}
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <td class="table-cell">
+                            <tr class="table-cell">
                                 <h1>{{ project }}</h1>
                                 <p>{{ project.description|safe }}</p>
-                            </td>
-                            <td class="table-cell">
+                            </tr>
+                            <tr class="table-cell car-img">
                                 <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
-                            </td>
+                            </tr>
                         {% else %}
-                            <td class="table cell">
+                            <tr class="table cell descrip_only">
                                 <h1>{{ project }}</h1>
                                 <p>{{ project.description|safe }}</p>
-                            </td>
+                            </tr>
                         {% endif %}
-                        </tr>
                     </tbody>
                 </table>
             </div>     
@@ -50,25 +48,17 @@
 
         {% if profile %}
         <div class="item">
+        <div class="inner-item">
             <div class="container">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td class="table-cell"> 
-                                <p><h1>{{ profile.name }}</h1></p> 
-                                <p>{{ profile.bio|slice:"0:100" }}</p>
-                            </td>
-                            {% if profile.profile_pic %}
-                                <td class="table-cell">
-                                    <a href="{% url 'image' profile.profile_pic.slug %}">
-                                    <img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="profile_img" />
-                                    </a>
-                                </td>
-                            {% endif %}
-                        </tr>
-                    </tbody>
-                </table>
+                <p><h1>{{ profile.name }}</h1></p> 
+                <p>{{ profile.bio|slice:"0:100" }}</p>
+                    {% if profile.profile_pic %}
+                        <a href="{% url 'image' profile.profile_pic.slug %}">
+                        <img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="car-img" />
+                        </a>
+                    {% endif %}
            </div>
+        </div>
         </div>
         {% endif %} 
 
@@ -78,7 +68,7 @@
                     <tbody>
                         <tr>
                             <td class="table-cell">
-                                <img src="{{ MEDIA_URL }}{{ image.image }}" class="carslide_image">
+                                <img src="{{ MEDIA_URL }}{{ image.image }}" class="car_img">
                             </td>
                             <td class="table-cell">
                                 <h2>Image Gallery</h2>
