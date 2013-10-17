@@ -21,24 +21,16 @@
   text-align: center;
 }
 
-.descrip_only {
-  text-align: center; 
-  vertical-align: center;
-  position: absolute;
-}
-
-/*.carousel-inner > .item > img {
-  position: absolute;
-  height: 30px;
-}*/
-
 .car-img {
-  position: absolute;
-  height: 10px;
-  vertical-align: center;
+  height: 200px;
   margin: 0 auto;
 }
 
+.profile_slide {
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 50px;
+}
 
 
 /*Title section*/
