@@ -13,11 +13,13 @@
 {% block content %}
 <body>
 <div class="container profile_list">
-    <div class="col-md-8 col-md-offset-1">
-    <h2> Project Team </h2>
-    </div>
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-2">
             <table class="table">
+                <thead>
+                <tr>
+                    <h2> Project Team </h2>
+                </tr>
+                </thead>
                 <tbody>
                 {% for profile in team %}
                     <tr>
@@ -43,10 +45,7 @@
     </div>
 
 
-
-
-
-<div class="row">
+<div class="row-discus">
     <div class="col-med-10 col-md-offset-1">
         {% disqus_show_comments %}
     </div>
