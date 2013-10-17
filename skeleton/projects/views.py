@@ -135,12 +135,12 @@ def search_view(request):
     if query_string and not page:
         query_results = multi_model_search(model_list, query_string)
         controlled_results = _handle_query_results(query_results)
-        paginator = Paginator(controlled_results, 25)
+        paginator = Paginator(controlled_results, 10)
         results = paginator.page(1)
     elif query_string and page:
         query_results = multi_model_search(model_list, query_string)
         controlled_results = _handle_query_results(query_results)
-        paginator = Paginator(controlled_results, 25)
+        paginator = Paginator(controlled_results, 10)
         try:
             results = paginator.page(page)
         except PageNotAnInteger:
