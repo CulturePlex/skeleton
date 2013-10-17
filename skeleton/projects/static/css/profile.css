@@ -3,10 +3,6 @@
     max-height: 200px;
 }
 
-container.profile_list {
-    margin-top: -500px;
-}
-
 .table-cell {
     margin-top: 20px;
     font-size: 20px;
@@ -19,6 +15,10 @@ p {
     line-height: 15px;
 }
 
-/*.bio-table-cell {*/
-/*    padding-right: 300px;*/
-/*}*/
+.bio-table-cell {
+    padding-top: 50px;
+}
+
+body {
+    padding-top: 65px;
+}
