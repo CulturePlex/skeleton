@@ -30,16 +30,16 @@
                     <tbody>
                             <tr class="table-cell">
                                 <h1>{{ project }}</h1>
-                                <p>{{ project.description|safe }}</p>
+                                <p>{{ project.description|safe|slice:"0:500" }}...<a href="{% url 'team' %}">read more</a></p>
                             </tr>
-                            <tr class="table-cell car-img">
+                            <tr class="table-cell main-img">
                                 <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
                             </tr>
                         {% else %}
-                            <tr class="table cell descrip_only">
+                            <div class="container main_slide">
                                 <h1>{{ project }}</h1>
                                 <p>{{ project.description|safe }}</p>
-                            </tr>
+                            </div>
                         {% endif %}
                     </tbody>
                 </table>
@@ -51,13 +51,12 @@
         <div class="inner-item">
             <div class="container profile_slide">
                 <p><h1>{{ profile.name }}</h1></p> 
-                <p>{{ profile.bio|slice:"0:100" }}</p>
+                <p class="profile-bio">{{ profile.bio|slice:"0:500" }}...<a href="{% url 'team' %}">view more</a></p>
                     {% if profile.profile_pic %}
                         <a href="{% url 'image' profile.profile_pic.slug %}">
                         <img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="car-img" />
                         </a>
                     {% endif %}
-                <p><a href="{% url 'team' %}">view more</a></p>
            </div>
         </div>
         </div>
@@ -65,10 +64,10 @@
 
         {% if images %}
         <div class="item">
-            <div class="container">
+            <div class="container profile_slide">
                 <img src="{{ MEDIA_URL }}{{ image.image }}" class="car-img">
                 <h2>Image Gallery</h2>
-                <a href="{% url 'gallery' %}">view more</a>
+                <a href="{% url 'gallery' %}" class="btn btn-default btn-sm">view more</a>
             </div>
         </div>
         {% endif %}
