@@ -135,12 +135,12 @@ def search_view(request):
     if query_string and not page:
         query_results = multi_model_search(model_list, query_string)
         controlled_results = _handle_query_results(query_results)
-        paginator = Paginator(controlled_results, 25)
+        paginator = Paginator(controlled_results, 10)
         results = paginator.page(1)
     elif query_string and page:
         query_results = multi_model_search(model_list, query_string)
         controlled_results = _handle_query_results(query_results)
-        paginator = Paginator(controlled_results, 25)
+        paginator = Paginator(controlled_results, 10)
         try:
             results = paginator.page(page)
         except PageNotAnInteger:
@@ -169,11 +169,20 @@ def _handle_query_results(results):
             for value in result.values():
                 obj = value[0]
                 obj_name = obj.__class__.__name__
-                result_dict = {
-                    'result': obj,
-                    'name': obj.name,
-                    'type': obj_name,
-                    'field': getattr(obj, field)
-                }
+                if isinstance(obj, BookReference) or \
+                        isinstance(obj, JournalReference):
+                    result_dict = {
+                        'result': obj,
+                        'name': obj.title,
+                        'type': obj_name,
+                        'field': getattr(obj, field)
+                    }
+                else:
+                    result_dict = {
+                        'result': obj,
+                        'name': obj.name,
+                        'type': obj_name,
+                        'field': getattr(obj, field)
+                    }
                 output.append(result_dict)
     return output

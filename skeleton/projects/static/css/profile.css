@@ -12,13 +12,19 @@
 p {
     margin-top: 20px;
     font-size: 15px;
-    line-height: 15px;
+    line-height: 20px;
 }
 
 .bio-table-cell {
     padding-top: 50px;
+    line-height: 15px;
 }
 
 body {
     padding-top: 65px;
+    text-align: justify;
+}
+
+.row-discus {
+    padding-top: 80px;
 }

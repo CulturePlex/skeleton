@@ -5,42 +5,42 @@
 {% set_disqus_identifier 'research_' research_line.id %}
 {% set_disqus_url research_line.get_absolute_url %}
 
+{% block extra_links %}
+    <link href="{% static 'css/research_line.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
-
-<div class="row">
-	<div class="col-med-8 col-med-offset-2">
+<body>
+<div class="container">
+	<div class="col-md-8 col-md-offset-2">
 		<div class="row">
-			<div class="col-med-8">
+			<div class="col-md-8">
 				<h2>{{ research_line.name }}</h2>
-				<h3>{{ research_line.subtitle }}</h3>
-				<p>{{ research_line.text }}
 			</div>
-			<div class="col-med-4">
+			<div class="col-md-4 col-md-offset-3">
 				{% if research_line.avatar %}
 					<a href="{% url 'image' research_line.avatar.slug %}">
 						<img src="{{ MEDIA_URL }}{{ research_line.avatar.image }}" class="img-thumbnail"/>
 					</a>
 				{% endif %}
-				
 			</div>
 		</div>
 		{% for key, value in sections.items %}
 			{% if key.avatar %}
 				<div class="row">
-					<div class="col-med-4">
+					<div class="col-md-4">
 						<a href="{% url 'image' key.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ key.avatar.image }}" /></a>
 						<p class="image-name">{{ key.avatar.name }}</p>
 						<p class="image-caption">{{ key.avatar.caption }}</p>	
 					</div>
-					<div class="col-med-8">
+					<div class="col-md-8">
 						<h4>{{ key.name }}</h4>
 						<p>{{ key.text }}</p>
 					</div>
 				</div>
 			{% else %}
 				<div class="row">
-					<div class="col-med-12">
+					<div class="col-md-12">
 						<h4>{{ key.name }}</h4>
 						<p>{{ key.text }}</p>
 					</div>
@@ -50,11 +50,11 @@
 				{% for val in value %}
 					{% if value.avatar %}
 						<div class="row">
-							<div class="col-med-8">
+							<div class="col-md-8">
 								<h5>{{ val.name }}</h5>
 								<p>{{ val.text }}</p>
 							</div>
-							<div class="col-med-4">
+							<div class="col-md-4">
 								<a href="{% url 'image' value.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ value.avatar.image }}" /></a>
 								<p class="image-name">{{ value.avatar.name }}</p>
 								<p class="image-caption">{{ value.avatar.caption }}</p>
@@ -62,7 +62,7 @@
 						</div>
 					{% else %}
 						<div class="row">
-							<div class="col-med-12">
+							<div class="col-md-12">
 								<h5>{{ val.name }}</h5>
 								<p>{{ val.text }}</p>
 							</div>
@@ -71,8 +71,9 @@
 				{% endfor %}
 			{% endif %}
 		{% endfor %}
-		<div class="row">
-			<div class="col-med-12">
+        <h3>{{ research_line.subtitle }}</h3>
+		<p>{{ research_line.text|safe }}</p>
+		<div class="row-bibliography">
 				<h4>Bibliography</h4>
 				{% for reference in references %}
 					{% if reference|book_instance %}
@@ -82,14 +83,13 @@
 					{% endif %}
 				{% endfor %}
 			</div>
-		</div>
 	</div> <!-- general offset -->
 </div> <!--first fluid row -->
 
-<div class="row">
-    <div class="col-med-10 col-md-offset-1">    
+<div class="row-discus">
+    <div class="col-md-10 col-md-offset-1">
         {% disqus_show_comments %}
     </div>
 </div>
-
+</body>
 {% endblock %}
