@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load reference_instance %}
+{% block title %}{{ research_line.name }}{% endblock %}
 {% load disqus_tags %}
 {% set_disqus_identifier 'research_' research_line.id %}
 {% set_disqus_url research_line.get_absolute_url %}
@@ -10,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<body>
+
 <div class="container">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="row">
@@ -71,18 +72,20 @@
 				{% endfor %}
 			{% endif %}
 		{% endfor %}
-        <h3>{{ research_line.subtitle }}</h3>
+        <h1><small>{{ research_line.subtitle }}</small></h1>
 		<p>{{ research_line.text|safe }}</p>
 		<div class="row-bibliography">
-				<h4>Bibliography</h4>
+				<h4><span class="glyphicon glyphicon-leaf"></span> Bibliography</h4>
 				{% for reference in references %}
 					{% if reference|book_instance %}
-						<p>{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
+						<p>{{ reference.authors }}. <i>{{ reference.book_title }}</i>. {{ reference.place_of_pub }}: {{ reference.publisher }}. {{ reference.date }}<br/><a href="url">{{ reference.url }}</a></p><!--etc...-->
 					{% else %}
-						<p>{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
+						<p>{{ reference.authors }}. "{{reference.title}}" <i>{{ reference.journal_title }}</i>. {{ reference.date }}. <br/><a href="url">{{ reference.url }}</a></p><!--etc...-->
 					{% endif %}
 				{% endfor %}
-			</div>
+		<div class="col-md-12 col-md-offset-9">
+		<a href="{% url 'bibliography' %}">View entire bibliography<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+		</div>
 	</div> <!-- general offset -->
 </div> <!--first fluid row -->
 
@@ -91,5 +94,5 @@
         {% disqus_show_comments %}
     </div>
 </div>
-</body>
+
 {% endblock %}
