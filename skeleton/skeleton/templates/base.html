@@ -45,25 +45,16 @@
 
 
 
-<div class="container", id="main_container" >
+<div class="container" id="main_container" >
     {% block content %}{% endblock %}
-    <div id="footer" class="ftr">
-        <div class="container-fluid">
-            <div class="row">
-            <div class="col-md-9">
-<!--            <p class="muted credit">&copy;CulturePlex Lab {{ FOOTER_INFO }}</p>-->
-<!--            </div>
-            <div class="col-md-6">-->
-            <a href="http://www.cultureplex.ca/">&copy;CulturePlex Lab</a>
-            </div>
-<!--            <a href="https://www.facebook.com/pages/The-CulturePlex-Laboratory/109575249172016">CulturePlex on Facebook</a>
-            <a href="https://twitter.com/cultureplex">CulturePlex on Twitter</a>-->
-        </div>
+    <div id="ftr" class="ftr">
+        <div class="container">
+            <p class="text-muted credit"><a href="http://www.cultureplex.ca/" targe="blank">&copy;{{ FOOTER_INFO }}</a></p>
         </div>
     </div>
 </div>
 
-
+<!-- <a href="http://www.cultureplex.ca/">&copy;CulturePlex Lab</a> -->
 
 
 {% block scripts %}
