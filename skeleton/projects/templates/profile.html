@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}Collaborators{% endblock %}
+{% block title %}Member{% endblock %}
 {% load disqus_tags %}
 {% set_disqus_identifier 'profile_' profile.id %}
 {% set_disqus_url profile.get_absolute_url %}
@@ -11,13 +11,13 @@
 {% endblock %}
 
 {% block content %}
-<body>
+
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <table class="table">
         <thead>
         <tr>
-            <h2> Collaborators </h2>
+            <h2> Member </h2>
         </tr>
         </thead>
         <tbody>
@@ -46,5 +46,5 @@
         {% disqus_show_comments %}
     </div>
 </div>
-</body>
+
 {% endblock %}
