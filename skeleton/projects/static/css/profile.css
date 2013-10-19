@@ -4,10 +4,11 @@
 }
 
 .table-cell {
-    margin-top: 20px;
+    height: 200px;
     font-size: 20px;
     line-height: 40px;
 }
+
 
 p {
     margin-top: 20px;

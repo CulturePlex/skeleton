@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load reference_instance %}
+{% block title %}Bibliography{% endblock %}
+
+{% block extra_links %}
+    <link href="{% static 'css/base.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
-<div class="row">
-	<div class="col-med-8 col-med-offset-2">		
-		<h3>Bibliography</h3>
+
+<div class="container">
+	<div class="col-md-8 col-md-offset-2">
+		<h2>Bibliography</h2>
 			{% for reference in references %}
 				{% with reference|book_instance as inst %}
 					{% if inst %}
-						<p id="b_{{ reference.id }}">{{ reference.authors }}, {{ reference.title }}, {{ reference.book_title }}</p><!--etc...-->
+						<p id="b_{{ reference.id }}">{{ reference.authors }}. <i>{{ reference.book_title }}</i>. {{ reference.place_of_pub }}: {{ reference.publisher }}. {{ reference.date }}<br/><a href="url">{{ reference.url }}</a></p><!--IN ADMIN: author's name to be input in MLA-->
 					{% else %}
-						<p id="j_{{ reference.id }}">{{ reference.authors }}, {{ reference.title }}, </p><!--etc...-->
+						<p id="j_{{ reference.id }}">{{ reference.authors }}. "{{reference.title}}" <i>{{ reference.journal_title }}</i>. {{ reference.date }}. <br/><a href="url">{{ reference.url }}</a></p><!--etc...-->
 					{% endif %}
 				{% endwith %}
 			{% endfor %}
