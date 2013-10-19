@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block extra_links %}
+    <link href="{% static 'css/gallery.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		{% for image in images %}
-			<a href="{% url 'image' image.slug %}"><img src="{{ MEDIA_URL }}{{ image.image }}" /></a>
+	{% for image in images %}
+		<div class="col-lg-4">
+			<a href="{% url 'image' image.slug %}"><img src="{{ MEDIA_URL }}{{ image.image }}" class="images"/></a>
 			<p>{{ image.name }}</p>
-		{% endfor %}
-	</div>
+		</div>
+	{% endfor %}
 </div>
 {% endblock %}

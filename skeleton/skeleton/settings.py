@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'Skeleton'
-FOOTER_INFO = ' '
+FOOTER_INFO = 'CulturePlex Lab'
 THEME = 'dark'
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (

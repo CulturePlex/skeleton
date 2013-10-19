@@ -21,25 +21,34 @@
   text-align: center;
 }
 
-.descrip_only {
-  text-align: center; 
-  vertical-align: center;
-  position: absolute;
-}
-
-/*.carousel-inner > .item > img {
-  position: absolute;
-  height: 30px;
-}*/
-
-.car-img {
-  position: absolute;
-  height: 10px;
-  vertical-align: center;
+.main-img {
+  height: 200px;
   margin: 0 auto;
 }
 
+.car-img {
+  height: 200px;
+  margin: 0 auto;
+}
 
+.main_slide {
+  padding: 10%;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile_slide {
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.profile-bio {
+  vertical-align: middle;
+  padding-left: 10%; 
+  padding-right: 10%;
+}
 
 /*Title section*/
 
