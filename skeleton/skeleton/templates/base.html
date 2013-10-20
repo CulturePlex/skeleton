@@ -6,21 +6,22 @@
     {% block extra_metas %}{% endblock %}
     <title>{{ PROJECT_NAME }} | {% block title %}{% endblock %}</title>
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" type = "text/css" rel="stylesheet"/>
-    {% if theme == dark %}
-        <link href="{% static 'css/base.dark.css' %}" type ="text/css" rel="stylesheet"/>
-    {% else %}
+<!--     {% if theme == dark %}
+ --><!--         <link href="{% static 'css/base.dark.css' %}" type ="text/css" rel="stylesheet"/>
+    {% else %} -->
         <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
-    {% endif %}
+    <!-- {% endif %} -->
     {% block extra_links %}{% endblock %}
 </head>
 
 <body id="page-cont">
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-    {% block navbar_links %}
-            <a class="navbar-brand" href="{% url 'index' %}">Project Skeleton</a>
-    </div>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                {% block navbar_links %}
+                    <a class="navbar-brand" href="{% url 'index' %}">Project Skeleton</a>
+                </div>
                 <ul class="nav navbar-nav" >
                     {% if user.is_staff %}
                     <li>
@@ -40,8 +41,9 @@
                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                 </form>
          {% endblock %}
-</div> 
-
+        </div> 
+    </div>
+</div>
 
 
 

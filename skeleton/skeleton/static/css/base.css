@@ -10,6 +10,12 @@ body {
 }
 
 
+.navbar-wrapper {
+  position: relative;
+  z-index: 15;
+}
+
+
 img {
   display: block;
   height: auto;
@@ -27,3 +33,4 @@ p {
     font-size: 15px;
     line-height: 15px;
 }
+
