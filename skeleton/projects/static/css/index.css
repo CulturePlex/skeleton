@@ -1,8 +1,14 @@
 /* Carousel base class */
 .carousel {
-  margin-top: 40px;
-}
+  margin-top: 50px;
+}   
 /* Since positioning the image, we need to help out the caption */
+.fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
 
 .carousel-caption {
   z-index: 10; 
@@ -21,21 +27,26 @@
   text-align: center;
 }
 
-.main-img {
-  height: 200px;
+.mainimg {
+  max-height: 300px;
+}
+
+.mainslide {
+  vertical-align: middle;
+  display: inline-block;
   margin: 0 auto;
+  text-align: center;
+}
+
+.maindescrip {
+  vertical-align: middle;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .car-img {
   height: 200px;
   margin: 0 auto;
-}
-
-.main_slide {
-  padding: 10%;
-  vertical-align: middle;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .profile_slide {
@@ -66,9 +77,6 @@
    left: 300px;
 }
 
-img.profile_img {
-
-}
 
 .avatar {
   display: block;
@@ -79,9 +87,13 @@ img.profile_img {
   margin: 0 auto;
 }
 
-.research_img {
+.marketing {
+  padding-top: 15px;
+}
+
+.researchimg {
    display: block;
-   max-width: 200px;
+   max-width: 300px;
    height: auto;
    vertical-align: middle;
    position: relative;
@@ -89,7 +101,10 @@ img.profile_img {
    margin: 0 auto;
 }
 
-.research_lines{
+.researchlines{
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 10%;
 }
+
+

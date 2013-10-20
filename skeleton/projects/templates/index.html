@@ -24,25 +24,15 @@
   <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <div class="container">
+            <div class="container mainslide">
                 {% if cover_image.image %}
-                <table class="table">
-                    <tbody>
-                            <tr class="table-cell">
-                                <h1>{{ project }}</h1>
-                                <p>{{ project.description|safe|slice:"0:500" }}...<a href="{% url 'team' %}">read more</a></p>
-                            </tr>
-                            <tr class="table-cell main-img">
-                                <img src="{{ MEDIA_URL }}{{ cover_image.image }}">
-                            </tr>
-                        {% else %}
-                            <div class="container main_slide">
-                                <h1>{{ project }}</h1>
-                                <p>{{ project.description|safe }}</p>
-                            </div>
-                        {% endif %}
-                    </tbody>
-                </table>
+                    <h1>{{ project }}</h1>
+                    <p class="maindescrip">{{ project.description|safe|slice:"0:500" }}...<a href="{% url 'team' %}">read more</a></p>
+                    <img src="{{ MEDIA_URL }}{{ cover_image.image }}" class="mainimg">
+                {% else %}
+                    <h1>{{ project }}</h1>
+                    <p>{{ project.description|safe }}</p>
+                {% endif %}
             </div>     
         </div>      
 
@@ -91,13 +81,13 @@
     <div class="row marketing">
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 researchlines">
             <a href="{% url 'research_line' line.slug %}"><h3>{{ line.name }}</h3></a>
             <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.slug %}">read more</a></p>
         </div>
     {% if line.avatar %}
             <div class="col-lg-6">
-                <a href="{% url 'image' line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="research_img" /></a>
+                <a href="{% url 'image' line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="researchimg" /></a>
             </div>
     {% else %}
         <div class="col-lg-6"></div>
