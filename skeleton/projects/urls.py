@@ -12,4 +12,5 @@ urlpatterns = patterns(
     url(r'^team/$', 'team_view', name='team'),
     url(r'^team/(?P<profile_slug>(\w|-)+)/$', 'profile_view', name='profile'),
     url(r'^search/$', 'search_view', name='search'),
+    url(r'^login/$', 'login', name='login'),
 )

@@ -159,7 +159,12 @@ def profile_view(request, profile_slug):
     return render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
-
+    
+def login(request):
+    return render_to_response('login.html',
+    {},
+    context_instance=RequestContext(request)
+    )
 
 def _handle_query_results(results):
     output = []
@@ -186,3 +191,4 @@ def _handle_query_results(results):
                     }
                 output.append(result_dict)
     return output
+
