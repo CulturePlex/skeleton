@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load thumbnail %}
 
 {% block extra_links %}
     
@@ -58,7 +59,7 @@
 {% for image in images %}
 <div id="links" class="col-md-4">
     <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
-        <img src="{{ MEDIA_URL }}{{ image.image }}" class="img_gal"/>
+        <img src="{% thumbnail 512x512 {{ MEDIA_URL }}{{ image.image }} %}" class="img_gal"/>
     </a>
 </div>
 {% endfor %}
@@ -72,5 +73,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
 
 {% endblock %}
