@@ -15,7 +15,7 @@
                 <tr>
                     <td class="table-cell">
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
-                    {{ result.type }} {{ result.name }}<br/>
+                     {{ result.type }}{{ result.name }}<br/>
                     {{ result.field }}
                     </a>
                     </td>
@@ -24,7 +24,7 @@
                 <tr>
                     <td class="table-cell">
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
-                    {{ result.type }} {{ result.name }}<br/>
+                     {{ result.type }}{{ result.name }}<br/>
                     {{ result.field }}
                     </a>
                     </td>
@@ -33,8 +33,25 @@
                 <tr>
                     <td class="table-cell">
                     <a href="{{ result.result.get_absolute_url }}">
-                    {{ result.type }} {{ result.name }}<br/>
+                    {% if result.type = research_line %}
+                        <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/>
                     {{ result.field }}
+                    {% elif result.type = image %}
+                        <span class="glyphicon glyphicon-camera"></span> {{ result.name }}<br/>
+                    {{ result.field }}
+                    {% elif result.type = academic_profile %}
+                        <span class="glyphicon glyphicon-user"></span> {{ result.name }}<br/>
+                    {{ result.field }}
+<!--                    {% elif result.type = Project %}-->
+<!--                        <span class="glyphicon glyphicon-file">{{ result.type }}</span>} {{ result.name }}<br/>-->
+<!--                    {{ result.field }}-->
+                    {% elif result.type = book_instance %}
+                        <span class="glyphicon glyphicon-leaf"></span>} {{ result.name }}<br/>
+                    {{ result.field }}
+                    {% elif result.type = journal_instance %}
+                        <span class="glyphicon glyphicon-leaf"></span>} {{ result.name }}<br/>
+                    {{ result.field }}
+                    {% endif %}
                     </a>
                     </td>
                 </tr>
