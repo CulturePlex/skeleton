@@ -160,6 +160,7 @@ def profile_view(request, profile_slug):
         'profile': profile
     }))
     
+
 def login(request):
     return render_to_response('login.html',
     {},

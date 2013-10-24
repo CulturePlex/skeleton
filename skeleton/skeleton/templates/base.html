@@ -15,7 +15,7 @@
 </head>
 
 <body id="page-cont">
-    <div class="navbar-wrapper">
+     <div class="navbar-wrapper">
         <div class="container">
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
@@ -28,7 +28,7 @@
                         <a href="/admin/">admin</a>
                     </li>
                     <!-- include admin logout -->
-                    {% elif not user.is_authenticated %}
+                     {% elif not user.is_authenticated %}
                     <li>
                         <a href="/login?next={{ request.path|urlencode }}">login</a>
                     </li>
@@ -43,8 +43,8 @@
          {% endblock %}
         </div> 
     </div>
-</div>
-
+</div> 
+ 
 
 
 <div class="container" id="main_container" >

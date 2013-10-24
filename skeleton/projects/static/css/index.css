@@ -1,11 +1,12 @@
 /* Carousel base class */
 .carousel {
   margin-top: 50px;
+  margin-bottom: 50px;
 }   
 /* Since positioning the image, we need to help out the caption */
 .fill {
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   background-position: center;
   background-size: cover;
 }
@@ -22,9 +23,10 @@
 }
 
 .carousel .item {
-  height: 500px;
+  height: 550px;
   background-color: #777;
   text-align: center;
+  vertical-align: middle;
 }
 
 .mainimg {
@@ -34,6 +36,16 @@
 .mainslide {
   vertical-align: middle;
   display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.maintable_div {
+  margin: 0 autoq  !important
+}
+
+.mainslide_table {
+  vertical-align: middle;
   margin: 0 auto;
   text-align: center;
 }
@@ -60,6 +72,8 @@
   padding-left: 10%; 
   padding-right: 10%;
 }
+
+
 
 /*Title section*/
 
