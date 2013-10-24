@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 {% load thumbnail %}
+{% load staticfiles %}
 
 {% block extra_links %}
     
@@ -56,13 +56,19 @@
     </div>
 </div>
 
+<div class="container images">
 {% for image in images %}
 <div id="links" class="col-md-4">
     <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
-        <img src="{% thumbnail 512x512 {{ MEDIA_URL }}{{ image.image }} %}" class="img_gal"/>
+    {% thumbnail image.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+    {% endthumbnail %}
     </a>
 </div>
 {% endfor %}
+</div>
+
+
 
 </div>
 
