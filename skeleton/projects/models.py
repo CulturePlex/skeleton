@@ -65,7 +65,6 @@ class ResearchLine(models.Model):
     def get_absolute_url(self):
         return reverse('projects.views.research_line_view', kwargs={
             'research_slug': self.slug,
-            'research_id': self.id
         })
 
 
@@ -157,7 +156,6 @@ class AcademicProfile(models.Model):
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={
-            'profile_id': self.id,
             'profile_slug': self.slug
         })
 
@@ -218,7 +216,6 @@ class Image(models.Model):
     def get_absolute_url(self):
         return reverse('projects.views.image_view', kwargs={
             'image_slug': self.slug,
-            'image_id': self.id
         })
 
     def image_img(self):

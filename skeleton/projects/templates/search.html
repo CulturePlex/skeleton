@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load reference_instance %}
 {% block title %}Search Results{% endblock %}
+
+{% block extra_links %}
+    <link href="{% static 'css/base.css' %}" type = "text/css" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
 
 {% if results %}
-    <h2>Search Results</h2>
     <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-2">
             <table class="table">
+            <thead>
+            <tr>
+                <h2> Search Results </h2>
+            </tr>
+            </thead>
             <tbody>
         {% for result in results %}
             {% if result|book_instance %}
                 <tr>
-                    <td class="table-cell">
+                    <td class="table-cell">L {{ result.result.get_absolute_url }}
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
-                    {{ result.field }}
+                    <p>{{ result.field|safe|slice:"0:200" }}</p>
                     </a>
                     </td>
                 </tr>
@@ -25,34 +34,34 @@
                     <td class="table-cell">
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
-                    {{ result.field }}
+                    <p>{{ result.field|safe|slice:"0:200" }}</p>
                     </a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
                     <td class="table-cell">
-                    <a href="{{ result.result.get_absolute_url }}">
-                    {% if result.type = research_line %}
-                        <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/>
-                    {{ result.field }}
-                    {% elif result.type = image %}
-                        <span class="glyphicon glyphicon-camera"></span> {{ result.name }}<br/>
-                    {{ result.field }}
-                    {% elif result.type = academic_profile %}
-                        <span class="glyphicon glyphicon-user"></span> {{ result.name }}<br/>
-                    {{ result.field }}
-<!--                    {% elif result.type = Project %}-->
-<!--                        <span class="glyphicon glyphicon-file">{{ result.type }}</span>} {{ result.name }}<br/>-->
-<!--                    {{ result.field }}-->
-                    {% elif result.type = book_instance %}
-                        <span class="glyphicon glyphicon-leaf"></span>} {{ result.name }}<br/>
-                    {{ result.field }}
-                    {% elif result.type = journal_instance %}
-                        <span class="glyphicon glyphicon-leaf"></span>} {{ result.name }}<br/>
-                    {{ result.field }}
-                    {% endif %}
-                    </a>
+                        <a href= "{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
+                        {% if result.type = "ResearchLine" %}
+                        <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% elif result.type = "Image" %}
+                            <span class="glyphicon glyphicon-camera"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% elif result.type = "AcademicProfile" %}
+                            <span class="glyphicon glyphicon-user"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% elif result.type = "Project" %}
+                            <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% elif result.type = "BookReference" %}
+                            <span class="glyphicon glyphicon-leaf"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% elif result.type = "JournalReference" %}
+                            <span class="glyphicon glyphicon-leaf"></span> {{ result.name }}<br/></a>
+                            <p>{{ result.field|safe|slice:"0:200" }}</p>
+                        {% endif %}
+                        </a>
                     </td>
                 </tr>
             {% endif %}
@@ -61,21 +70,26 @@
         </table>
     </div>
 </div>
+{% else %}
+    <div class="row">
+    <h3>No results for your search. Please try again.</h3>
+    </div>
 {% endif %}
 
 
 <div class="pagination">
     <span class="step-links">
         {% if results.has_previous %}
-            <a href="?page={{ results.previous_page_number }}">previous</a>
+            <a href="?q={{ query_string }}&page={{ results.previous_page_number }}">previous</a>
         {% endif %}
         <span class="current">
             Page {{ results.number }} of {{ results.paginator.num_pages }}.
         </span>
         {% if results.has_next %}
-            <a href="?page={{ results.next_page_number }}">next</a>
+            <a href="?q={{ query_string }}&page={{ results.next_page_number }}">next</a>
         {% endif %}
     </span>
 </div>
+
 {% endblock %}
 
