@@ -132,6 +132,13 @@ class AcademicProfile(models.Model):
     institution = models.CharField(max_length=250, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    blog = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    facebook = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    cultureplex = models.URLField(blank=True, null=True)
+    email = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField(editable=False)
     project = models.ForeignKey(
         Project,
