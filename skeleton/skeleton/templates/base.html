@@ -11,17 +11,24 @@
     {% else %} -->
         <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
     <!-- {% endif %} -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     {% block extra_links %}{% endblock %}
 </head>
 
 <body id="page-cont">
-    <div class="navbar-wrapper">
-        <div class="container">
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
                 <div class="navbar-header">
+                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
                 {% block navbar_links %}
                     <a class="navbar-brand" href="{% url 'index' %}">Project Skeleton</a>
                 </div>
+                <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
                     {% if user.is_staff %}
                     <li>
@@ -33,7 +40,17 @@
                         <a href="/login?next={{ request.path|urlencode }}">login</a>
                     </li>
                     {% endif %}
-                </ul>
+                    <li class="dropdown">
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">Go to <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'team' %}">Team</a></li>
+                            <li><a href="{% url 'gallery' %}">Image Gallery</a></li>
+                            <li><a href="{% url 'bibliography' %}">Bibliography</a></li>
+                            <li>
+                            {% for line in research_lines %}
+                            <a href="{% url 'research_line' line.slug %}">{{ line.name }}</a>
+                            {% endfor %}</li>
+                        </ul></li></ul>
                 <form class="navbar-form navbar-right" name="search" action="{% url 'search' %}" method="get" >
                     <div class="form-group">
                         <input type="text" class="form-control" name="q" placeholder="search" />
