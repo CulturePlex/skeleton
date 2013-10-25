@@ -150,7 +150,8 @@ def search_view(request):
     else:
         results = ''
     return render_to_response('search.html', RequestContext(request, {
-        'results': results
+        'results': results,
+        'query_string': query_string,
     }))
 
 
