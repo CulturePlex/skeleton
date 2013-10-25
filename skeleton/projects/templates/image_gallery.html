@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% load staticfiles %}
 
 {% block extra_links %}
@@ -20,6 +21,7 @@
  -->
 
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div class="container gallery">
 <div id="blueimp-gallery" class="blueimp-gallery">
     <!-- The container for the modal slides -->
     <div class="slides"></div>
@@ -54,13 +56,21 @@
     </div>
 </div>
 
+<div class="container images">
 {% for image in images %}
 <div id="links" class="col-md-4">
     <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
-        <img src="{{ MEDIA_URL }}{{ image.image }}" class="img_gal"/>
+    {% thumbnail image.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+    {% endthumbnail %}
     </a>
 </div>
 {% endfor %}
+</div>
+
+
+
+</div>
 
 {% endblock %}
 
@@ -69,5 +79,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
 
 {% endblock %}

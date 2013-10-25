@@ -2,6 +2,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from skeleton.snippets import unique_slugify
+from sorl.thumbnail import ImageField
 
 
 class Project(models.Model):
