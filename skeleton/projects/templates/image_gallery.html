@@ -20,6 +20,18 @@
 </div>
  -->
 
+<div class="row">
+{% for image in images %}
+<div class="col-md-4">
+    <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
+    {% thumbnail image.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-thumbnail"/>
+    {% endthumbnail %}
+    </a>
+</div>
+{% endfor %}
+</div>
+
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
 <div class="container gallery">
 <div id="blueimp-gallery" class="blueimp-gallery">
@@ -54,18 +66,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="container images">
-{% for image in images %}
-<div id="links" class="col-md-4">
-    <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
-    {% thumbnail image.image "100x100" crop="center" as im %}
-        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
-    {% endthumbnail %}
-    </a>
-</div>
-{% endfor %}
 </div>
 
 
