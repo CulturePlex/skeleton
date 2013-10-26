@@ -12,3 +12,4 @@ local_settings.py
 ez_setup.py
 setuptools-1.1.4.tar.gz
 media/
+prod_settings.py
