@@ -11,16 +11,13 @@
     {% else %} -->
         <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
     <!-- {% endif %} -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
     {% block extra_links %}{% endblock %}
 </head>
 
 <body id="page-cont">
-<<<<<<< HEAD
-=======
      <div class="navbar-wrapper">
         <div class="container">
->>>>>>> 85b6171269a81027b2713c9fc333a09a4f575734
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -46,7 +43,7 @@
                     </li>
                     {% endif %}
                     <li class="dropdown">
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">Go to <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Go to<b class="caret"></b></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'team' %}">Team</a></li>
                             <li><a href="{% url 'gallery' %}">Image Gallery</a></li>
