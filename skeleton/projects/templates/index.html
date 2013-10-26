@@ -55,7 +55,7 @@
         {% if images %}
         <div class="item">
             <div class="container profile_slide">
-                <img src="{{ MEDIA_URL }}{{ image.image }}" class="car-img">
+                <img src="{{ MEDIA_URL }}{{ images.0.image }}" class="car-img">
                 <h2>Image Gallery</h2>
                 <a href="{% url 'gallery' %}" class="btn btn-default btn-sm">view more</a>
             </div>
