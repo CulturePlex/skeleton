@@ -25,23 +25,27 @@
     <div class="carousel-inner">
         <div class="item active">
             <div class="container mainslide">
+                <div class="row mainslide">
                 {% if cover_image.image %}
+                <div class="col-md-4">
+                <img src="{{ MEDIA_URL }}{{ cover_image.image }}" class="mainimg"></div>
+                    <div class="col-md-6">
                     <h1>{{ project }}</h1>
-                    <p class="maindescrip">{{ project.description|safe|slice:"0:500" }}...<a href="{% url 'team' %}">read more</a></p>
-                    <img src="{{ MEDIA_URL }}{{ cover_image.image }}" class="mainimg">
+                    <p class="maindescrip">{{ project.description|safe|slice:"0:500" }}...<a href="{% url 'team' %}">read more</a></p></div>
+                    </div>
                 {% else %}
                     <h1>{{ project }}</h1>
                     <p>{{ project.description|safe }}</p>
                 {% endif %}
-            </div>     
-        </div>      
+            </div>
+        </div>
 
         {% if profile %}
         <div class="item">
         <div class="inner-item">
             <div class="container profile_slide">
                 <p><h1>{{ profile.name }}</h1></p> 
-                <p class="profile-bio">{{ profile.bio|slice:"0:500" }}...<a href="{% url 'team' %}">view more</a></p>
+                <p class="profile-bio">{{ profile.bio|safe|slice:"0:500" }}...<a href="{% url 'team' %}">view more</a></p>
                     {% if profile.profile_pic %}
                         <a href="{% url 'image' profile.profile_pic.slug %}">
                         <img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="car-img" />
