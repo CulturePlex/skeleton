@@ -28,13 +28,11 @@ def index_view(request):
     # Find cover image or active image for carousel.
     if hasattr(project, 'cover_image'):
         cover_image = project.cover_image
-        carousel_images = Image.objects.filter().exclude(id=cover_image.id)
         active_image = None
     else:
         cover_image = None
         if len(images) > 0:
             active_image = images[0]
-            carousel_images = Image.objects.filter().exclude(id=active_image.id)
             if len(images) > 1:
                 images = images[1:]
         else:
