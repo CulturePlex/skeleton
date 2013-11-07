@@ -3,6 +3,7 @@
 {% load reference_instance %}
 {% block title %}Search Results{% endblock %}
 
+
 {% block extra_links %}
     <link href="{% static 'css/base.css' %}" type = "text/css" rel="stylesheet"/>
 {% endblock %}
@@ -19,29 +20,37 @@
             </tr>
             </thead>
             <tbody>
-        {% for result in results %}
+            {% for result in results %}
             {% if result|book_instance %}
                 <tr>
-                    <td class="table-cell">L {{ result.result.get_absolute_url }}
+                    <td class="table-cell">
+                    {% regroup results by result.name as result_name_list %}
+                    {% for result in result_name_list %}{{ result.grouper }}
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
                     <p>{{ result.field|safe|slice:"0:200" }}</p>
                     </a>
+                    {% endfor %}
                     </td>
+
                 </tr>
             {% elif result|journal_instance %}
                 <tr>
                     <td class="table-cell">
+                    {% regroup results by result.name as result_name_list %}
+                    {% for result in result_name_list %}{{ result.grouper }}
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
                     <p>{{ result.field|safe|slice:"0:200" }}</p>
                     </a>
+                    {% endfor %}
                     </td>
                 </tr>
             {% else %}
                 <tr>
                     <td class="table-cell">
                         <a href= "{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
+                        <a href="{{ result.result.get_abolute_url }}">
                         {% if result.type = "ResearchLine" %}
                         <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/></a>
                             <p>{{ result.field|safe|slice:"0:200" }}</p>
