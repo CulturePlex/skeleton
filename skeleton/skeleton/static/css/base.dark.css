@@ -2,12 +2,12 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
+    background: #30303A;
 }
 
 .ftr {
     padding-top: 30px;
 }
-
 
 img {
   display: block;
@@ -26,3 +26,5 @@ p {
     font-size: 15px;
     line-height: 15px;
 }
+
+
