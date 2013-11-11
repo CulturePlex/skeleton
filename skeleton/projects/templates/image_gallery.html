@@ -49,7 +49,7 @@
 
 <div class="row">
 {% for image in images %}
-    <div class="col-md-3">
+<div class="col-md-3 image_comp">    
     <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
     {% thumbnail image.image "100x100" crop="center" as im %}
         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
