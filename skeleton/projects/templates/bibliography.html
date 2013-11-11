@@ -4,7 +4,11 @@
 {% block title %}Bibliography{% endblock %}
 
 {% block extra_links %}
-    <link href="{% static 'css/base.css' %}" type = "text/css" rel="stylesheet"/>
+{% if THEME == 'dark' %}
+          <link href="{% static 'css/base.dark.css' %}" type ="text/css" rel="stylesheet"/>
+    {% else %}
+        <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
