@@ -1,0 +1,128 @@
+/* Carousel base class */
+.carousel {
+  margin-top: -40px;
+  margin-left: -50px;
+  margin-right: -50px; 
+  margin-bottom: 50px;
+}   
+/* Since positioning the image, we need to help out the caption */
+.fill {
+  width: 200%;
+  height: 200%;
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-caption {
+  z-index: 10; 
+  text-align:center;
+}
+
+.carousel-inner {
+    overflow: hidden;
+    position: relative;
+    margin-top: 40px;
+}
+
+.carousel .item {
+  height: 550px;
+  background-color: #F5F5DC;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.mainimg {
+  max-height: 300px;
+}
+
+.mainslide {
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.maintable_div {
+  margin: 0 autoq  !important
+}
+
+.mainslide_table {
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.maindescrip {
+  vertical-align: middle;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.car-img {
+  height: 200px;
+  margin: 0 auto;
+}
+
+.profile_slide {
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.profile-bio {
+  vertical-align: middle;
+  padding-left: 10%; 
+  padding-right: 10%;
+}
+
+
+
+/*Title section*/
+
+
+.profile_image {
+   display: block;
+   max-width: 40%;
+   height: auto;
+   vertical-align: middle;
+   position: relative;
+   padding-top: 130px;
+   margin: 0 auto;
+   bottom: 30px;
+   top: 5px;
+   left: 300px;
+}
+
+
+.avatar {
+  display: block;
+  max-width: 50%;
+  height: auto;
+  vertical-align: middle;
+  position: relative;
+  margin: 0 auto;
+}
+
+.marketing {
+  padding-top: 15px;
+    
+}
+
+.researchimg {
+   display: block;
+   max-width: 300px;
+   height: auto;
+   vertical-align: middle;
+   position: relative;
+   padding-top: 30px;
+   margin: 0 auto;
+}
+
+.researchlines{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10%;
+}
+
+
