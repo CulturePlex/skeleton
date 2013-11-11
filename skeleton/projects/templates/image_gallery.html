@@ -6,7 +6,11 @@
     
     <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 	<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
-	<link href="{% static 'css/gallery.css' %}" type = "text/css" rel="stylesheet"/>
+	{% if THEME == 'dark' %}
+          <link href="{% static 'css/gallery.dark.css' %}" type ="text/css" rel="stylesheet"/>
+    {% else %}
+        <link href="{% static 'css/gallery.css' %}" type ="text/css" rel="stylesheet"/>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
