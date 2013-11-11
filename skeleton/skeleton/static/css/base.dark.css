@@ -25,6 +25,7 @@ p {
     margin-top: 20px;
     font-size: 15px;
     line-height: 15px;
+    text-align: justify;
     color: #AAAAB1;
 }
 
@@ -36,3 +37,6 @@ h4 {
     color: #FEFEFE;
 }
 
+.current{
+    color: #AAAAB1;
+}
