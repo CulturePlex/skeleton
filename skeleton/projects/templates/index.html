@@ -7,7 +7,11 @@
 {% block title %}Home{% endblock %}
 
 {% block extra_links %}
-    <link href="{% static 'css/index.css' %}" type = "text/css" rel="stylesheet"/>
+    {% if THEME == 'dark' %}
+        <link href="{% static 'css/index.dark.css' %}" type ="text/css" rel="stylesheet"/>
+    {% else %}
+        <link href="{% static 'css/index.css' %}" type = "text/css" rel="stylesheet"/>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -59,9 +63,13 @@
         {% if images %}
         <div class="item">
             <div class="container profile_slide">
-                <img src="{{ MEDIA_URL }}{{ images.0i.mage }}" class="car-img">
+             <div class="col-md-6">
+                <img src="{{ MEDIA_URL }}{{ images.0.image }}" class="car-img">
+            </div>
+            <div class="col-md-4">
                 <h2>Image Gallery</h2>
                 <a href="{% url 'gallery' %}" class="btn btn-default btn-sm">view more</a>
+            </div>
             </div>
         </div>
         {% endif %}
