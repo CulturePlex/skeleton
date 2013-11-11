@@ -1,11 +1,13 @@
 /* Carousel base class */
 .carousel {
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: -50px;
   margin-right: -50px; 
   margin-bottom: 50px;
 }   
 /* Since positioning the image, we need to help out the caption */
+
+
 .fill {
   width: 200%;
   height: 200%;

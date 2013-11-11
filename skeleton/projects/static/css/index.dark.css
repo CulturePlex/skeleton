@@ -22,11 +22,12 @@
     overflow: hidden;
     position: relative;
     margin-top: 40px;
-}
+    color: #777;
+ }
 
 .carousel .item {
   height: 550px;
-  background-color: #F5F5DC;
+  background-color: #1B2020;
   text-align: center;
   vertical-align: middle;
 }
@@ -76,7 +77,14 @@
   padding-right: 10%;
 }
 
-
+.image_slide {
+  vertical-align: middle;
+  padding-top: 40px;
+  color: #777;
+}
+.color_text_slide {
+  color: #777;
+}
 
 /*Title section*/
 
