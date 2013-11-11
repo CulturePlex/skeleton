@@ -50,7 +50,6 @@
                 <tr>
                     <td class="table-cell">
                         <a href= "{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
-                        <a href="{{ result.result.get_abolute_url }}">
                         {% if result.type = "ResearchLine" %}
                         <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/></a>
                             <p>{{ result.field|safe|slice:"0:200" }}</p>
