@@ -6,35 +6,10 @@
     
     <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 	<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
-	{% if THEME == 'dark' %}
-          <link href="{% static 'css/gallery.dark.css' %}" type ="text/css" rel="stylesheet"/>
-    {% else %}
-        <link href="{% static 'css/gallery.css' %}" type ="text/css" rel="stylesheet"/>
-    {% endif %}
+    <link href="{% static 'css/gallery.css' %}" type ="text/css" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
-<!-- <div class="row">
-    {% for image in images %}
-        <div class="col-lg-4">
-            <a href="#"><img src="{{ MEDIA_URL }}{{ image.image }}" class="img-thumbnail"/></a>
-            <p>{{ image.name }}</p>
-        </div>
-    {% endfor %}
-</div>
- -->
-
-<div class="row">
-{% for image in images %}
-<div class="col-md-4">
-    <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
-    {% thumbnail image.image "100x100" crop="center" as im %}
-        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-thumbnail"/>
-    {% endthumbnail %}
-    </a>
-</div>
-{% endfor %}
-</div>
 
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
 <div class="container gallery">
@@ -72,6 +47,17 @@
     </div>
 </div>
 
+<div class="row">
+{% for image in images %}
+    <div class="col-md-3">
+    <a href="{{ MEDIA_URL }}{{ image.image }}" title="{{ image.name }}" data-gallery>
+    {% thumbnail image.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+    {% endthumbnail %}
+    </a>
+</div>
+{% endfor %}
+</div>
 
 
 </div>
