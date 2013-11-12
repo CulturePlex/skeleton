@@ -2,23 +2,29 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
-    background: black;
+    background: #272b30;
+    color: #c8c8c8;
 }
 
 .navbar-default .navbar-brand {
     color: #74CBE3;
 }
 
+.navbar-default .navbar-brand:hover {
+    color: #267B94;
+}
+
 .navbar-default .navbar-nav > li > a {
     color: #74CBE3;
 }
 
-.dark_nav {
-    background: black;
+.navbar-default .navbar-nav > li > a:hover {
+    color: #267B94;
 }
 
-.navbar-default {
-    border-color: black;
+.dark_nav {
+    background: #272b30;
+    border: #272b30;
 }
 
 .ftr {
@@ -46,11 +52,11 @@ p {
 }
 
 h2 {
-    color: #FEFEFE;
+    color: #c8c8c8;
 }
 
 h4 {
-    color: #FEFEFE;
+    color: #c8c8c8;
 }
 
 .current{
