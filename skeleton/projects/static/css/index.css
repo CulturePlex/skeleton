@@ -7,7 +7,6 @@
 }   
 /* Since positioning the image, we need to help out the caption */
 
-
 .fill {
   width: 200%;
   height: 200%;
@@ -33,16 +32,12 @@
   vertical-align: middle;
 }
 
-.mainimg {
-  max-height: 300px;
-}
-
 .mainslide {
   vertical-align: middle;
   display: inline-block;
   margin: 0 auto;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .maintable_div {
@@ -61,15 +56,14 @@
   padding-right: 10%;
 }
 
-.car-img {
-  height: 200px;
-  margin: 0 auto;
+.prof_slide {
+  padding-top: 50px;
 }
 
-.profile_slide {
-  vertical-align: middle;
-  display: inline-block;
-  margin-top: 50px;
+.car-img {
+  padding-top: 20px;
+  height: 200px;
+  margin: 0 auto;
 }
 
 .profile-bio {
@@ -77,6 +71,12 @@
   padding-left: 10%; 
   padding-right: 10%;
 }
+
+.image_slide {
+  vertical-align: middle;
+  color: #c8c8c8;
+  padding-top: 50px;
+} 
 
 /*Title section*/
 

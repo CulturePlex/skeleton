@@ -6,6 +6,7 @@
   margin-bottom: 50px;
 }   
 /* Since positioning the image, we need to help out the caption */
+
 .fill {
   width: 200%;
   height: 200%;
@@ -78,6 +79,7 @@
   color: #c8c8c8;
   padding-top: 50px;
 } 
+
 .color_text_slide {
   color: #c8c8c8;
 }
@@ -129,4 +131,7 @@
   padding-left: 10%;
 }
 
+p {
+    text-align: justify;
+}
 
