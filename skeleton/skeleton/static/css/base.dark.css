@@ -5,6 +5,22 @@ body {
     background: black;
 }
 
+.navbar-default .navbar-brand {
+    color: #74CBE3;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #74CBE3;
+}
+
+.dark_nav {
+    background: black;
+}
+
+.navbar-default {
+    border-color: black;
+}
+
 .ftr {
     padding-top: 30px;
 }
@@ -39,4 +55,12 @@ h4 {
 
 .current{
     color: #AAAAB1;
+}
+
+a {
+    color: #74CBE3;
+}
+
+li {
+    color: #74CBE3;
 }
