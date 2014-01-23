@@ -1,0 +1,38 @@
+body {
+    padding-top: 70px;
+    top: 100px;
+    text-align: justify;
+    background-image: url(background/darkgrey.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    display: block;
+    max-height: 350px;
+    max-width: 350px;
+}
+
+.table-cell {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.img-thumbnail {
+    display: block;
+    max-height: 350px;
+    max-width: 350px;
+}
+
+
+.row-bibliography {
+    padding-top: 70px;
+}
+
