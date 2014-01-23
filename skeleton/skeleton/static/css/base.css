@@ -3,6 +3,9 @@ body {
     top: 100px;
     text-align: justify;
     line-height: 20px;
+    background-image: url(background/beige.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .light_nav {
@@ -12,12 +15,10 @@ body {
     padding-top: 30px;
 }
 
-
 .navbar-wrapper {
   position: relative;
   z-index: 15;
 }
-
 
 img {
   display: block;
