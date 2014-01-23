@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load disqus_tags %}
-{% load disqus_tags %}
-{% set_disqus_identifier 'project' %}
-{% set_disqus_url project.get_absolute_url %}
+    
 {% block title %}Home{% endblock %}
 
 {% block extra_links %}
@@ -100,19 +97,20 @@
 <div class="container marketing">
     <div class="row marketing">
 
-    <div class="row">
-        <div class="col-lg-6 researchlines">
-            <a href="{% url 'research_line' line.slug %}"><h3>{{ line.name }}</h3></a>
-            <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.slug %}">read more</a></p>
-        </div>
-    {% if line.avatar %}
-            <div class="col-lg-6">
-                <a href="{% url 'image' line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="researchimg" /></a>
+        <div class="row">
+            <div class="col-lg-6 researchlines">
+                <a href="{% url 'research_line' line.slug %}"><h3>{{ line.name }}</h3></a>
+                <p>{{ line.text|safe|slice:"0:200" }}...<a href="{% url 'research_line' line.slug %}">read more</a></p>
             </div>
-    {% else %}
-        <div class="col-lg-6"></div>
-    {% endif %}
-    </div>
+        {% if line.avatar %}
+                <div class="col-lg-6">
+                    <a href="{% url 'image' line.avatar.slug %}"><img src="{{ MEDIA_URL }}{{ line.avatar.image }}" class="researchimg" /></a>
+                </div>
+        {% else %}
+            <div class="col-lg-6"></div>
+        {% endif %}
+        </div>
+
     </div>
 <hr>   
 </div>  
