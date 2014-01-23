@@ -28,7 +28,7 @@
 
 .carousel .item {
   height: 550px;
-  background-color: #1B2020;
+  background-image: url("background/grey.jpg");
   text-align: center;
   vertical-align: middle;
 }
