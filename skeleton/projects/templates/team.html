@@ -2,9 +2,6 @@
 {% load staticfiles %}
 {% block title %}Team{% endblock %}
 
-{% load disqus_tags %}
-{% set_disqus_identifier 'team_' team.id %}
-{% set_disqus_url team.get_absolute_url %}
 
 {% block extra_links %}
     <link href="{% static 'css/profile.css' %}" type = "text/css" rel="stylesheet"/>
@@ -44,12 +41,6 @@
             </table>
     </div>
 </div>
-
-<!--<div class="row-discus">-->
-<!--    <div class="col-med-10 col-md-offset-1">-->
-<!--        {% disqus_show_comments %}-->
-<!--    </div>-->
-<!--</div>WRITE TO ME FB TWITTER EMAIL-->
 
 
 
