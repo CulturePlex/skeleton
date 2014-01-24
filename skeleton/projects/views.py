@@ -162,37 +162,39 @@ def profile_view(request, profile_slug):
     return render_to_response('profile.html', RequestContext(request, {
         'profile': profile
     }))
-    
+
 
 def login(request):
-    return render_to_response('login.html',
-    {},
-    context_instance=RequestContext(request)
+    return render_to_response(
+        'login.html',
+        {},
+        context_instance=RequestContext(request)
     )
+
 
 def _handle_query_results(results):
     output = []
+    #import ipdb; ipdb.set_trace()
     for result in results:
-        if result.values()[0]:
-            field = result.keys()[0]
-            for value in result.values():
-                obj = value[0]
-                obj_name = obj.__class__.__name__
-                if isinstance(obj, BookReference) or \
-                        isinstance(obj, JournalReference):
-                    result_dict = {
-                        'result': obj,
-                        'name': obj.title,
-                        'type': obj_name,
-                        'field': getattr(obj, field)
-                    }
-                else:
-                    result_dict = {
-                        'result': obj,
-                        'name': obj.name,
-                        'type': obj_name,
-                        'field': getattr(obj, field)
-                    }
-                output.append(result_dict)
-    return output
+        if result.values():
+            obj = result.keys()[0]
+            obj_name = obj_name = obj.__class__.__name__
+            values = result.values()[0]
+            if isinstance(obj, BookReference) or \
+                    isinstance(obj, JournalReference):
+                result_dict = {
+                    'result': obj,
+                    'name': obj.title,
+                    'type': obj_name,
+                    'fields': [getattr(obj, value) for value in values]
+                }
+            else:
+                result_dict = {
+                    'result': obj,
+                    'name': obj.name,
+                    'type': obj_name,
+                    'fields': [getattr(obj, value) for value in values]
+                }
+            output.append(result_dict)
 
+    return output
