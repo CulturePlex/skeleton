@@ -30,7 +30,7 @@
                         <h3>{{ profile.name }}</h3>
                         <a href="{% url 'image' profile.profile_pic.slug %}"><img src="{{ MEDIA_URL }}{{ profile.profile_pic.image }}" class="academic_profile_img" /></a> 
                         <div class="academic-profile-info">
-                            Contact me:
+                            <h3>Contact me:</h3>
                             <p><small>AccountName at Email dot com<br/>
                             Facebook<br/>
                             @Twitter<br/>
@@ -48,7 +48,7 @@
             </tbody>
         </table>
         <div class="col-md-12 col-md-offset-10">
-		  <a href="{% url 'team' %}">View entire team<span class="glyphicon glyphicon-chevron-right"></span></a>
+		  <a href="{% url 'team' %}">View entire team<span class="glyphicon glyphicon-chevron-right"></span   ></a>
         </div>
 	</div>
 </div>
