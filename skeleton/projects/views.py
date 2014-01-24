@@ -40,6 +40,8 @@ def index_view(request):
     team = AcademicProfile.objects.all()
     if team:
         profile = team[0]
+    else:
+        profile = None
     return render_to_response('index.html', RequestContext(request, {
         'project': project,
         'research_lines': research_lines,
