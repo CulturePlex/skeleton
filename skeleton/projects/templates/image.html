@@ -1,26 +1,24 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load disqus_tags %}
-{% set_disqus_identifier 'image_' image.id %}
-{% set_disqus_url image.get_absolute_url %}
 
+{% block title %}Image{% endblock %}
+
+{% block extra_links %}
+
+        <link href="{% static 'css/image.css' %}" type = "text/css" rel="stylesheet"/>
+
+{% endblock %}
 
 {% block content %}
 
+
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<img src="{{ MEDIA_URL }}{{ image.image }}" />
-		<p>{{ image.name }}</p>
-		<p>{{ image.caption }}</p>
+		<img src="{{ MEDIA_URL }}{{ image.image }}"/>
+		<h1>{{ image.name }}</h1>
+		<h3>{{ image.caption }}</h3>
 		<p>{{ image.description }}</p>
-
 	</div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">    
-        {% disqus_show_comments %}
-    </div>
 </div>
 
 
