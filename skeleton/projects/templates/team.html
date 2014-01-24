@@ -4,7 +4,11 @@
 
 
 {% block extra_links %}
-    <link href="{% static 'css/profile.css' %}" type = "text/css" rel="stylesheet"/>
+    {% if THEME == 'dark' %}
+        <link href="{% static 'css/profile.dark.css' %}" type = "text/css" rel="stylesheet"/>
+    {% else %}
+        <link href="{% static 'css/profile.css' %}" type = "text/css" rel="stylesheet"/>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
