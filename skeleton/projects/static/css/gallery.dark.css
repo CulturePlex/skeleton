@@ -2,4 +2,12 @@
 	padding-top: 500px;
 }
 
+.image_comp {
+	padding-top: 40px;
+	display: inline-block;
+}
 
+.blueimp-gallery .slides {
+	height: 700px;
+	padding-top: 250px
+}
