@@ -1,3 +1,18 @@
+body {
+    padding-top: 70px;
+    top: 100px;
+    text-align: justify;
+    background-image: url(background/beige.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    display: block;
+    max-height: 350px;
+    max-width: 350px;
+}
+
 .academic_profile_img {
     max-width: 200px;
     max-height: 200px;
@@ -8,6 +23,11 @@
     width: 300px;
     font-size: 20px;
     line-height: 40px;
+}
+
+.row {
+    margin-left: 15px;
+    margin-right: 10px;
 }
 
 p {
@@ -26,9 +46,6 @@ body {
     text-align: justify;
 }
 
-.row-discus {
-    padding-top: 80px;
-}
 
 .academic-profile-info {
     padding-top: 70px;
