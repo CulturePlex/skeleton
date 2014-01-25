@@ -2,9 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}Member{% endblock %}
-{% load disqus_tags %}
-{% set_disqus_identifier 'profile_' profile.id %}
-{% set_disqus_url profile.get_absolute_url %}
+
 
 {% block extra_links %}
     {% if THEME == 'dark' %}

@@ -4,7 +4,7 @@ body {
     text-align: justify;
     line-height: 20px;
     background-image: url(background/parchment.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
