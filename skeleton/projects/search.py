@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-from itertools import chain
 from django.db.models import Q, CharField, TextField
 
 #####################################################################
@@ -24,18 +23,14 @@ def get_query(query_string, search_fields):
         or_query = None
         for field_name in search_fields:
             q = Q(**{"{0}__icontains".format(field_name): term})
-            if or_query is None:
-                or_query = q
-            else:
-                or_query = or_query | q
-            q_set[field_name] = or_query
+            q_set[field_name] = q
     return q_set
 
 #####################################################################
 
 
 def model_search(model, query_string):
-    results_dict = []
+    results_dict = {}
     search_fields = [
         field for field in model._meta.fields if
         isinstance(field, CharField) or isinstance(field, TextField)
@@ -44,16 +39,21 @@ def model_search(model, query_string):
         field.name for field in search_fields if field.name != 'slug'
     ]
     q_set = get_query(query_string, search_fields)
-
+    #import ipdb; ipdb.set_trace()
     for field, value in q_set.items():
         results = model.objects.filter(value)
-        results_dict.append({field: results})
+        if results:
+            for result in results:
+                results_dict.setdefault(result, [])
+                results_dict[result].append(field)
     return results_dict
 
 
 def multi_model_search(model_list, query_string):
     results = []
     for model in model_list:
-        results.append(model_search(model, query_string))
-    results = list(chain.from_iterable(results))
+        search = model_search(model, query_string)
+        for key, vals in search.iteritems():
+            results += [{key: vals}]
+    #import ipdb; ipdb.set_trace()
     return results
