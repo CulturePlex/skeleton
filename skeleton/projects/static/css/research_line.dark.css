@@ -1,12 +1,3 @@
-body {
-    padding-top: 70px;
-    top: 100px;
-    text-align: justify;
-    background-image: url(background/darkgrey.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 img {
     display: block;
     max-height: 350px;

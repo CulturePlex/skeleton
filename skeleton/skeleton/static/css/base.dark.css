@@ -3,7 +3,7 @@ body {
     top: 100px;
     text-align: justify;
     background-image: url(background/darkgrey.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
