@@ -60,14 +60,23 @@ p {
     color: black;
 }
 
+h1 {
+    color: #0F4655;
+}
+
 h2 {
-    color: #339966;
+    color: #5a5a5a;
 }
 
 h4 {
-    color: #339966;
+    color: #5a5a5a;
 }
 
 h3 {
-    color: #006699;
+    color: #777;
+}
+
+a {
+  color: #0F4655;
+  font-weight: bold;
 }
