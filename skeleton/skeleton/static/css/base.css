@@ -3,23 +3,41 @@ body {
     top: 100px;
     text-align: justify;
     line-height: 20px;
-    background-image: url(background/parchment.jpg);
-    background-repeat: repeat-y;
-    background-size: cover;
-}
-
-.light_nav {
-    background: #006699;
-    border: #006699;
 }
 
 .ftr {
     padding-top: 30px;
 }
 
+.light_nav {
+    background: #1995dc;
+    border: #1995dc;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #3d3737;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #3d3737;
+}
+
 .navbar-wrapper {
   position: relative;
   z-index: 15;
+}
+
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: white;
+    border-bottom-color: white;
 }
 
 img {
@@ -40,22 +58,6 @@ p {
     font-size: 15px;
     line-height: 20px;
     color: black;
-}
-
-.navbar-default .navbar-brand {
-    color: white;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: #989898;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: white;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: #989898 ;
 }
 
 h2 {
