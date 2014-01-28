@@ -76,7 +76,7 @@
 				{% endfor %}
 			{% endif %}
 		{% endfor %}
-        <h1><small>{{ research_line.subtitle }}</small></h1>
+        <h3>{{ research_line.subtitle }}<h3>
 		<p>{{ research_line.text|safe }}</p>
 		<div class="row-bibliography">
 				<h4><span class="glyphicon glyphicon-leaf"></span> Bibliography</h4>
@@ -88,7 +88,7 @@
 					{% endif %}
 				{% endfor %}
 		<div class="col-md-12 col-md-offset-9">
-		<a href="{% url 'bibliography' %}">View entire bibliography<span class="glyphicon glyphicon-chevron-right"></span></a></div>
+		<p><a href="{% url 'bibliography' %}">View entire bibliography<span class="glyphicon glyphicon-chevron-right"></span></a></p></div>
 		</div>
 	</div> <!-- general offset -->
 </div> <!--first fluid row -->

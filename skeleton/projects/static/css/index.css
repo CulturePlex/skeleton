@@ -11,8 +11,6 @@
 .fill {
   width: 200%;
   height: 200%;
-  background-position: center;
-  background-size: cover;
 }
 
 .carousel-caption {
@@ -125,4 +123,9 @@
 
 p {
     text-align: justify;
+    color: black;
 }
+
+h1 {
+    color: #339966;
+    }

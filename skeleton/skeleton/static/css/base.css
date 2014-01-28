@@ -9,6 +9,8 @@ body {
 }
 
 .light_nav {
+    background: #006699;
+    border: #006699;
 }
 
 .ftr {
@@ -20,10 +22,6 @@ body {
   z-index: 15;
 }
 
-/*.navbar-default {
-  background-color: 
-}
-*/
 img {
   display: block;
   height: auto;
@@ -34,12 +32,40 @@ img {
     margin-top: 20px;
     font-size: 20px;
     line-height: 40px;
+
 }
 
 p {
     margin-top: 20px;
     font-size: 15px;
     line-height: 20px;
+    color: black;
 }
 
+.navbar-default .navbar-brand {
+    color: white;
+}
 
+.navbar-default .navbar-brand:hover {
+    color: #989898;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #989898 ;
+}
+
+h2 {
+    color: #339966;
+}
+
+h4 {
+    color: #339966;
+}
+
+h3 {
+    color: #006699;
+}
