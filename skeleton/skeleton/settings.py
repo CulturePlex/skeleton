@@ -6,7 +6,7 @@ TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'Skeleton'
 FOOTER_INFO = 'CulturePlex Lab'
-THEME = 'dark'
+THEME = 'light'
 PROJECT_PATH = path.dirname(path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
