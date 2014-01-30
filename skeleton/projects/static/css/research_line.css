@@ -2,9 +2,6 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
-    background-image: url(background/beige.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 img {
