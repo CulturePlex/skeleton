@@ -12,6 +12,7 @@
         <link href="{% static 'css/base.css' %}" type ="text/css" rel="stylesheet"/>
     {% endif %}
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 
     {% block extra_links %}{% endblock %}
 </head>
@@ -70,33 +71,40 @@
  
 
 
-<div class="container" id="main_container" >
-    {% block content %}{% endblock %}
-    <div id="ftr" class="ftr">
-        <div class="container">
-            <p class="text-muted credit"><a href="http://www.cultureplex.ca/" target="blank">&copy;{{ FOOTER_INFO }}</a></p>
+    <div class="container" id="main_container" >
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>  
+        <div id="ftr" class="ftr" style="height:10%">
+            <div class="container">
+                <p class="text-muted credit"><a href="http://www.cultureplex.ca/" target="blank">&copy;{{ FOOTER_INFO }}</a></p>
+            </div>
         </div>
     </div>
-</div>
 
 
 
 {% block scripts %}
-    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    
     <script>
     // controls footer placement. if content does not fill viewport, place at bottom of page. if it does, place at bottom of content stopped working
      (function($) {
          $(document).ready(function() {
-            var body_height = $(document).height();
-            var window_height = $(window).height();
-            console.log(body_height);
-            console.log(window_height)
-            if (window_height > body_height) 
-                {
-                   $('.ftr').css('position', 'absolute');
-                   $('.ftr').css('bottom', 0 +'px');
-                }
+            var bodyHeight = $(document).height() - 100 + 'px';
+
+            $('#main_container').height(bodyHeight)
+            $('#content').height('95%')
+            $('#ftr').height('5%')
          });
+
+         $(document).on('resize', function () {
+            var bodyHeight = $(document).height() - 100 + 'px';
+            $('#main_container').height(bodyHeight)
+
+
+
+         })
+
      })(jQuery);
      </script>
  
