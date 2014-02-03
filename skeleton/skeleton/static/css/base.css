@@ -57,11 +57,11 @@ p {
     margin-top: 20px;
     font-size: 15px;
     line-height: 20px;
-    color: black;
+    color: #555555;
 }
 
 h1 {
-    color: #0F4655;
+    color: #ff6707;
 }
 
 h2 {
@@ -77,6 +77,5 @@ h3 {
 }
 
 a {
-  color: #0F4655;
-  font-weight: bold;
+  color: #1995dc;
 }
