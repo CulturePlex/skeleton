@@ -7,19 +7,24 @@ body {
 
 
 .navbar-default .navbar-brand {
-    color: #74CBE3;
+    color: #4C4646;
 }
 
 .navbar-default .navbar-brand:hover {
-    color: #267B94;
+    color: #736F6E  ;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #74CBE3;
+    color: #4C4646;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #267B94;
+    color: #736F6E;
+}
+
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #4C4646;
+    border-bottom-color: #4C4646;
 }
 
 .dark_nav {
@@ -28,7 +33,7 @@ body {
 }
 
 .carousel-inner {
-   background-image: url(background/darkgrey.jpg);
+    background-image: url(background/darkgrey.jpg);
     background-repeat: repeat-y;
     background-size: cover;
 }
@@ -69,7 +74,7 @@ h3 {
     color: #74CBE3;
 }
 
-.current{
+.current {
     color: #AAAAB1;
 }
 
