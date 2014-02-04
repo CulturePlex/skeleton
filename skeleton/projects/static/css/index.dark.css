@@ -3,8 +3,8 @@
   margin-top: -40px;
   margin-left: -50px;
   margin-right: -50px; 
-  margin-bottom: 50px;
-  padding-top: 5px;
+  margin-bottom: 0px;
+  padding-top: -10px;
 }   
 /* Since positioning the image, we need to help out the caption */
 
@@ -23,7 +23,7 @@
 .carousel-inner {
     overflow: hidden;
     position: relative;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #c8c8c8;
  }
 
