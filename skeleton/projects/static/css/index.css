@@ -30,6 +30,18 @@
   vertical-align: middle;
 }
 
+.carousel-indicators {
+  z-index: 5;
+}
+
+.carousel-indicators li {
+  border: 1px solid #1995dc;
+}
+
+.carousel-indicators .active {
+  background-color: #1995dc;
+}
+
 .mainslide {
   vertical-align: middle;
   display: inline-block;
@@ -115,13 +127,12 @@
    margin: 0 auto;
 }
 
-.researchlines{
+.researchlines {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 p {
     text-align: justify;
 }
-
