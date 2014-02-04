@@ -2,10 +2,9 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
-    background-image: url(          background/darkgrey.jpg);
-    background-repeat: repeat-y;
-    background-size: cover;
-}
+    background-color: black;
+ }
+
 
 .navbar-default .navbar-brand {
     color: #74CBE3;
@@ -24,8 +23,14 @@ body {
 }
 
 .dark_nav {
-    background: black;
-    border: black;
+    background: #74CBE3;
+    border: #74CBE3;
+}
+
+.carousel-inner {
+   background-image: url(background/darkgrey.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
 .ftr {
