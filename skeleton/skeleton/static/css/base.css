@@ -5,10 +5,6 @@ body {
     line-height: 20px;
 }
 
-.ftr {
-    padding-top: 30px;
-}
-
 .light_nav {
     background: #1995dc;
     border: #1995dc;
@@ -79,3 +75,13 @@ h3 {
 a {
   color: #1995dc;
 }
+
+#footer {
+  background-color: black;
+}   
+
+a {
+    padding-left: 80px;
+    color: white;
+}
+

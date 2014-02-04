@@ -38,9 +38,6 @@ body {
     background-size: cover;
 }
 
-.ftr {
-    padding-top: 30px;
-}
 
 img 
 {  display: block;
@@ -84,4 +81,17 @@ a {
 
 li {
     color: #74CBE3;
+}
+
+#footer {
+  background-color: #74CBE3;
+  border-color: #74CBE3;
+}   
+
+.well {
+    padding-left: 80px;
+}
+
+a {
+    color: black;
 }
