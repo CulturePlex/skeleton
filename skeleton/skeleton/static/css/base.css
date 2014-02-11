@@ -76,12 +76,15 @@ a {
   color: #1995dc;
 }
 
+a > h3 {
+ color: #1995dc; 
+}
+
 #footer {
   background-color: black;
 }   
 
-a {
+.well {
     padding-left: 80px;
-    color: #1995dc;
 }
 

@@ -63,11 +63,23 @@ h2 {
     color: #c8c8c8;
 }
 
+h3 {
+    color: #ff6707;
+}
+
 h4 {
     color: #c8c8c8;
 }
 
-h3 {
+a {
+    color: #74CBE3;
+}
+
+a h3 {
+    color: #74CBE3;   
+}
+
+li {
     color: #74CBE3;
 }
 
@@ -75,23 +87,17 @@ h3 {
     color: #AAAAB1;
 }
 
-a {
-    color: #74CBE3;
-}
-
-li {
-    color: #74CBE3;
-}
 
 #footer {
   background-color: #74CBE3;
   border-color: #74CBE3;
 }   
 
+footer > p > a {
+    color: #4C4646;
+}
+
 .well {
     padding-left: 80px;
 }
 
-a {
-    color: black;
-}
