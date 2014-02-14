@@ -45,32 +45,29 @@
   background-color: #1995dc;
 }
 
-.mainslide {
+.main-slide {
   vertical-align: middle;
   display: inline-block;
   margin: 0 auto;
   text-align: center;
   margin-top: 100px;
+  width: 50%;
 }
 
-.maintable_div {
-  margin: 0 autoq  !important
-}
-
-.mainslide_table {
-  vertical-align: middle;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.maindescrip {
+.main-descrip {
   vertical-align: middle;
   padding-left: 10%;
   padding-right: 10%;
 }
 
-.prof_slide {
+.main-img {
+  height: 300px;
+  width: auto;
+}
+
+.prof-slide {
   padding-top: 50px;
+  vertical-align: middle;
 }
 
 .car-img {
@@ -85,20 +82,24 @@
   padding-right: 10%;
 }
 
-.image_slide {
+.profile-img {
+  height: 300px; 
+}
+
+.image-slide {
   vertical-align: middle;
   color: #c8c8c8;
   padding-top: 50px;
 } 
 
-.color_text_slide {
+.color-text-slide {
   color: #c8c8c8;
 }
 
 /*Title section*/
 
 
-.profile_image {
+.profile-image {
    display: block;
    max-width: 40%;
    height: auto;
@@ -132,7 +133,7 @@
    height: auto;
    vertical-align: middle;
    position: relative;
-   padding-top: 30px;
+   padding-top: -6px;
    margin: 0 auto;
 }
 
