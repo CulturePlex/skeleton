@@ -61,11 +61,11 @@ h1 {
 }
 
 h2 {
-    color: #5a5a5a;
+    color: #5cb85c;
 }
 
 h4 {
-    color: #5a5a5a;
+    color: #5cb85c;
 }
 
 h3 {
@@ -81,10 +81,21 @@ a > h3 {
 }
 
 #footer {
-  background-color: black;
-}   
+    background-color: black;
+    clear: both;
+}
 
 .well {
     padding-left: 80px;
+}
+
+.table-cell > td > h4 > a {
+    color: #006699;
+    padding-left: 0px;
+}
+
+.table-cell > td > h4 > p > a {
+    color: #3399FF;
+    padding-left: 10px;
 }
 
