@@ -32,7 +32,7 @@
                     {% for result in result_name_list %}{{ result.grouper }}
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
-                    <p>{{ result.fields|safe|slice:"0:200" }}</p>
+                    <p>{{ result.fields|safe|slice:"0:200" }}...</p>
                     </a>
                     {% endfor %}
                     </td>
@@ -45,7 +45,7 @@
                     {% for result in result_name_list %}{{ result.grouper }}
                     <a href="{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                      {{ result.type }}{{ result.name }}<br/>
-                    <p>{{ result.fields|safe|slice:"0:200" }}</p>
+                    <p>{{ result.fields|safe|slice:"0:200" }}...</p>
                     </a>
                     {% endfor %}
                     </td>
@@ -56,7 +56,7 @@
                         <a href= "{{ result.result.get_absolute_url }}?ref_id=b_{{ result.id }}">
                         {% if result.type = "ResearchLine" %}
                         <span class="glyphicon glyphicon-file"></span> {{ result.name }}<br/></a>
-                            <p>{{ result.fields|safe|slice:"0:200" }}</p>
+                            <p>{% for field in result.fields %}{{ field|safe|slice:"0:200" }}{% endfor %}</p>
                         {% elif result.type = "Image" %}
                             <span class="glyphicon glyphicon-camera"></span> {{ result.name }}<br/></a>
                             <p>{{ result.fields|safe|slice:"0:200" }}</p>
