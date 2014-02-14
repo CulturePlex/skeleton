@@ -2,35 +2,42 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
-    background-image: url(          background/darkgrey.jpg);
+    background-color: black;
+ }
+
+
+.navbar-default .navbar-brand {
+    color: #4C4646;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #736F6E  ;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #4C4646;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #736F6E;
+}
+
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #4C4646;
+    border-bottom-color: #4C4646;
+}
+
+.dark_nav {
+    background: #74CBE3;
+    border: #74CBE3;
+}
+
+.carousel-inner {
+    background-image: url(background/darkgrey.jpg);
     background-repeat: repeat-y;
     background-size: cover;
 }
 
-.navbar-default .navbar-brand {
-    color: #74CBE3;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: #267B94;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #74CBE3;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: #267B94;
-}
-
-.dark_nav {
-    background: black;
-    border: black;
-}
-
-.ftr {
-    padding-top: 30px;
-}
 
 img 
 {  display: block;
@@ -64,7 +71,7 @@ h3 {
     color: #74CBE3;
 }
 
-.current{
+.current {
     color: #AAAAB1;
 }
 
@@ -74,4 +81,17 @@ a {
 
 li {
     color: #74CBE3;
+}
+
+#footer {
+  background-color: #74CBE3;
+  border-color: #74CBE3;
+}   
+
+.well {
+    padding-left: 80px;
+}
+
+a {
+    color: black;
 }

@@ -3,8 +3,8 @@
   margin-top: -40px;
   margin-left: -50px;
   margin-right: -50px; 
-  margin-bottom: 50px;
-  padding-top: 5px;
+  margin-bottom: 0px;
+  padding-top: -10px;
 }   
 /* Since positioning the image, we need to help out the caption */
 
@@ -23,7 +23,7 @@
 .carousel-inner {
     overflow: hidden;
     position: relative;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #c8c8c8;
  }
 
@@ -33,6 +33,17 @@
   vertical-align: middle;
 }
 
+.carousel-indicators {
+  z-index: 5;
+}
+
+.carousel-indicators li {
+  border: 1px solid #1995dc;
+}
+
+.carousel-indicators .active {
+  background-color: #1995dc;
+}
 
 .mainslide {
   vertical-align: middle;
@@ -128,7 +139,7 @@
 .researchlines{
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 p {
