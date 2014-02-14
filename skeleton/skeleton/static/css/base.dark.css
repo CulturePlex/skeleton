@@ -2,7 +2,9 @@ body {
     padding-top: 70px;
     top: 100px;
     text-align: justify;
-    background-color: #181818;
+    background-image: url(background/darkwoodpanel.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
 
@@ -28,8 +30,8 @@ body {
 }
 
 .dark_nav {
-    background: #339966;
-    border: #336633;
+    background: black;
+    border: #4EB1BA;
 }
 
 .carousel-inner {
@@ -54,9 +56,9 @@ img
 p {
     margin-top: 20px;
     font-size: 15px;
-    line-height: 15px;
+    line-height: 20px;
     text-align: justify;
-    color: #AAAAB1;
+    color: white;
 }
 
 h2 {
@@ -89,8 +91,8 @@ li {
 
 
 #footer {
-  background-color: #339966;
-  border-color: #336633;
+  background-color: black;
+  border-color: black;
 }   
 
 footer > p > a {
