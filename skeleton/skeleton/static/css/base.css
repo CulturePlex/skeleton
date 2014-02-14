@@ -77,11 +77,22 @@ a {
 }
 
 #footer {
-  background-color: black;
-}   
+    background-color: black;
+    clear: both;
+}
 
-a {
+footer > p > a {
     padding-left: 80px;
     color: white;
+}
+
+.table-cell > td > h4 > a {
+    color: #006699;
+    padding-left: 0px;
+}
+
+.table-cell > td > h4 > p > a {
+    color: #3399FF;
+    padding-left: 10px;
 }
 
