@@ -3,6 +3,7 @@ body {
     top: 100px;
     text-align: justify;
     line-height: 20px;
+    background-image: url('background/white.jpg');
 }
 
 .light_nav {
@@ -12,6 +13,7 @@ body {
 
 .navbar-default .navbar-brand {
     color: white;
+    font-weight: bold;
 }
 
 .navbar-default .navbar-brand:hover {
@@ -53,7 +55,7 @@ p {
     margin-top: 20px;
     font-size: 15px;
     line-height: 20px;
-    color: #555555;
+    color: black;
 }
 
 h1 {
@@ -61,15 +63,15 @@ h1 {
 }
 
 h2 {
-    color: #5cb85c;
+    color: #D97726;
 }
 
 h4 {
-    color: #5cb85c;
+    color: #D97726;
 }
 
 h3 {
-    color: #ff6707;
+    color: #565654;
 }
 
 a {
@@ -87,6 +89,7 @@ a > h3 {
 
 .well {
     padding-left: 80px;
+    margin-top: 36px;
 }
 
 .table-cell > td > h4 > a {
