@@ -38,12 +38,12 @@
                 <ul class="nav navbar-nav" >
                     {% if user.is_staff %}
                     <li>
-                        <a href="/admin/">admin</a>
+                        <a href="/admin/">Admin</a>
                     </li>
                     <!-- include admin logout -->
                      {% elif not user.is_authenticated %}
                     <li>
-                        <a href="/login?next={{ request.path|urlencode }}">login</a>
+                        <a href="/login?next={{ request.path|urlencode }}">Login</a>
                     </li>
                     {% endif %}
                     <li class="dropdown">
